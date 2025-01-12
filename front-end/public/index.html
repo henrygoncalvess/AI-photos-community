@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sem nome</title>
+    <link rel="stylesheet" href="css/static.css">
+</head>
+<body>
+    <div id="root">
+        <header>
+            <h1>Sign-Up</h1>
+        </header>
+
+        <form method="post">
+            <label for="name">
+                <fieldset class="form">
+                    <legend>Nome</legend>
+                    <input id="name" autocomplete="off"  type="text" placeholder="Digite o nome do usuário...">
+                    <span></span>
+                </fieldset>
+            </label>
+
+            <label for="email">
+                <fieldset class="form">
+                    <legend>E-mail</legend>
+                    <input id="email" autocomplete="off"  type="email" placeholder="Digite seu e-mail...">
+                    <span></span>
+                </fieldset>
+            </label>
+
+            <label for="password">
+                <fieldset class="form">
+                    <legend>Senha</legend>
+                    <input id="password" autocomplete="off"  type="text" placeholder="Digite sua senha..." >
+                    <span></span>
+                </fieldset>
+            </label>
+
+            <label for="passwordConfirmation">
+                <fieldset class="form">
+                    <legend>Confirme sua senha</legend>
+                    <input id="passwordConfirmation" autocomplete="off"  type="text" placeholder="Digite novamente sua senha..." >
+                    <span></span>
+                </fieldset>
+            </label>
+
+            <span class="submitMessage"></span>
+            
+            <button type="submit">Confirmar</button>
+        </form>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
