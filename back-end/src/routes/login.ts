@@ -30,13 +30,14 @@ export async function authRoutes(app: FastifyTypedInstance) {
 export async function authRoutesMiddle(app: FastifyTypedInstance) {
     app.addHook('onRequest', loginToken)
 
-    app.get('/login', {
+    app.post('/login', {
         schema: {
             tags: ['authentication'],
-            description: 'confirms user identity and shows login option',
+            description: 'confirms user identity',
             response: {
                 200: z.object({
-                    message: z.string().default("user (example) registered successfully"),
+                    message: z.string().default("user registered successfully"),
+                    user: z.string().default("username"),
                     ok: z.boolean()
                 }),
                 400: z.object({

@@ -1,6 +1,6 @@
 import { Validate } from "../utils/validator";
 import { displayError } from "../utils/messageError";
-import { sendVerificationEmail } from "../services/login";
+import { sendVerificationEmail } from "../services/sendVerificationEmail";
 
 const form = document.querySelector("form");
 const name = document.querySelector("input#name");

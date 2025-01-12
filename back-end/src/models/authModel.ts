@@ -27,7 +27,8 @@ export class AuthModel {
 
     static async login(data: string){
         return {
-            message: `user (${data}) registered successfully`,
+            message: `user registered successfully`,
+            user: data,
             ok: true
         }
     }

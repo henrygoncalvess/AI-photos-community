@@ -13,7 +13,7 @@ class App {
     }
 
     #middlewares(){
-        this.fastify.register(fastifyCors, { origin: '*' });
+        this.fastify.register(fastifyCors, { origin: 'http://localhost:3001' });
 
         this.fastify.setValidatorCompiler(validatorCompiler);
 
