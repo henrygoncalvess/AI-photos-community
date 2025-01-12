@@ -30,7 +30,7 @@ Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
     - [Back-End](#back-end)
     - [Front-End](#front-end)
 - [Instrução de uso](#instrução-de-uso)
-- [API Endpoints](#api-endpoints)
+- [AI-photos-community endpoints](#ai-photos-community-endpoints)
   
 </details>
 
@@ -159,6 +159,19 @@ No Terminal, certifique de que você está na pasta onde vai ficar o repositóri
 git clone https://github.com/henrygoncalvess/AI-photos-community.git
 ```
 
+certifique de que exista um arquivo chamado `.gitignore` na raiz do projeto  
+com pelo menos a extensão de arquivo "`.env`" incluída
+
+`repositorios\clonados\AI-photos-community\.gitignore`
+``` .env
+.env
+node_modules/
+package.json
+package-lock.json
+tsconfig.json
+vite.config.js
+```
+
 <br>
 
 ### Configuração do Projeto
@@ -167,43 +180,50 @@ git clone https://github.com/henrygoncalvess/AI-photos-community.git
 
 #### 1. Inicialize o projeto Node.js
 
-`repositorios\clonados\AI-photos-community`
+`repositorios\clonados\AI-photos-community\back-end`
 ``` bash
 npm init
 ```
 
 #### 2. Adicione o seguinte código ao package.json:
 
-`repositorios\clonados\AI-photos-community\package.json`
+`repositorios\clonados\AI-photos-community\back-end\package.json`
 ``` json
 "scripts": {
   "dev": "tsx --watch src/server.ts"
 },
 "dependencies": {
+  "@fastify/cors": "10.0.2",
+  "@fastify/swagger": "9.4.0",
+  "@scalar/fastify-api-reference": "1.25.100",
+  "bcryptjs": "2.4.3",
+  "dotenv": "16.4.7",
   "fastify": "5.2.0",
   "fastify-type-provider-zod": "4.0.2",
-  "@fastify/cors": "10.0.1",
-  "zod": "3.24.1",
-  "@fastify/swagger": "9.4.0",
-  "@scalar/fastify-api-reference": "1.25.100"
+  "jsonwebtoken": "9.0.2",
+  "nodemailer": "6.9.16",
+  "zod": "3.24.1"
 },
 "devDependencies": {
-  "typescript": "5.7.2",
-  "@types/node": "22.10.2",
-  "tsx": "4.19.2"
+  "@types/bcryptjs": "2.4.6",
+  "@types/jsonwebtoken": "9.0.7",
+  "@types/node": "22.10.5",
+  "@types/nodemailer": "6.4.17",
+  "tsx": "4.19.2",
+  "typescript": "5.7.2"
 }
 ```
 
 #### 3. com as dependências listadas em `package.json`, inicie a instalação.
 
-`repositorios\clonados\AI-photos-community`
+`repositorios\clonados\AI-photos-community\back-end`
 ``` bash
 npm install
 ```
 
 #### 4. Inicialize o TypeScript e configure o arquivo `tsconfig.json`.
 
-`repositorios\clonados\AI-photos-community`
+`repositorios\clonados\AI-photos-community\back-end`
 ``` bash
 npx tsc --init
 ```
@@ -212,7 +232,7 @@ npx tsc --init
 _este padrão de arquivo typescript está de acordo com esta [documentação](https://github.com/tsconfig/bases)_  
 _baseado na versão node utilizada_
 
-`repositorios\clonados\AI-photos-community\tsconfig.json`
+`repositorios\clonados\AI-photos-community\back-end\tsconfig.json`
 ``` json
 {
   "$schema": "https://json.schemastore.org/tsconfig",
@@ -232,26 +252,88 @@ _baseado na versão node utilizada_
 }
 ```
 
+#### 6. crie o arquivo `.env` na raiz do projeto e configure as variáveis de acordo com seus dados <configuração de email>.
+
+`repositorios\clonados\AI-photos-community\back-end`
+``` .env
+EMAIL = "seu-email@gmail.com"
+PASSWORD_EMAIL = "sua senha de aplicativo"
+JWT_SECRET = "sua senha secreta"
+```
+
 <br>
 
 ### Front-End
 
 #### 1. Inicialize o projeto Node.js
 
+`repositorios\clonados\AI-photos-community\front-end`
+``` bash
+npm init
+```
+
+#### 2. Adicione o seguinte código ao package.json:
+
+`repositorios\clonados\AI-photos-community\front-end\package.json`
+``` json
+"scripts": {
+  "dev": "npx vite"
+},
+"dependencies": {
+  "zod": "3.24.1"
+},
+"devDependencies": {
+  "vite": "6.0.7"
+}
+```
+
+> [!IMPORTANT]
+> Certifique-se de que:  
+> `"type": "module"` dentro de `package.json`
+
+#### 3. com as dependências listadas em `package.json`, inicie a instalação
+
+`repositorios\clonados\AI-photos-community\front-end`
+``` bash
+npm install
+```
+
+#### 4. Crie um arquivo chamado `vite.config.js` na raiz do projeto e configure-o
+
+`repositorios\clonados\AI-photos-community\front-end\vite.config.js`
+``` js
+import { defineConfig } from "vite";
+
+export default defineConfig({
+    root: "public",
+    server: {
+        port: 3001,
+        open: "index.html"
+    }
+})
+```
+
 <br>
 
 ## Instrução de uso
 
-Antes de fazer requisições para a API, inicie o servidor local.
+#### 1. inicie o servidor de back-end em um terminal.
 
-`repositorios\clonados\AI-photos-community`
+`repositorios\clonados\AI-photos-community\back-end`
+``` bash
+npm run dev
+```
+
+#### 2. inicie o servidor de front-end em outro terminal.
+
+`repositorios\clonados\AI-photos-community\front-end`
 ``` bash
 npm run dev
 ```
 
 <br>
 
-## API Endpoints
+## AI-photos-community endpoints
 
 No Postman *ou na linha de comando*  
 teste as respostas da API do sistema seguindo os **endpoints** abaixo.
