@@ -131,6 +131,12 @@ flowchart LR
 ## Instrução de instalação
 
 ### Pré-requisitos
+> [!IMPORTANT]
+> **Possuir uma "senha de app" do google**  
+> [Tutorial para criar uma senha de app](https://support.google.com/accounts/answer/185833?hl=pt-br)
+
+- **Um e-mail comum ou para testes**
+
 Para a instalação dos frameworks, middlewares e dependências que possibilitaram a criação do Sistema  
 é necessário que você possua as seguintes ferramentas:
 
@@ -252,13 +258,15 @@ _baseado na versão node utilizada_
 }
 ```
 
-#### 6. crie o arquivo `.env` na raiz do projeto e configure as variáveis de acordo com seus dados <configuração de email>.
+**6. crie o arquivo `.env` na raiz do projeto.**  
+**configure as variáveis de acordo com seus dados.**  
+**utilize a senha de aplicativo que foi criada em** [Tutorial para criar uma senha de app](#pré-requisitos)
 
 `repositorios\clonados\AI-photos-community\back-end`
 ``` .env
 EMAIL = "seu-email@gmail.com"
 PASSWORD_EMAIL = "sua senha de aplicativo"
-JWT_SECRET = "sua senha secreta"
+JWT_SECRET = "uma senha secreta"
 ```
 
 <br>
@@ -336,14 +344,14 @@ npm run dev
 ## AI-photos-community endpoints
 
 No Postman *ou na linha de comando*  
-teste as respostas da API do sistema seguindo os **endpoints** abaixo.
+teste manualmente as respostas da API do sistema seguindo os **endpoints** abaixo.
 
 > [!tip]
 > <img src="https://cdn.simpleicons.org/postman/FF6C37/FF6C37" width=24>&nbsp; acesse este link, caso não saiba utilizar o Postman para fazer requisições [Postman](https://learning.postman.com/docs/introduction/overview/) &nbsp;<img src="https://cdn.simpleicons.org/postman/FF6C37/FF6C37" width=24>  
 > <img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>&nbsp; acesse este link, caso não saiba fazer requisições pela linha de comando [Clique aqui](https://www.campuscode.com.br/conteudos/comandos-curl-para-testar-requisicoes-api) &nbsp;<img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>
 
-#### em seu navegador, acesse [`http://localhost:3000/docs`](http://localhost:3000/docs) para acessar a documentação das rotas
+#### em seu navegador, acesse [`http://localhost:3001/docs`](http://localhost:3000/docs) para acessar a documentação das rotas
 
 `PRÉVIA`:
 
-foto
+![routes-documentation-preview](project-images/documentation-routes.png)
