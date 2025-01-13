@@ -7,13 +7,9 @@ export function createInput(id, type, text, placeholder){
 
     fieldset.className = "form"
 
-    label.appendChild(fieldset)
-
     const legend = document.createElement("legend")
 
     legend.innerHTML = text
-
-    fieldset.appendChild(legend)
 
     const input = document.createElement("input")
 
@@ -22,11 +18,12 @@ export function createInput(id, type, text, placeholder){
     input.setAttribute("type", type)
     input.setAttribute("placeholder", placeholder)
 
-    fieldset.appendChild(input)
-
     const span = document.createElement("span")
-
+    
+    label.appendChild(fieldset)
+    fieldset.appendChild(legend)
+    fieldset.appendChild(input)
     fieldset.appendChild(span)
 
-    return label
+    return [label, input]
 }

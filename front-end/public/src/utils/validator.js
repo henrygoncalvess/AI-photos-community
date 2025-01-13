@@ -7,15 +7,28 @@ const errorMessages = {
     passwordMismatch: "A senha deve ser igual a anterior",
 };
 
-export class Validate {
-    static name(name){
-        const nameSchema = z.string().min(2)
+export class SetValidator {
+    static name(element){
+        const field = element.parentElement
+        const errorElement = element.nextElementSibling
 
-        try{
-            return nameSchema.parse(name)
-        }catch(error){
-            return { message: errorMessages.invalidName }
-        }
+        element.addEventListener("input", () => {
+            
+            const nameSchema = z.string().min(2)
+
+            try{
+                nameSchema.parse(element.value)
+                field.className = "form"
+
+                return element.value
+                
+            }catch(error){
+                field.className = "form error"
+                errorElement.innerText = errorMessages.invalidName
+            }
+        })
+
+
     }
 
     static email(email){
