@@ -1,7 +1,13 @@
+import { createError } from "../components/LoginError";
+import { createTitle } from "../components/LoginTitle";
+
 const params = new URLSearchParams(window.location.search);
 const token = params.get('token');
 
-window.addEventListener("load", async () => {
+if (!token){
+    createError()
+
+}else{
     const authorizedUser = await fetch("http://localhost:3000/login", {
         method: 'POST',
         headers: {
@@ -11,5 +17,7 @@ window.addEventListener("load", async () => {
 
     const response = await authorizedUser.json()
 
-    document.querySelector("h1").textContent += response.user
-})
+    console.log(response);
+
+    createTitle(response.user)
+}
