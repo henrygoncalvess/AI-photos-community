@@ -65,5 +65,5 @@ button{
     text-transform: uppercase;
     border: 1px solid black;
     border-radius: 5px;
-    box-shadow: 1px 1px 0px rgba(161, 161, 161, 0.672);
+    box-shadow: 1px 1px 0px #a1a1a1ab;
 }
