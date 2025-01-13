@@ -8,7 +8,33 @@
 </head>
 <body>
     <div id="root">
+        
+    </div>
+
+    <div id="loginForm">
+        <h1>Bem vindo </h1>
         <p>Seu e-mail foi confirmado com sucesso!</p>
+
+        <form method="post">
+            <label for="name">
+                <fieldset class="form">
+                    <legend>Nome</legend>
+                    <input id="name" autocomplete="off"  type="text" placeholder="Digite o nome do usuário...">
+                    <span></span>
+                </fieldset>
+            </label>
+
+            <label for="password">
+                <fieldset class="form">
+                    <legend>Senha</legend>
+                    <input id="password" autocomplete="off"  type="text" placeholder="Digite sua senha..." >
+                    <span></span>
+                </fieldset>
+            </label>
+
+        <span class="submitMessage"></span>
+        
+        <button type="submit">entrar</button>
     </div>
 
     <script type="module" src="./src/pages/login.js"></script>
