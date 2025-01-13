@@ -1,37 +1,25 @@
-// import { sendVerificationEmail } from "../services/sendVerificationEmail";
+import { SetValidator } from "../utils/validator";
 
 export function confirmUser(){
     const button = document.querySelector("button")
+    const fields = document.querySelectorAll("fieldset.form")
 
     button.addEventListener("click", async event => {
         event.preventDefault();
 
-        alert("clicado")
-        // const allFilled = [...field].every(item => {
-        //     return item.className === "form"
-        // })
+        const validUser = SetValidator.validateAll()
 
-        // const validUserData = Validate.validUser({
-        //     name: name.value,
-        //     email: email.value,
-        //     password: passConfirmation.value
-        // })
+        const allFilled = [...fields].every(item => {
+            return item.className === "form"
+        })
+        
+        if(allFilled && validUser){
+            document.querySelector("div#root").style.display = "none"
+            
+            document.querySelector("div#emailMessage").style.display = "initial"
 
-
-        // if(allFilled && validUserData){
-        //     alert("a")
-
-        //     const data = await sendVerificationEmail(validUserData)
-
-        //     localStorage.setItem("utils", JSON.stringify({
-        //         email: email.value,
-        //         response: data
-        //     }))
-
-        //     window.location.href = "email.html"
-
-        // }else{
-        //     alert("Preencha todos os campos corretamente antes de confirmar")
-        // }
+        }else{
+            alert("Preencha todos os campos corretamente antes de confirmar")
+        }
     })
 }

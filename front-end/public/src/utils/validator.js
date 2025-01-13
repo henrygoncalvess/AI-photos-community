@@ -11,70 +11,94 @@ export class SetValidator {
     static name(element){
         const field = element.parentElement
         const errorElement = element.nextElementSibling
+        
+        const nameSchema = z.string().min(2)
 
         element.addEventListener("input", () => {
-            
-            const nameSchema = z.string().min(2)
-
             try{
                 nameSchema.parse(element.value)
                 field.className = "form"
 
-                return element.value
-                
             }catch(error){
                 field.className = "form error"
                 errorElement.innerText = errorMessages.invalidName
             }
         })
-
-
     }
 
-    static email(email){
+    static email(element){
+        const field = element.parentElement
+        const errorElement = element.nextElementSibling
+
         const emailSchema = z.string().email()
 
-        try{
-            return emailSchema.parse(email)
-        }catch(error){
-            return { message: errorMessages.invalidEmail }
-        }
-    }
+        element.addEventListener("input", () => {
+            try{
+                emailSchema.parse(element.value)
+                field.className = "form"
 
-    static password(password){
-        const passwordSchema = z.string().min(8)
-
-        try{
-            return passwordSchema.parse(password)
-        }catch(error){
-            return { message: errorMessages.invalidPassword }
-        }
-    }
-
-    static passConfirmation(currentPass, lastPass){
-        const passwordSchema = z.string().min(8)
-
-        try{
-            if (currentPass !== lastPass) {
-                return { message: errorMessages.passwordMismatch };
+            }catch(error){
+                field.className = "form error"
+                errorElement.innerText = errorMessages.invalidEmail
             }
-
-            return passwordSchema.parse(currentPass)
-        }catch(error){
-            return { message: errorMessages.invalidPassword };
-        }
+        })
     }
 
-    static validUser(userData){
+    static password(element){
+        const field = element.parentElement
+        const errorElement = element.nextElementSibling
+
+        const passwordSchema = z.string().min(8)
+
+        element.addEventListener("input", () => {
+            try{
+                passwordSchema.parse(element.value)
+                field.className = "form"
+
+            }catch(error){
+                field.className = "form error"
+                errorElement.innerText = errorMessages.invalidPassword
+            }
+        })
+    }
+
+    static passConfirmation(element, lastElement){
+        const field = element.parentElement
+        const errorElement = element.nextElementSibling
+
+        const passwordSchema = z.string().min(8)
+
+        element.addEventListener("input", () => {
+            try{
+                if (element.value != lastElement.value) {
+                    field.className = "form error"
+                    errorElement.innerText = errorMessages.passwordMismatch
+                }else{
+                    passwordSchema.parse(element.value)
+                    field.className = "form"
+                }
+            }catch(error){
+                field.className = "form error"
+                errorElement.innerText = errorMessages.invalidPassword
+            }
+        })
+    }
+
+    static validateAll(){
         const userSchema = z.object({
             name: z.string().min(2),
             email: z.string().email(),
             password: z.string().min(8)
         })
 
+        const name = document.querySelector("input#name").value
+        const email = document.querySelector("input#email").value
+        const password = document.querySelector("input#passwordConfirmation").value
+
         try{
-            return userSchema.parse(userData)
-        }catch (error){
+            userSchema.parse({ name, email, password })
+            return true
+        }catch(error){
             return false
         }
     }

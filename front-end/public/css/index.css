@@ -48,3 +48,35 @@ fieldset.error span{
     color: #ff3b25;
     display: block;
 }
+
+/* email message css */
+
+div#emailMessage{
+    display: none;
+}
+
+section {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 25px 0px;
+    width: 450px
+}
+
+h1{
+    margin-top: 10px;
+}
+
+section > p{
+    margin-top: 20px;
+}
+
+main > p{
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: rgb(49, 49, 49);
+}
+
+main span{
+    display: block;
+    text-align: center;
+}

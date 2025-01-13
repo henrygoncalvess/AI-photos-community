@@ -16,6 +16,9 @@ export function createFormIndex(){
     const button = createButton("submit", "confirmar")
     
     SetValidator.name(inputName[1])
+    SetValidator.email(inputEmail[1])
+    SetValidator.password(inputPassword[1])
+    SetValidator.passConfirmation(inputPasswordConfirmation[1], inputPassword[1])
     
     root.appendChild(inputName[0])
     root.appendChild(inputEmail[0])
