@@ -45,10 +45,28 @@ if (!token){
     form.addEventListener("submit", async event => {
         event.preventDefault();
 
-        if(1 + 1 == 2){
-            alert("entrou")
+        const validName = Validate.name(name.value)
+        const validPassword = Validate.password(password.value)
+
+        if(!validName.message && !validPassword.message){
+            const validCredentials = await fetch("http://localhost:3000/home", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    name: name.value,
+                    password: password.value
+                })
+            })
+
+            console.log(validCredentials);
+
+            // window.location.href = "home.html"
 
         }else{
+            submitMessage.className = "submitMessage"
+
             submitMessage.innerHTML = "Preencha todos os campos corretamente <br> antes de confirmar"
 
             setTimeout(() => {
