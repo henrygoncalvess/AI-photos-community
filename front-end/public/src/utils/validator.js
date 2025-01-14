@@ -103,7 +103,7 @@ export class SetValidator {
         }
     }
 
-    static validateLogin(){
+    static validatePasswordLogin(){
         const userSchema = z.object({
             password: z.string().min(8)
         })

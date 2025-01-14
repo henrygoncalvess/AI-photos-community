@@ -33,7 +33,6 @@ export function confirmUser(){
                 password: password.value
             })
 
-            localStorage.clear()
             localStorage.setItem("email", email.value)
 
             console.log(data);

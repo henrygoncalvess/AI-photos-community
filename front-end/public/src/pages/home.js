@@ -14,7 +14,7 @@ const registerButton = createButton("submit", "Registrar")
 
 registerButton.setAttribute("id", "registerButton")
 
-div.appendChild(registerButton)   
+div.appendChild(registerButton)
 div.appendChild(loginButton)
 root.appendChild(div)
 
