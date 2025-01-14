@@ -9,9 +9,9 @@ export async function authRoutes(app: FastifyTypedInstance) {
             tags: ['authentication'],
             description: 'register a user',
             body: z.object({
-                name: z.string(),
-                email: z.string().email(),
-                password: z.string()
+                name: z.string().default("John"),
+                email: z.string().email().default("test@test.com"),
+                password: z.string().min(8).default("12345678")
             }),
             response: {
                 201: z.object({
@@ -38,15 +38,15 @@ export async function authRoutesMiddle(app: FastifyTypedInstance) {
                 200: z.object({
                     message: z.string().default("user registered successfully"),
                     user: z.string().default("username"),
-                    ok: z.boolean()
+                    ok: z.boolean().default(true)
                 }),
                 400: z.object({
                     message: z.string().default("Required access token"),
-                    ok: z.boolean()
+                    ok: z.boolean().default(false)
                 }),
                 403: z.object({
                     message: z.string().default("Invalid or expired token"),
-                    ok: z.boolean()
+                    ok: z.boolean().default(false)
                 })
             }
         }
