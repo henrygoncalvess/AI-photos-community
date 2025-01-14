@@ -20,8 +20,6 @@ export class AuthModel {
 
         db.push(encryptedUser)
 
-        console.log(db);
-
         return sendVerificationEmail(encryptedUser)
     }
 

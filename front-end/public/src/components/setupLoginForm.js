@@ -12,7 +12,7 @@ export function SetupLoginForm() {
             const data = await confirmLogin(email, password.value);
 
             if (data.ok) {
-                alert("Logado com sucesso!");
+                window.location.href = "chat.html"
             } else {
                 alert("Senha incorreta");
             }
