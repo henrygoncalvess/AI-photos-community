@@ -80,3 +80,7 @@ main span{
     display: block;
     text-align: center;
 }
+
+div#iconImage{
+    text-align: center;
+}

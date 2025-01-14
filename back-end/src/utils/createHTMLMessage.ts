@@ -10,7 +10,7 @@ export function createHTMLMessage(name: string, link: string): string{
     <section style="border: 1px solid black;padding: 3px 0px;margin:auto;width: 450px;border-radius:5px;">
     <h1 align="center">Agradeçemos seu cadastro</h1>
     <p align="center" style="font-weight: 100;">Clique no botão abaixo para confirmar seu e-mail.</p>
-    <p align="center" style="margin-top: 40px;"><a href="${link}" style="${cssButton}">Confirmar seu e-mail</a></p></section>`
+    <p align="center" style="margin-top: 40px;"><a href="${link}" style="${cssButton}">Confirmar e-mail</a></p></section>`
 
     const message = [title, content].join("")
 
