@@ -2,8 +2,8 @@ import { createButton } from "./components/Button";
 import { createInput } from "./components/InputForm";
 import { SetValidator } from "./utils/validator";
 
-export function createFormIndex(){
-    const root = document.querySelector("div#root")
+export function createFormSignUp(){
+    const root = document.querySelector("div#signRoot")
 
     const inputName = createInput("name", "text", "Nome", "Digite o nome do usuário...")
 

@@ -1,7 +1,9 @@
-import { createFormIndex } from './App';
-import { confirmUser } from './pages';
+import { createFormSignUp } from './App';
+import { confirmUser } from './pages/sign-up';
+import { createHomeContent } from './pages/home';
 
 addEventListener("DOMContentLoaded", () => {
-    createFormIndex()
+    createHomeContent()
+    createFormSignUp()
     confirmUser()
 })
