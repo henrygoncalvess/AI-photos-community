@@ -1,77 +1,56 @@
-import { createError } from "../components/LoginError";
-import { displayError } from "../utils/messageError";
-import { Validate } from "../utils/validator";
+import { createInput } from '../components/InputForm';
+import { SetValidator } from '../utils/validator';
+import { createButton } from '../components/Button';
+import { confirmAuthorization } from '../services/confirmAuthorization';
+import { confirmLogin } from '../services/confirmLogin';
+
+window.addEventListener("DOMContentLoaded", () => {
+    const root = document.querySelector("div#root")
+
+    const inputPassword = createInput("password", "text", "Senha", "Digite sua senha...")
+
+    const button = createButton("submit", "entrar")
+
+    SetValidator.password(inputPassword[1])
+
+    root.appendChild(inputPassword[0])
+    root.appendChild(button)
+})
 
 const params = new URLSearchParams(window.location.search);
 const token = params.get('token');
 
-if (!token){
-    document.querySelector("div#loginForm").style.display = "none"
-    createError()
+if (token){
+    const data = await confirmAuthorization(token)
 
-}else{
-    const authorizedUser = await fetch("http://localhost:3000/login", {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-        },
-    })
+    if (!data.ok){
+        // function that's show invalid or expired token error
+    }else{
+        document.querySelector("h1").innerHTML += ` ${data.user}`
 
-    const response = await authorizedUser.json()
+        const fields = document.querySelectorAll("fieldset.form")
+        const email = localStorage.getItem("email")
+        const password = document.querySelector("input#password")
 
-    console.log(response);
-
-    document.querySelector("h1").innerText += ` ${response.user}`
-
-    const form = document.querySelector("form");
-    const name = document.querySelector("input#name");
-    const password = document.querySelector("input#password");
-    const field = document.getElementsByClassName("form")
-    const messageError = document.querySelectorAll("span")
-    const submitMessage = document.querySelector("span.submitMessage")
-
-    name.addEventListener("input", () => {
-        const isValidName = Validate.name(name.value)
-
-        displayError(isValidName.message, field[0], messageError[0])
-    })
-
-    password.addEventListener("input", () => {
-        const isValidPassword = Validate.password(password.value)
-
-        displayError(isValidPassword.message, field[1], messageError[1])
-    })
-
-    form.addEventListener("submit", async event => {
-        event.preventDefault();
-
-        const validName = Validate.name(name.value)
-        const validPassword = Validate.password(password.value)
-
-        if(!validName.message && !validPassword.message){
-            const validCredentials = await fetch("http://localhost:3000/home", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    name: name.value,
-                    password: password.value
-                })
+        document.querySelector("button").addEventListener("click", async () => {
+            const validUser = SetValidator.validateLogin()
+    
+            const allFilled = [...fields].every(item => {
+                return item.className === "form"
             })
 
-            console.log(validCredentials);
+            if(allFilled && validUser){
+                const data = await confirmLogin(email, password.value)
 
-            // window.location.href = "home.html"
-
-        }else{
-            submitMessage.className = "submitMessage"
-
-            submitMessage.innerHTML = "Preencha todos os campos corretamente <br> antes de confirmar"
-
-            setTimeout(() => {
-                submitMessage.className = ""
-            }, 4000)
-        }
-    })
+                if (data.ok){
+                    alert("logado")
+                }
+    
+            }else{
+                alert("Preencha todos os campos corretamente antes de confirmar")
+            }
+        })
+    }
+}else{
+    alert("página com mensagem que precisa se registrar")
 }

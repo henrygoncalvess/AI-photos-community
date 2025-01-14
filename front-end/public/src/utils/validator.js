@@ -102,4 +102,19 @@ export class SetValidator {
             return false
         }
     }
+
+    static validateLogin(){
+        const userSchema = z.object({
+            password: z.string().min(8)
+        })
+
+        const password = document.querySelector("input#password").value
+
+        try{
+            userSchema.parse({ password })
+            return true
+        }catch(error){
+            return false
+        }
+    }
 }

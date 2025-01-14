@@ -25,13 +25,16 @@ export function confirmUser(){
 
             const userEmail = document.querySelector("p#userEmail")
 
-            userEmail.innerHTML += "<strong>email.value</strong>"
+            userEmail.innerHTML += `<strong>${email.value}</strong>`
 
             const data = await sendVerificationEmail({
                 name: name.value,
                 email: email.value,
                 password: password.value
             })
+
+            localStorage.clear()
+            localStorage.setItem("email", email.value)
 
             console.log(data);
 

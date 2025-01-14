@@ -9,8 +9,6 @@ export class AuthModel {
             return value.email === email
         })
 
-        // verificar email com zod
-
         if(userExists){
             return {
                 message: "already registered user",
@@ -21,6 +19,8 @@ export class AuthModel {
         const encryptedUser = await encrypt({ name, password, email })
 
         db.push(encryptedUser)
+
+        console.log(db);
 
         return sendVerificationEmail(encryptedUser)
     }

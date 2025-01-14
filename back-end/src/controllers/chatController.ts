@@ -1,11 +1,11 @@
-import { HomeModel } from "../models/homeModel"
+import { ChatModel } from "../models/chatModel"
 
-export class HomeController {
+export class ChatController {
     static async index(request, reply){
         try{
-            const { name, password } = request.body
+            const { email, password } = request.body
 
-            const validUser = await HomeModel.find(name, password)
+            const validUser = await ChatModel.find(email, password)
             
             reply.status(201).send(validUser)
         }catch (error){

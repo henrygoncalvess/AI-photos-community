@@ -3,7 +3,7 @@ import { fastifyCors } from '@fastify/cors';
 import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 import { authRoutes, authRoutesMiddle } from './routes/login';
 import { fastifySwagger } from '@fastify/swagger';
-import { homeRoutes } from './routes/home';
+import { chatRoutes } from './routes/chat';
 
 class App {
     public fastify
@@ -44,7 +44,7 @@ class App {
         
         this.fastify.register(authRoutes);
         this.fastify.register(authRoutesMiddle);
-        this.fastify.register(homeRoutes);
+        this.fastify.register(chatRoutes);
     }
 }
 
