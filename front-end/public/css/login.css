@@ -45,3 +45,9 @@ fieldset.error span{
     color: #ff3b25;
     display: block;
 }
+
+button{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}

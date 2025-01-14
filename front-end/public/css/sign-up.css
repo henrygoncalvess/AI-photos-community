@@ -80,3 +80,8 @@ main span{
 div#iconImage{
     text-align: center;
 }
+
+button {
+    display: flex;
+    justify-content: center;
+}
