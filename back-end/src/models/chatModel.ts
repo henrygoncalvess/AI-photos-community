@@ -14,9 +14,11 @@ export class ChatModel {
     
             if (isValidCredentials){
                 return { message: "valid password, user logged", ok: true}
-            }else{
-                return { message: "invalid password", ok: true}
             }
+            
+            return { message: "invalid password", password: false}
+        }else{
+            return { message: "unregistered user", user: false }
         }
     }
 }

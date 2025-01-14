@@ -1,5 +1,3 @@
-import { showError } from "../utils/showError";
-
 export async function handleAuthorization(token) {
     const authorizedUser = await fetch("http://localhost:3000/login", {
         method: 'POST',
@@ -11,7 +9,7 @@ export async function handleAuthorization(token) {
     const response = await authorizedUser.json()
 
     if (!response.ok) {
-        showError("Token inválido ou expirado");
+        alert("Token inválido ou expirado");
         return;
     }
 

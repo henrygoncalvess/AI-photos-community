@@ -1,4 +1,4 @@
-import { createButton } from "../components/Button";
+import { CreateButton } from "../components/Button";
 
 const root = document.querySelector("div#homeRoot")
 
@@ -6,11 +6,11 @@ const div = document.createElement("div")
 
 div.setAttribute("id", "conteinerButtons")
 
-const loginButton = createButton("submit", "entrar")
+const loginButton = CreateButton("submit", "entrar")
 
 loginButton.setAttribute("id", "loginButton")
 
-const registerButton = createButton("submit", "Registrar")
+const registerButton = CreateButton("submit", "Registrar")
 
 registerButton.setAttribute("id", "registerButton")
 

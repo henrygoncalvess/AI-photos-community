@@ -1,4 +1,4 @@
-export function createButton(type, text){
+export function CreateButton(type, text){
     const button = document.createElement("button")
 
     button.setAttribute("type", type)

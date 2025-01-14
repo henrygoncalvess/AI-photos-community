@@ -1,4 +1,4 @@
-export function createInput(id, type, text, placeholder){
+export function CreateInput(id, type, text, placeholder){
     const label = document.createElement("label")
 
     label.setAttribute("for", id)

@@ -1,19 +1,19 @@
-import { createButton } from "./components/Button";
-import { createInput } from "./components/InputForm";
+import { CreateButton } from "./components/Button";
+import { CreateInput } from "./components/InputForm";
 import { SetValidator } from "./utils/validator";
 
 export function createFormSignUp(){
     const root = document.querySelector("div#root")
 
-    const inputName = createInput("name", "text", "Nome", "Digite o nome do usuário...")
+    const inputName = CreateInput("name", "text", "Nome", "Digite o nome do usuário...")
 
-    const inputEmail = createInput("email", "email", "E-mail", "Digite seu e-mail...")
+    const inputEmail = CreateInput("email", "email", "E-mail", "Digite seu e-mail...")
 
-    const inputPassword = createInput("password", "text", "Senha", "Digite sua senha...")
+    const inputPassword = CreateInput("password", "text", "Senha", "Digite sua senha...")
 
-    const inputPasswordConfirmation = createInput("passwordConfirmation", "text", "Confirme sua senha", "Digite novamente sua senha...")
+    const inputPasswordConfirmation = CreateInput("passwordConfirmation", "text", "Confirme sua senha", "Digite novamente sua senha...")
 
-    const button = createButton("submit", "confirmar")
+    const button = CreateButton("submit", "confirmar")
     
     SetValidator.name(inputName[1])
     SetValidator.email(inputEmail[1])

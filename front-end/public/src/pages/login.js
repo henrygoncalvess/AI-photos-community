@@ -1,15 +1,15 @@
-import { createInput } from '../components/InputForm';
+import { CreateInput } from '../components/InputForm';
 import { SetValidator } from '../utils/validator';
-import { createButton } from '../components/Button';
+import { CreateButton } from '../components/Button';
 import { handleAuthorization } from '../services/handleAuthorization';
-import { showError } from '../utils/showError';
-import { setupLoginForm } from '../components/setupLoginForm';
+import { SetupLoginForm } from '../components/SetupLoginForm';
+import { CreateLoginError } from '../components/LoginError';
 
 const root = document.querySelector("div#root")
 
-const inputPassword = createInput("password", "text", "Senha", "Digite sua senha...")
+const inputPassword = CreateInput("password", "text", "Senha", "Digite sua senha...")
 
-const button = createButton("submit", "entrar")
+const button = CreateButton("submit", "entrar")
 
 SetValidator.password(inputPassword[1])
 
@@ -24,15 +24,15 @@ async function main() {
 
     if (userStored) {
         document.querySelector("h1").innerHTML += ` ${userStored}`;
-        setupLoginForm();
+        SetupLoginForm();
     } else {
         if (!token) {
-            showError("Página com mensagem que precisa se registrar");
+            CreateLoginError()
             return;
         }
 
         await handleAuthorization(token);
-        setupLoginForm()
+        SetupLoginForm()
     }
 }
 

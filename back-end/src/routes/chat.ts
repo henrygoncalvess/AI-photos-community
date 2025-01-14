@@ -18,7 +18,11 @@ export async function chatRoutes(app: FastifyTypedInstance) {
                 }),
                 400: z.object({
                     message: z.string().default("invalid password"),
-                    ok: z.boolean()
+                    password: z.boolean()
+                }),
+                403: z.object({
+                    message: z.string().default("unregistered user"),
+                    user: z.boolean()
                 })
             }
         }

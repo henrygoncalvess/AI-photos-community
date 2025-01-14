@@ -109,11 +109,16 @@ export class SetValidator {
         })
 
         const password = document.querySelector("input#password").value
+        const fields = document.querySelectorAll("fieldset.form");
+        const allFilled = [...fields].every(item => item.className === "form");
 
         try{
-            userSchema.parse({ password })
-            return true
+            const isValid = userSchema.parse({ password })
+
+            if (allFilled && isValid) return true
+
         }catch(error){
+            alert("Insira sua senha corretamente antes de entrar")
             return false
         }
     }
