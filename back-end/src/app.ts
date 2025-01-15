@@ -5,6 +5,7 @@ import { authRoutes, authRoutesMiddle } from './routes/login';
 import { fastifySwagger } from '@fastify/swagger';
 import { usersRoutes } from './routes/users';
 import { chatRoutes } from './routes/chat';
+import multer from 'fastify-multer';
 
 class App {
     public fastify
@@ -43,6 +44,7 @@ class App {
             }
         });
         
+        this.fastify.register(multer.contentParser);
         this.fastify.register(authRoutes);
         this.fastify.register(authRoutesMiddle);
         this.fastify.register(usersRoutes);
