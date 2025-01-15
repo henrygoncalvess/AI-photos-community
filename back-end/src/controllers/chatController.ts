@@ -7,8 +7,6 @@ export class ChatController {
 
             const validUser = await ChatModel.find(email, password)
 
-            console.log(validUser);
-
             if (validUser.ok) reply.status(200).send(validUser)
 
             else if (validUser.password == false) reply.status(403).send(validUser)

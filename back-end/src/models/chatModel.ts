@@ -1,14 +1,13 @@
 import { compare } from 'bcryptjs';
-import db from '../config/db';
+import { checkIfUserDocumentExists } from '../utils/checkDocument';
+import { usersCollection } from '../utils/connectCollections';
 
 export class ChatModel {
     static async find(email, password){
-        const userPassword = db.find(value => {
-            return value.email === email
-        })
+        const userExists = await checkIfUserDocumentExists({ email })
 
-        if (userPassword){
-            const isValidCredentials = await compare(password, userPassword.password)
+        if (userExists){
+            const isValidCredentials = await compare(password, userExists.password)
     
             if (isValidCredentials){
                 return { message: "valid password, user logged", ok: true}
