@@ -1,11 +1,11 @@
-import { ChatModel } from "../models/chatModel"
+import { UsersModel } from "../models/usersModel"
 
-export class ChatController {
-    static async index(request, reply){
+export class UsersController {
+    static async verify(request, reply){
         try{
             const { email, password } = request.body
 
-            const validUser = await ChatModel.find(email, password)
+            const validUser = await UsersModel.check(email, password)
 
             if (validUser.ok) reply.status(200).send(validUser)
 

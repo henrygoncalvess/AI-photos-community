@@ -1,9 +1,8 @@
 import { compare } from 'bcryptjs';
 import { checkIfUserDocumentExists } from '../utils/checkDocument';
-import { usersCollection } from '../utils/connectCollections';
 
-export class ChatModel {
-    static async find(email, password){
+export class UsersModel {
+    static async check(email, password){
         const userExists = await checkIfUserDocumentExists({ email })
 
         if (userExists){

@@ -1,4 +1,3 @@
-import db from '../config/db';
 import bcrypt from 'bcryptjs';
 import { User } from '../types/authInterface';
 

@@ -1,9 +1,9 @@
 import { FastifyTypedInstance } from "../types/fastify";
-import { ChatController } from "../controllers/chatController";
+import { UsersController } from "../controllers/usersController";
 import z from 'zod';
 
-export async function chatRoutes(app: FastifyTypedInstance) {
-    app.post('/chat', {
+export async function usersRoutes(app: FastifyTypedInstance) {
+    app.post('/users', {
         schema: {
             tags: ['user'],
             description: 'verify a logged user',
@@ -26,5 +26,5 @@ export async function chatRoutes(app: FastifyTypedInstance) {
                 })
             }
         }
-    }, ChatController.index)
+    }, UsersController.verify)
 }
