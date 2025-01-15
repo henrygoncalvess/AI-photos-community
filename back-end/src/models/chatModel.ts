@@ -1,7 +1,11 @@
+import { usersCollection } from "../utils/connectCollections"
+
 export class ChatModel {
     static async all(){
-        console.log("ok");
+        const users = await usersCollection()
 
-        return "all users"
+        const allUsers = await users.find().toArray()
+
+        return allUsers
     }
 }
