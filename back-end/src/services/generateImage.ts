@@ -2,11 +2,12 @@ import fs from "node:fs";
 import axios from "axios";
 import FormData from "form-data";
 
-
 export async function generate(prompt: string) {
     const payload = {
       prompt: prompt,
-      output_format: "jpeg"
+      output_format: "jpeg",
+      model: "sd3.5-medium",
+      cfg_scale: 10
     };
 
     const response = await axios.postForm(

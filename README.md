@@ -137,6 +137,8 @@ flowchart LR
 
 - **Um e-mail comum ou para testes**
 
+- **uma conta com api-key em Stability-AI** [clique aqui](https://platform.stability.ai/)
+
 Para a instalação dos frameworks, middlewares e dependências que possibilitaram a criação do Sistema  
 é necessário que você possua as seguintes ferramentas:
 
