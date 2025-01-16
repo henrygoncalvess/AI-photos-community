@@ -11,6 +11,8 @@ export function SetupLoginForm() {
         if (validUser) {
             const data = await confirmLogin(email, password.value);
 
+            console.log(data);
+
             if (data.ok) {
                 window.location.href = "chat.html"
             } else {

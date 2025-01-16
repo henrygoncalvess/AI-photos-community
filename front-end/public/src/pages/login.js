@@ -28,11 +28,9 @@ async function main() {
     } else {
         if (!token) {
             CreateLoginError()
-            return;
+        }else{
+            await handleAuthorization(token);
         }
-
-        await handleAuthorization(token);
-        SetupLoginForm()
     }
 }
 
