@@ -5,6 +5,7 @@ import { authRoutes, authRoutesMiddle } from './routes/login';
 import { fastifySwagger } from '@fastify/swagger';
 import { usersRoutes } from './routes/users';
 import { chatRoutes } from './routes/chat';
+import { getPyResults } from './services/getPyResult';
 import multer from 'fastify-multer';
 
 class App {
@@ -49,6 +50,7 @@ class App {
         this.fastify.register(authRoutesMiddle);
         this.fastify.register(usersRoutes);
         this.fastify.register(chatRoutes);
+        getPyResults()
     }
 }
 
