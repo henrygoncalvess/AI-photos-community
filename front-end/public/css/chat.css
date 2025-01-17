@@ -14,3 +14,29 @@ body {
 header{
     text-align: center;
 }
+
+input{
+    width: 450px;
+    border: 1px solid rgba(0, 0, 0, 0.578);
+    padding: 15px 15px;
+    font-size: 1em;
+    letter-spacing: 0.08em;
+    text-align: center;
+    border-radius: 5px;
+}
+
+button{
+    display: block;
+    margin: auto;
+}
+
+button:hover{ background-color: #ffc2292d; }
+
+img{
+    display: block;
+    margin: auto;
+    margin-top: 15px;
+    border: 1px solid black;
+    border-radius: 3px;
+    aspect-ratio: 1 / 1;
+}

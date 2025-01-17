@@ -2,7 +2,7 @@ import fs from "node:fs";
 import axios from "axios";
 import FormData from "form-data";
 
-export async function generate(prompt: string) {
+export async function generate(prompt: string, id: string) {
     const payload = {
       prompt: prompt,
       output_format: "jpeg",
@@ -24,7 +24,7 @@ export async function generate(prompt: string) {
     );
 
     if(response.status === 200) {
-      fs.writeFileSync("./uploads/generatedImage.jpeg", Buffer.from(response.data));
+      fs.writeFileSync(`./uploads/${id}.jpeg`, Buffer.from(response.data));
     } else {
       throw new Error(`${response.status}: ${response.data.toString()}`);
     }

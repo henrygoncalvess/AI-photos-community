@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   
 export async function sendVerificationEmail({ name, email }: User): Promise<{ message: string; ok: boolean; }>{
 
-    const token = await jwt.sign({ name }, String(process.env.JWT_SECRET), { expiresIn: "1d" })
+    const token = await jwt.sign({ name }, String(process.env.JWT_SECRET), { expiresIn: "1h" })
 
     const verificationLink = `http://localhost:3001/login?token=${token}`
 

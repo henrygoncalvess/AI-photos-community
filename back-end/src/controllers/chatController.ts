@@ -3,9 +3,9 @@ import { ChatModel } from "../models/chatModel"
 export class ChatController {
     static async index(request, reply){
         try{
-            const allUsers = await ChatModel.all()
+            const userId = await ChatModel.getId(request.body)
 
-            reply.status(200).send(allUsers)
+            reply.status(200).send(userId)
 
         }catch (error){
             reply.status(500)

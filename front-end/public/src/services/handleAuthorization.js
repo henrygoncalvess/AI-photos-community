@@ -11,6 +11,8 @@ export async function handleAuthorization(token) {
     
     const response = await authorizedUser.json()
 
+    console.log(response);
+
     if (!response.ok) {
         CreateLoginError()
     }else{

@@ -7,17 +7,16 @@
     <link rel="stylesheet" href="./css/chat.css">
 </head>
 <body>
-    <div id="rott">
+    <div id="root">
         <header>
-            <h1>Bem-vindo ao chat, peça uma imagem ao Gemini</h1>
+            <h1>Peça uma imagem à IA <br> e veja o que ela cria!</h1>
         </header>
-        <label for="teste">
-            <fieldset>
-                <legend>Imagem</legend>
-                <input id="teste" type="text" placeholder="Peça sua imagem...">
-            </fieldset>
+        <label for="prompt">
+            <input id="prompt" type="text" placeholder="Prego aventureiro em cima de um cavalo...">
         </label>
-        <img src="http://localhost:3000/images/apple.jpg">
+        <section>
+            <img src="http://localhost:3000/images/apple.jpg">
+        </section>
     </div>
 
     <script type="module" src="./src/pages/chat.js"></script>

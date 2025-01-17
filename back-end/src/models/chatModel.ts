@@ -1,11 +1,11 @@
 import { usersCollection } from "../utils/connectCollections"
 
 export class ChatModel {
-    static async all(){
-        const users = await usersCollection()
+    static async getId(name){
+        const collection = await usersCollection()
 
-        const allUsers = await users.find().toArray()
+        const user = await collection.find(name).next()
 
-        return allUsers
+        return user?._id
     }
 }
