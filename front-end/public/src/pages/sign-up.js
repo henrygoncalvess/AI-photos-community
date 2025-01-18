@@ -29,6 +29,7 @@ export function confirmUser(){
             console.log(data);
 
             if (data.registered){
+                localStorage.setItem("email", email.value)
                 showErrorMessage(email.value)
                 
             }else{

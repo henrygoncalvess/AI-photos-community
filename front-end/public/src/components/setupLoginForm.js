@@ -1,5 +1,6 @@
 import { confirmLogin } from "../services/confirmLogin";
 import { SetValidator } from "../utils/validator";
+import { CreateLoginError } from "./LoginError";
 
 export function SetupLoginForm() {
     const email = localStorage.getItem("email");
@@ -15,7 +16,10 @@ export function SetupLoginForm() {
 
             if (data.ok) {
                 window.location.href = "chat.html"
-            } else {
+            } else if (data.user === false) {
+                CreateLoginError()
+                localStorage.clear()
+            } else{
                 alert("Senha incorreta");
             }
         }
