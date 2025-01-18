@@ -4,15 +4,20 @@ import { FastifyTypedInstance } from "../types/fastify";
 import z from 'zod';
 
 export async function chatRoutes(app: FastifyTypedInstance) {
-    app.post('/chat', {
+    app.post('/chat/image', {
         schema: {
             tags: ['chat'],
-            description: 'return a logged in user id',
+            description: 'generate an image',
             body: z.object({
-                name: z.string()
+                prompt: z.string().default("an apple"),
+                id: z.string().default("12jb132kr")
             }),
             response: {
-                200: z.instanceof(ObjectId)
+                200: z.object({
+                    message: z.string().default("image successfully generated"),
+                    urlImage: z.string().default("http://localhost:3000/images/id.jpeg"),
+                    ok: z.boolean().default(true)
+                })
             }
         }
     }, ChatController.index)

@@ -3,9 +3,9 @@ import { ChatModel } from "../models/chatModel"
 export class ChatController {
     static async index(request, reply){
         try{
-            const userId = await ChatModel.getId(request.body)
+            const generatedImage = await ChatModel.requestImage(request.body)
 
-            reply.status(200).send(userId)
+            reply.status(200).send(generatedImage)
 
         }catch (error){
             reply.status(500)
