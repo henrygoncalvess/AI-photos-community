@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
   
 export async function sendVerificationEmail({ name, email }: User): Promise<{ message: string; ok: boolean; }>{
 
-    const token = await jwt.sign({ name }, String(process.env.JWT_SECRET), { expiresIn: "1h" })
+    const token = await jwt.sign({ name }, process.env.JWT_SECRET, { expiresIn: "2min" })
 
     const verificationLink = `http://localhost:3001/login?token=${token}`
 
@@ -36,7 +36,7 @@ export async function sendVerificationEmail({ name, email }: User): Promise<{ me
             } else {
                 resolve({
                     message: `Email successfully sent to: ${info.accepted}`,
-                    ok: true
+                    sent: true
                 });
             }
         }

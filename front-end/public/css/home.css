@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #efefef url("../images/rb_21162.png") center center no-repeat scroll;
+    background: #efefef url("../images/background.png") center center no-repeat scroll;
     background-size: cover;
 }
 

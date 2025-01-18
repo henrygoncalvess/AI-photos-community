@@ -5,8 +5,8 @@ export class AuthController {
         try{
             const sendMail = await AuthModel.signup(request.body)
 
-            if (!sendMail.ok){
-                reply.status(400).send(sendMail.message)
+            if (sendMail.registered){
+                reply.status(400).send(sendMail)
             }
 
             reply.status(201).send(sendMail)

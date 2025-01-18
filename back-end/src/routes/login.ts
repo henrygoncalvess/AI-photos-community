@@ -16,11 +16,11 @@ export async function authRoutes(app: FastifyTypedInstance) {
             response: {
                 201: z.object({
                     message: z.string().default("Email successfully sent to: (example)"),
-                    ok: z.boolean()
+                    sent: z.boolean().default(true)
                 }),
                 400: z.object({
                     message: z.string().default("already registered user"),
-                    ok: z.boolean()
+                    registered: z.boolean().default(true)
                 })
             }
         }

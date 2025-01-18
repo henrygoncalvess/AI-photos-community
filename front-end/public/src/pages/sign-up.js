@@ -1,3 +1,4 @@
+import { showOkMessage, showErrorMessage } from '../components/Sign-upMessage';
 import { sendVerificationEmail } from '../services/sendVerificationEmail'
 import { SetValidator } from "../utils/validator";
 
@@ -19,23 +20,21 @@ export function confirmUser(){
         })
         
         if(allFilled && validUser){
-            document.querySelector("div#root").style.display = "none"
-            
-            document.querySelector("div#emailMessage").style.display = "initial"
-
-            const userEmail = document.querySelector("p#userEmail")
-
-            userEmail.innerHTML += `<strong>${email.value}</strong>`
-
             const data = await sendVerificationEmail({
                 name: name.value,
                 email: email.value,
                 password: password.value
             })
 
-            localStorage.setItem("email", email.value)
-
             console.log(data);
+
+            if (data.registered){
+                showErrorMessage(email.value)
+                
+                localStorage.setItem("email", email.value)
+            }else{
+                showOkMessage(email.value)
+            }
 
         }else{
             alert("Preencha todos os campos corretamente antes de confirmar")

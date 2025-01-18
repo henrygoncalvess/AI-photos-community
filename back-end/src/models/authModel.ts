@@ -11,7 +11,7 @@ export class AuthModel {
         if(userExists){
             return {
                 message: "already registered user",
-                ok: false
+                registered: true
             }
         }
 

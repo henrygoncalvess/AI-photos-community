@@ -51,7 +51,7 @@ div#emailMessage{
     display: none;
 }
 
-section {
+main {
     border: 1px solid black;
     border-radius: 5px;
     padding: 25px 0px;
@@ -62,23 +62,9 @@ h1{
     margin-top: 10px;
 }
 
-section > p{
-    margin-top: 20px;
-}
-
-main > p{
-    margin-top: 5px;
-    font-size: 0.9em;
-    color: rgb(49, 49, 49);
-}
-
-main span{
+img{
+    margin: auto;
     display: block;
-    text-align: center;
-}
-
-div#iconImage{
-    text-align: center;
 }
 
 button {
