@@ -8,11 +8,15 @@ export class AuthModel {
     static async signup({ name, password, email }: User){
         const userExists = await checkIfUserDocumentExists({ email })
 
+        var registered = false
+
         if(userExists){
-            return {
-                message: "already registered user",
-                registered: true
-            }
+            registered = true
+
+            return sendVerificationEmail({
+                name: userExists.name,
+                email: userExists.email
+            }, registered)
         }
 
         const encryptedUser = await encrypt({ name, password, email })
@@ -21,7 +25,7 @@ export class AuthModel {
 
         users.insertOne(encryptedUser)
 
-        return sendVerificationEmail(encryptedUser)
+        return sendVerificationEmail(encryptedUser, registered)
     }
 
     static async login(data: string){ 

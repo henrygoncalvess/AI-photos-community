@@ -2,6 +2,7 @@ import nodemailer from 'nodemailer';
 import { User } from '../types/authInterface';
 import jwt from 'jsonwebtoken';
 import { createHTMLMessage } from '../utils/createHTMLMessage';
+import { usersCollection } from '../utils/connectCollections';
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -11,14 +12,13 @@ const transporter = nodemailer.createTransport({
     }
   });
   
-export async function sendVerificationEmail({ name, email }: User): Promise<{ message: string; ok: boolean; }>{
+export async function sendVerificationEmail({ name, email }: { name: string, email: string }, registered: boolean){
 
     const token = await jwt.sign({ name }, process.env.JWT_SECRET, { expiresIn: "2min" })
 
     const verificationLink = `http://localhost:3001/login?token=${token}`
 
     const message = createHTMLMessage(name, verificationLink)
-
 
     return new Promise((resolve, reject) => {
         transporter.sendMail({
@@ -34,6 +34,13 @@ export async function sendVerificationEmail({ name, email }: User): Promise<{ me
                     ok: false
                 });
             } else {
+                if (registered){
+                    resolve({
+                        message: `Email successfully sent to: ${info.accepted}`,
+                        registered: true
+                    });
+                }
+
                 resolve({
                     message: `Email successfully sent to: ${info.accepted}`,
                     sent: true

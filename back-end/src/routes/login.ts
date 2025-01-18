@@ -16,11 +16,9 @@ export async function authRoutes(app: FastifyTypedInstance) {
             response: {
                 201: z.object({
                     message: z.string().default("Email successfully sent to: (example)"),
-                    sent: z.boolean().default(true)
-                }),
-                400: z.object({
-                    message: z.string().default("already registered user"),
-                    registered: z.boolean().default(true)
+                    sent: z.boolean().default(true).or(z.object({
+                        registered: z.boolean().default(true)
+                    }))
                 })
             }
         }
