@@ -17,6 +17,7 @@ export async function handleAuthorization(token) {
         CreateLoginError()
     }else{
         localStorage.setItem("user", response.user);
+        localStorage.setItem("id", response.id);
         document.querySelector("h1").innerHTML += ` ${response.user}`;
         SetupLoginForm()
     }

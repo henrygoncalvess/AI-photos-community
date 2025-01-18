@@ -29,9 +29,14 @@ export class AuthModel {
     }
 
     static async login(data: string){ 
+        const users = await usersCollection()
+
+        const registeredUser = await users.find({ name: data }).next()
+
         return {
             message: `user registered successfully`,
             user: data,
+            id: registeredUser?._id,
             ok: true
         }
     }

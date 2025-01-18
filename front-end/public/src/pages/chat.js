@@ -1,5 +1,5 @@
 import { CreateButton } from '../components/Button';
-import { getUserId } from '../services/getUserId';
+import { generateImage } from '../utils/generateImage';
 
 const root = document.querySelector("div#root")
 
@@ -9,9 +9,21 @@ root.appendChild(button)
 
 const prompt = document.querySelector("input#prompt")
 const name = localStorage.getItem("user")
+const id = localStorage.getItem("id")
+const h1 = document.querySelector("h1")
 
 button.addEventListener("click", async () => {
-    const response = await getUserId(name)
+    if(prompt.value.length > 0){
+        prompt.style.display = "none"
+        button.style.display = "none"
 
-    console.log(response);
+        h1.innerHTML = "A IA está gerando sua imagem..."
+        
+        const generetadImageResult = await generateImage(prompt.value, name, "apple")
+
+        console.log(generetadImageResult);
+        
+    }else{
+        alert("Peça uma imagem à IA")
+    }
 })

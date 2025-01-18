@@ -2,6 +2,7 @@ import { FastifyTypedInstance } from "../types/fastify";
 import { AuthController } from "../controllers/authController";
 import { loginToken } from "../middlewares/auth";
 import z from 'zod';
+import { ObjectId } from "mongodb";
 
 export async function authRoutes(app: FastifyTypedInstance) {
     app.post('/signup', {
@@ -36,6 +37,7 @@ export async function authRoutesMiddle(app: FastifyTypedInstance) {
                 200: z.object({
                     message: z.string().default("user registered successfully"),
                     user: z.string().default("username"),
+                    id: z.instanceof(ObjectId),
                     ok: z.boolean().default(true)
                 }),
                 400: z.object({
