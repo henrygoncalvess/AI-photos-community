@@ -44,7 +44,7 @@ export async function authRoutesMiddle(app: FastifyTypedInstance) {
                     message: z.string().default("Required access token"),
                     ok: z.boolean().default(false)
                 }),
-                403: z.object({
+                498: z.object({
                     message: z.string().default("Invalid or expired token"),
                     ok: z.boolean().default(false)
                 })

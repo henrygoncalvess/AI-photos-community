@@ -5,7 +5,9 @@ export class ChatController {
         try{
             const generatedImage = await ChatModel.requestImage(request.body)
 
-            reply.status(200).send(generatedImage)
+            if (generatedImage.ok) reply.status(200).send(generatedImage)
+
+            reply.status(500).send(generatedImage)
 
         }catch (error){
             reply.status(500)

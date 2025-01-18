@@ -1,5 +1,10 @@
 import { CreateButton } from '../components/Button';
+import { checkIfUserHasImage } from '../services/checkUserImage';
 import { generateImage } from '../utils/generateImage';
+
+const email = localStorage.getItem('email')
+
+const isUserGeneratedImage = await checkIfUserHasImage(email)
 
 const root = document.querySelector("div#root")
 
@@ -19,7 +24,7 @@ button.addEventListener("click", async () => {
 
         h1.innerHTML = "A IA está gerando sua imagem..."
         
-        const generetadImageResult = await generateImage(prompt.value, name, "apple")
+        const generetadImageResult = await generateImage(prompt.value, name, id)
 
         console.log(generetadImageResult);
         

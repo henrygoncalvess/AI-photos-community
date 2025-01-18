@@ -14,7 +14,7 @@ export function loginToken(request, reply, done){
 
     jwt.verify(token, String(process.env.JWT_SECRET), (error, data) => {
         if (error){
-            reply.code(403).send({
+            reply.code(498).send({
                 message: 'Invalid or expired token',
                 ok: false
             })
