@@ -31,8 +31,8 @@ export function confirmUser(){
             if (data.registered){
                 showErrorMessage(email.value)
                 
-                localStorage.setItem("email", email.value)
             }else{
+                localStorage.setItem("email", email.value)
                 showOkMessage(email.value)
             }
 

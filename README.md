@@ -137,7 +137,7 @@ flowchart LR
 
 - **Um e-mail comum ou para testes**
 
-- **uma conta com api-key em Stability-AI** [clique aqui](https://platform.stability.ai/)
+- **Criar uma conta (ou entrar com e-mail do google) na Stability AI e acessar a API_KEY no perfil**. [Acessar Stability AI](https://platform.stability.ai/)
 
 Para a instalação dos frameworks, middlewares e dependências que possibilitaram a criação do Sistema  
 é necessário que você possua as seguintes ferramentas:
@@ -145,8 +145,6 @@ Para a instalação dos frameworks, middlewares e dependências que possibilitar
 - <img src="https://cdn.simpleicons.org/nodedotjs/5FA04E/5FA04E" width=24>&nbsp; **Node.js** - [Tutorial de instalação](https://nodejs.org/pt)
 
 - <img src="https://cdn.simpleicons.org/npm/CB3837/CB3837" width=24>&nbsp; **npm** - [Tutorial de instalação](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-
-- <img src="https://cdn.simpleicons.org/redis/FF4438/FF4438" width=24>&nbsp; **REDIS** - [Tutorial de instalação](https://youtu.be/188Fy-oCw4w?si=xYljV44RNw7rg69y) &nbsp;<img src="https://cdn.simpleicons.org/youtube/FF0000/FF0000" width=24>
 
 - <img src="https://cdn.simpleicons.org/mongodb/47A248/47A248" width=24>&nbsp; **Mongo DB Atlas** - [Tutorial de configuração](https://www.mongodb.com/pt-br/docs/atlas/)
 
@@ -268,7 +266,11 @@ _baseado na versão node utilizada_
 ``` .env
 EMAIL = "seu-email@gmail.com"
 PASSWORD_EMAIL = "sua senha de aplicativo"
+URI_MONGODB = "sua string de conexão do cluster"
+DATABASE = "nome do banco de dados"
+COLLECTION = "nome da coleção dentro do banco de dados"
 JWT_SECRET = "uma senha secreta"
+STABILITY_API_KEY = "sua api_key no perfil do Stability AI"
 ```
 
 <br>
@@ -318,7 +320,7 @@ export default defineConfig({
     root: "public",
     server: {
         port: 3001,
-        open: "index.html"
+        open: "home.html"
     }
 })
 ```
@@ -352,7 +354,7 @@ teste manualmente as respostas da API do sistema seguindo os **endpoints** abaix
 > <img src="https://cdn.simpleicons.org/postman/FF6C37/FF6C37" width=24>&nbsp; acesse este link, caso não saiba utilizar o Postman para fazer requisições [Postman](https://learning.postman.com/docs/introduction/overview/) &nbsp;<img src="https://cdn.simpleicons.org/postman/FF6C37/FF6C37" width=24>  
 > <img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>&nbsp; acesse este link, caso não saiba fazer requisições pela linha de comando [Clique aqui](https://www.campuscode.com.br/conteudos/comandos-curl-para-testar-requisicoes-api) &nbsp;<img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>
 
-#### em seu navegador, acesse [`http://localhost:3001/docs`](http://localhost:3000/docs) para acessar a documentação das rotas
+#### em seu navegador, acesse [`http://localhost:3000/docs`](http://localhost:3000/docs) para acessar a documentação das rotas
 
 `PRÉVIA`:
 

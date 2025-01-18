@@ -7,7 +7,9 @@ export async function encrypt({ name, password, email }: User){
     const newUser = {
         name,
         password: hashedPassword,
-        email
+        email,
+        urlImage: "",
+        prompt: ""
     }
 
     return newUser
