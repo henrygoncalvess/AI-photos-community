@@ -16,6 +16,10 @@ div#root{
     text-align: center;
 }
 
+h1{
+    margin: 0px;
+}
+
 input{
     width: 450px;
     border: 1px solid rgba(0, 0, 0, 0.578);
@@ -39,9 +43,7 @@ img{
     margin-top: 15px;
     border: 1px solid black;
     border-radius: 3px;
-    width: 350px;
-    height: 350px;
-    aspect-ratio: 1 / 1;
+    width: 420px;
 }
 
 p{

@@ -28,11 +28,11 @@ if (isUserGeneratedImage.ok){
     const button = CreateButton("submit", "⭐gerar imagem⭐")
     
     root.appendChild(button)
-
-    h1.innerHTML = "Peça uma imagem à IA <br> e veja o que ela cria!"
     
     const id = localStorage.getItem("id")
     const h1 = document.querySelector("h1")
+    
+    h1.innerHTML = "Peça uma imagem à IA <br> e veja o que ela cria!"
     
     button.addEventListener("click", async () => {
         if(prompt.value.length > 0){
