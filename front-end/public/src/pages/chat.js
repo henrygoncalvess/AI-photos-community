@@ -1,8 +1,7 @@
 import { CreateButton } from '../components/Button';
 import { checkIfUserHasImage } from '../services/checkUserImage';
-import { getImageInfo } from '../services/getImageInfo';
 import { generateImage } from '../services/generateImage';
-import { showImage } from '../utils/showImage';
+import { showImages } from '../services/showImages';
 
 const root = document.querySelector("div#root")
 const savedImage = document.querySelector("div#savedImage")
@@ -18,11 +17,9 @@ if (isUserGeneratedImage.ok){
     root.style.display = "none"
     savedImage.style.display = "initial"
 
-    const response = await getImageInfo(email)
+    const images = await showImages()
 
-    const image = await showImage(response.prompt, name, response.urlImage)
-
-    savedImage.appendChild(image)
+    savedImage.appendChild(images)
     
 }else{
     const button = CreateButton("submit", "⭐gerar imagem⭐")
@@ -30,20 +27,23 @@ if (isUserGeneratedImage.ok){
     root.appendChild(button)
     
     const id = localStorage.getItem("id")
-    const h1 = document.querySelector("h1")
-    
-    h1.innerHTML = "Peça uma imagem à IA <br> e veja o que ela cria!"
+
+    document.querySelector("h2").innerHTML = "Peça uma imagem à IA <br> e veja o que ela cria!"
     
     button.addEventListener("click", async () => {
         if(prompt.value.length > 0){
             prompt.style.display = "none"
             button.style.display = "none"
     
-            h1.innerHTML = "A IA está gerando sua imagem..."
+            document.querySelector("h2").innerHTML = "A IA está gerando sua imagem..."
             
             const generetadImageResult = await generateImage(prompt.value, name, id)
-    
+            
             console.log(generetadImageResult);
+            
+            document.querySelector("h2").innerHTML = "Prontinho! <br> Divirta-se compartilhando <br> seu resultado"
+            
+            await showImages()
             
         }else{
             alert("Peça uma imagem à IA")

@@ -16,7 +16,7 @@ div#root{
     text-align: center;
 }
 
-h1{
+h2{
     margin: 0px;
 }
 
@@ -40,7 +40,6 @@ button:hover{ background-color: #ffc2292d; }
 img{
     display: block;
     margin: auto;
-    margin-top: 15px;
     border: 1px solid black;
     border-radius: 3px;
     width: 420px;
@@ -49,7 +48,8 @@ img{
 p{
     font-size: 0.9em;
     text-align: center;
-    margin: 0px;
+    margin-top: 20px;
+    margin-bottom: 3px;
 }
 
 div#savedImage{

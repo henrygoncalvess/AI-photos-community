@@ -35,15 +35,9 @@ export class UsersModel {
         return { message: "user not found", user: false}
     }
 
-    static async findUrl({ email }: { email: string }){
+    static async findAll(){
         const collection = await usersCollection()
 
-        const userExists = await collection.find({ email }).next()
-
-        if (userExists){
-            return { urlImage: userExists.urlImage, prompt: userExists.prompt, ok: true }
-        }
-
-        return { message: "user not found", user: false}
+        return await collection.find({}, { projection: { name: 1, urlImage: 1, prompt: 1 } }).toArray()
     }
 }

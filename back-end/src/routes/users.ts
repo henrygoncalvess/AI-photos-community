@@ -3,22 +3,19 @@ import { UsersController } from "../controllers/usersController";
 import z from 'zod';
 
 export async function usersRoutes(app: FastifyTypedInstance) {
-    app.post('/users/url', {
+    app.get('/users', {
         schema: {
             tags: ['user'],
-            description: 'returns the image url',
-            body: z.object({
-                email: z.string().email().default("test@test.com"),
-            }),
+            description: 'returns all users and images',
             response: {
-                200: z.object({
+                200: z.array(z.object({
+                    name: z.string().default("John"),
                     urlImage: z.string().default("http://localhost:3000/images/id.jpeg"),
-                    prompt: z.string().default("an apple"),
-                    ok: z.boolean().default(true)
-                })
+                    prompt: z.string().default("an apple")
+                }))
             }
         }
-    }, UsersController.url)
+    }, UsersController.all)
 
     app.post('/users', {
         schema: {

@@ -1,6 +1,18 @@
 import { UsersModel } from "../models/usersModel"
 
 export class UsersController {
+    static async all(request, reply){
+        try{
+            const allUsers = await UsersModel.findAll()
+
+            reply.status(200).send(allUsers)
+
+        }catch (error){
+            reply.status(500)
+            throw error
+        }
+    }
+
     static async verify(request, reply){
         try{
             const validUser = await UsersModel.check(request.body)
@@ -26,22 +38,6 @@ export class UsersController {
             else if (response.image == false) reply.status(401).send(response)
                     
             else reply.status(400).send(response)
-
-        }catch (error){
-            reply.status(500)
-            throw error
-        }
-    }
-
-    static async url(request, reply){
-        try{
-            const response = await UsersModel.findUrl(request.body)
-
-            if (response.ok){
-                reply.status(200).send(response)
-            }
-            
-            reply.status(400).send(response)
 
         }catch (error){
             reply.status(500)
