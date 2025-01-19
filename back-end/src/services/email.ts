@@ -1,8 +1,6 @@
 import nodemailer from 'nodemailer';
-import { User } from '../types/authInterface';
 import jwt from 'jsonwebtoken';
 import { createHTMLMessage } from '../utils/createHTMLMessage';
-import { usersCollection } from '../utils/connectCollections';
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',

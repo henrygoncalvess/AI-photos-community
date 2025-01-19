@@ -1,3 +1,4 @@
+import { CreateLoadingScreen, RemoveLoadingScreen } from '../components/LoadingScreen';
 import { showOkMessage, showErrorMessage } from '../components/Sign-upMessage';
 import { sendVerificationEmail } from '../services/sendVerificationEmail'
 import { SetValidator } from "../utils/validator";
@@ -20,11 +21,16 @@ export function confirmUser(){
         })
         
         if(allFilled && validUser){
+            const screen = CreateLoadingScreen("Enviando E-mail")
+            document.querySelector("body").appendChild(screen)
+
             const data = await sendVerificationEmail({
                 name: name.value,
                 email: email.value,
                 password: password.value
             })
+
+            RemoveLoadingScreen(screen)
 
             console.log(data);
 

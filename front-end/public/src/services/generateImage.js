@@ -1,3 +1,5 @@
+import { RemoveLoadingScreen } from "../components/LoadingScreen";
+
 export async function generateImage(prompt, id) {
     const POST = await fetch("http://localhost:3000/chat/image", {
         method: 'POST',
@@ -12,11 +14,14 @@ export async function generateImage(prompt, id) {
     console.log(responseData);
 
     if (responseData.ok){
+        RemoveLoadingScreen(document.querySelector("div#loadingScreen"))
+        
         document.querySelector("h2").innerHTML = "Prontinho! <br> Divirta-se compartilhando <br> seu resultado"
             
         await showImages()
 
     }else{
+        RemoveLoadingScreen(document.querySelector("div#loadingScreen"))
         alert("erro ao gerar imagem")
     
         document.querySelector("input#prompt").style.display = "initial"
