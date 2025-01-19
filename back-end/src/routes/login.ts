@@ -32,7 +32,7 @@ export async function authRoutesMiddle(app: FastifyTypedInstance) {
     app.post('/login', {
         schema: {
             tags: ['authentication'],
-            description: 'confirms user identity',
+            description: 'checks if the user has signed in via email <br> requires header with token authorization',
             response: {
                 200: z.object({
                     message: z.string().default("user registered successfully"),

@@ -25,9 +25,9 @@ class App {
         this.fastify.register(fastifySwagger, {
             openapi: {
                 info: {
-                    title: "sem nome",
+                    title: "AI-photos-community",
                     version: '1.0.0'
-                }
+                },
             },
             transform: jsonSchemaTransform
         });

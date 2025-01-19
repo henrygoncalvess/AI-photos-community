@@ -7,7 +7,7 @@ Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
 <br>
 
 **licença e tecnologias utilizadas**:  
-<img src="https://img.shields.io/github/license/henrygoncalvess/AI-photos-community?style=for-the-badge&labelColor=gray&color=97ca00"> <a href="https://fastify.dev/docs/latest/Guides/Getting-Started/"><img src="https://img.shields.io/badge/fastify-5.2.0-000000?style=for-the-badge&logo=fastify&logoColor=000000&labelColor=gray"></a> <a href="https://www.typescriptlang.org/docs/"><img src="https://img.shields.io/badge/typescript-5.7.2-3178C6?style=for-the-badge&logo=typescript&logoColor=3178C6&labelColor=gray"></a> <a href="https://zod.dev/"><img src="https://img.shields.io/badge/zod-3.24.1-3E67B1?style=for-the-badge&logo=zod&logoColor=darkblue&labelColor=gray"></a> <a href="https://www.npmjs.com/package/bcrypt"><img src="https://img.shields.io/badge/bcrypt-2.4.3-003A70?style=for-the-badge&logo=letsencrypt&logoColor=darkblue&labelColor=gray"></a> <a href="https://nodejs.org/pt"><img src="https://img.shields.io/badge/node-22.12.0-5FA04E?style=for-the-badge&logo=node.js&logoColor=5FA04E&labelColor=gray"></a> <a href="https://www.mongodb.com/docs/"><img src="https://img.shields.io/badge/mongodb-6.10.0-47A248?style=for-the-badge&logo=mongodb&logoColor=47A248&labelColor=gray"></a> <a href="https://learning.postman.com/docs/introduction/overview/"><img src="https://img.shields.io/badge/postman-11.16.0-FF6C37?style=for-the-badge&logo=postman&logoColor=FF6C37&labelColor=gray"></a> <a href="https://redis.io/"><img src="https://img.shields.io/badge/redis-4.7.0-FF4438?style=for-the-badge&logo=redis&logoColor=FF4438&labelColor=gray"></a> <a href="https://jwt.io/"><img src="https://img.shields.io/badge/jwt-9.0.2-FD3456?style=for-the-badge&logo=jsonwebtokens&logoColor=cyan&labelColor=black"></a> <a href="https://vite.dev/guide/"><img src="https://img.shields.io/badge/vite-6.0.7-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=gray"></a>
+<img src="https://img.shields.io/github/license/henrygoncalvess/AI-photos-community?style=for-the-badge&labelColor=gray&color=97ca00"> <a href="https://fastify.dev/docs/latest/Guides/Getting-Started/"><img src="https://img.shields.io/badge/fastify-5.2.0-000000?style=for-the-badge&logo=fastify&logoColor=000000&labelColor=gray"></a> <a href="https://www.typescriptlang.org/docs/"><img src="https://img.shields.io/badge/typescript-5.7.2-3178C6?style=for-the-badge&logo=typescript&logoColor=3178C6&labelColor=gray"></a> <a href="https://zod.dev/"><img src="https://img.shields.io/badge/zod-3.24.1-3E67B1?style=for-the-badge&logo=zod&logoColor=darkblue&labelColor=gray"></a> <a href="https://nodejs.org/pt"><img src="https://img.shields.io/badge/node-22.12.0-5FA04E?style=for-the-badge&logo=node.js&logoColor=5FA04E&labelColor=gray"></a> <a href="https://www.mongodb.com/docs/"><img src="https://img.shields.io/badge/mongodb-6.12.0-47A248?style=for-the-badge&logo=mongodb&logoColor=47A248&labelColor=gray"></a> <a href="https://learning.postman.com/docs/introduction/overview/"><img src="https://img.shields.io/badge/postman-11.28.3-FF6C37?style=for-the-badge&logo=postman&logoColor=FF6C37&labelColor=gray"></a> <a href="https://jwt.io/"><img src="https://img.shields.io/badge/jwt-9.0.2-FD3456?style=for-the-badge&logo=jsonwebtokens&logoColor=cyan&labelColor=black"></a> <a href="https://vite.dev/guide/"><img src="https://img.shields.io/badge/vite-6.0.7-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=gray"></a>
 
 **Insalador de pacotes**:  
 <a href="https://docs.npmjs.com"><img src="https://img.shields.io/badge/npm-11.0.0-CB3837?style=for-the-badge&logo=npm&logoColor=CB3837&labelColor=gray"></a>
@@ -31,6 +31,7 @@ Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
     - [Front-End](#front-end)
 - [Instrução de uso](#instrução-de-uso)
 - [AI-photos-community endpoints](#ai-photos-community-endpoints)
+- [Fluxo de autenticação](#fluxo-de-autenticação)
   
 </details>
 
@@ -38,52 +39,45 @@ Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
 
 ``` mermaid
 ---
-title:  Estrutura de pastas
+title:  Estrutura de pastas (back-end)
 ---
 flowchart LR
-    sistema("📁 _Sistema_")@{ shape: processes }
+    sistema("📁 _AI_photos_community_")@{ shape: processes }
     sistema --o back("📁 _back-end_")@{ shape: processes }
-    back ---o env("⚙️ .env")
-    back --o src("📁 _src_")@{ shape: processes }
+    back ---o src("📁 _src_")@{ shape: processes }
     src --o config("📁 _config_")@{ shape: processes }
     config --- db.ts("📄 **db.ts**")@{ shape: card }
     src --o controllers("📁 _controllers_")@{ shape: processes }
     controllers --- authController.ts("📄 **authController.ts**")@{ shape: card }
+    controllers --- chatController.ts("📄 **chatController.ts**")@{ shape: card }
+    controllers --- usersController.ts("📄 **usersController.ts**")@{ shape: card }
     src --o middle("📁 _middlewares_")@{ shape: processes }
     middle --- auth.ts("📄 **auth.ts**")@{ shape: card }
     src --o models("📁 _models_")@{ shape: processes }
     models --- authModel.ts("📄 **authModel.ts**")@{ shape: card }
+    models --- chatModel.ts("📄 **chatModel.ts**")@{ shape: card }
+    models --- usersModel.ts("📄 **authModel.ts**")@{ shape: card }
     src --o routes("📁 _routes_")@{ shape: processes }
     routes --- login.ts("📄 **login.ts**")@{ shape: card }
+    routes --- chat.ts("📄 **chat.ts**")@{ shape: card }
+    routes --- users.ts("📄 **users.ts**")@{ shape: card }
     src --o services("📁 _services_")@{ shape: processes }
-    src --o types("📁 _types_")@{ shape: processes }
     services --- email.ts("📄 **email.ts**")@{ shape: card }
+    services --- generateImage.ts("📄 **generateImage.ts**")@{ shape: card }
+    src --o types("📁 _types_")@{ shape: processes }
     types --- authInterface.ts("📄 **authInterface.ts**")@{ shape: card }
     types --- fastify.ts("📄 **fastify.ts**")@{ shape: card }
     src --o utils("📁 _utils_")@{ shape: processes }
+    utils --- checkDocument.ts("📄 **checkDocument.ts**")@{ shape: card }
+    utils --- connectCollections.ts("📄 **connectCollections.ts**")@{ shape: card }
+    utils --- createHTMLMessage.ts("📄 **createHTMLMessage.ts**")@{ shape: card }
+    utils --- decryptUser.ts("📄 **decryptUser.ts**")@{ shape: card }
     utils --- encryptAuthUser.ts("📄 **encryptAuthUser.ts**")@{ shape: card }
     src --- app.ts("📄 **app.ts**")@{ shape: card }
     src --- server.ts("📄 **server.ts**")@{ shape: card }
-    sistema --o front("📁 _front-end_")@{ shape: processes }
-    front --o Fenv("⚙️ .env")
-    front ---o public("📁 _public_")@{ shape: processes }
-    public --- index.html("📄 **index.html**")@{ shape: card }
-    public --- email.html("📄 **email.html**")@{ shape: card }
-    public --o css("📁 _css_")@{ shape: processes }
-    public --o Fsrc("📁 _src_")@{ shape: processes }
-    css --- static.css("📄 **static.css**")@{ shape: card }
-    css --- email.css("📄 **email.css**")@{ shape: card }
-    Fsrc --- App.js("📄 **App.js**")@{ shape: card }
-    Fsrc --- main.js("📄 **main.js**")@{ shape: card }
-    Fsrc --o components("📁 _components_")@{ shape: processes }
-    Fsrc --o pages("📁 _pages_")@{ shape: processes }
-    Fsrc --o Fservices("📁 _services_")@{ shape: processes }
-    Fsrc --o Futils("📁 _utils_")@{ shape: processes }
-    pages --- index.js("📄 **index.js**")@{ shape: card }
-    pages --- email.js("📄 **email.js**")@{ shape: card }
-    Fservices --- login.js("📄 **login.js**")@{ shape: card }
-    Futils --- validator.js("📄 **validator.js**")@{ shape: card }
-    Futils --- messageError.js("📄 **messageError.js**")@{ shape: card }
+    back --o uploads("📁 _uploads_")@{ shape: processes }
+    back --o env("⚙️ .env")
+    
 
 
 
@@ -95,35 +89,86 @@ flowchart LR
     classDef envStyle fill:#000000,stroke:#000000,color:gray;
 
     %%aplicação de classes
-    class sistema,back,src,config,controllers,middle,models,routes,services,utils,types pasta
-    class sistema,front,public,css,Fsrc,components,pages,Fservices,Futils pasta
+    class sistema,back,src,config,controllers,middle,models,routes,services,utils,types,uploads pasta
 
-    class env,Fenv envStyle
+    class env envStyle
 
 
 
     %%LINKS
     
     %%pastas
-    linkStyle 0 stroke:#f2c04b
+    linkStyle 0,1,2,4,8,10,14,18,21,24 stroke:#f2c04b
 
     %%arquivos
     linkStyle default stroke-width:2px;
+```
 
-    click src "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src"
-    click config "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/config"
-    click db.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/config/db.ts"
-    click controllers "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/controllers"
-    click UserController.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/controllers/UserController.ts"
-    click models "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/models"
-    click UserModel.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/models/UserModel.ts"
-    click routes "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/routes"
-    click Users.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/routes/users.ts"
-    click types "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/types"
-    click fastify.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/types/fastify.ts"
-    click usermodel.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/types/usermodel.ts"
-    click app.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/app.ts"
-    click server.ts "https://github.com/henrygoncalvess/API_REST_fastify/tree/main/src/server.ts"
+``` mermaid
+---
+title:  Estrutura de pastas (fron-ent)
+---
+flowchart LR
+    sistema("📁 _AI_photos_community_")@{ shape: processes }
+    sistema --o front("📁 _front-end_")@{ shape: processes }
+    front ---o public("📁 _public_")@{ shape: processes }
+    public --- index.html("📄 **index.html**")@{ shape: card }
+    public --- email.html("📄 **email.html**")@{ shape: card }
+    public --o css("📁 _css_")@{ shape: processes }
+    public --o images("📁 _images_")@{ shape: processes }
+    public --o src("📁 _src_")@{ shape: processes }
+    css --- chat.css("📄 **chat.css**")@{ shape: card }
+    css --- home.css("📄 **home.css**")@{ shape: card }
+    css --- login.css("📄 **login.css**")@{ shape: card }
+    css --- sign.css("📄 **sign-up.css**")@{ shape: card }
+    images --- background.png("📄 **background.png**")@{ shape: card }
+    images --- important_icon.png("📄 **important_icon.png**")@{ shape: card }
+    images --- verified_icon.png("📄 **verified_icon.png**")@{ shape: card }
+    src ---o components("📁 _components_")@{ shape: processes }
+    src ---o pages("📁 _pages_")@{ shape: processes }
+    src ---o services("📁 _services_")@{ shape: processes }
+    src ---o utils("📁 _utils_")@{ shape: processes }
+    src ---- App.js("📄 **App.js**")@{ shape: card }
+    src ---- main.js("📄 **main.js**")@{ shape: card }
+    components --- Button.js("📄 **Button.js**")@{ shape: card }
+    components --- InputForm.js("📄 **InputForm.js**")@{ shape: card }
+    components --- LoadingScreen.js("📄 **LoadingScreen.js**")@{ shape: card }
+    components --- LoginError.js("📄 **LoginError.js**")@{ shape: card }
+    components --- SetupLoginForm.js("📄 **SetupLoginForm.js**")@{ shape: card }
+    components --- Sign-upMessage.js("📄 **Sign-upMessage.js**")@{ shape: card }
+    pages --- chat.js("📄 **chat.js**")@{ shape: card }
+    pages --- home.js("📄 **home.js**")@{ shape: card }
+    pages --- login.js("📄 **login.js**")@{ shape: card }
+    pages --- sign.js("📄 **sign-up.js**")@{ shape: card }
+    services --- checkUserImage.js("📄 **checkUserImage.js**")@{ shape: card }
+    services --- confirmLogin.js("📄 **confirmLogin.js**")@{ shape: card }
+    services --- generateImage.js("📄 **generateImage.js**")@{ shape: card }
+    services --- handleAuthorization.js("📄 **handleAuthorization.js**")@{ shape: card }
+    services --- sendVerificationEmail.js("📄 **sendVerificationEmail.js**")@{ shape: card }
+    services --- showImages.js("📄 **showImages.js**")@{ shape: card }
+    utils --- validator.js("📄 **validator.js**")@{ shape: card }
+
+
+
+    %%CLASSES
+    classDef default fill:#191919,color:white;
+    
+    classDef pasta fill:#403211,stroke:#c99e34,stroke-width:2px,color:#fff1cc;
+
+    classDef envStyle fill:#000000,stroke:#000000,color:gray;
+
+    %%aplicação de classes
+    class sistema,front,public,css,images,src,components,pages,services,utils pasta
+
+
+
+    %%LINKS
+    
+    %%pastas
+    linkStyle 0,1,4,5,6,14,15,16,17 stroke:#f2c04b
+
+    %%arquivos
+    linkStyle default stroke-width:2px;
 ```
 
 <br>
@@ -137,7 +182,14 @@ flowchart LR
 
 - **Um e-mail comum ou para testes**
 
-- **Criar uma conta (ou entrar com e-mail do google) na Stability AI e acessar a API_KEY no perfil**. [Acessar Stability AI](https://platform.stability.ai/)
+- **Criar uma conta (ou entrar com e-mail do google) na Stability AI e anotar a API_KEY do perfil**. [Acessar Stability AI](https://platform.stability.ai/)
+
+> [!caution]
+> **Para gerar imagens utilizando a API da Stability AI, o usuário precisa de `"créditos"`. Todo novo usuário**  
+> **recebe 25 créditos iniciais para geração de imagens. Além disso, existe um limite de requisições que podem**  
+> **ser feitas para o servidor em um determinado período de tempo (Esse limite é importante para evitar sobrecarga**  
+> **no servidor e garantir que todos os usuários tenham acesso justo aos recursos). Com o modelo `SD3-Medium`,**  
+> **(que está sendo utilizado) que custa 3,5 créditos por imagem, é possível gerar 7 imagens com os 25 créditos iniciais.**
 
 Para a instalação dos frameworks, middlewares e dependências que possibilitaram a criação do Sistema  
 é necessário que você possua as seguintes ferramentas:
@@ -200,13 +252,17 @@ npm init
 },
 "dependencies": {
   "@fastify/cors": "10.0.2",
+  "@fastify/static": "8.0.4",
   "@fastify/swagger": "9.4.0",
   "@scalar/fastify-api-reference": "1.25.100",
+  "axios": "1.7.9",
   "bcryptjs": "2.4.3",
   "dotenv": "16.4.7",
   "fastify": "5.2.0",
   "fastify-type-provider-zod": "4.0.2",
+  "form-data": "4.0.1",
   "jsonwebtoken": "9.0.2",
+  "mongodb": "6.12.0",
   "nodemailer": "6.9.16",
   "zod": "3.24.1"
 },
@@ -250,6 +306,7 @@ _baseado na versão node utilizada_
     "module": "node16",
     "target": "es2022",
 
+    "noImplicitAny": false,
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -359,3 +416,9 @@ teste manualmente as respostas da API do sistema seguindo os **endpoints** abaix
 `PRÉVIA`:
 
 ![routes-documentation-preview](project-images/documentation-routes.png)
+
+## Fluxo de autenticação
+
+``` mermaid
+
+```

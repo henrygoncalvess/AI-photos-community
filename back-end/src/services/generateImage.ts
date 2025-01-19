@@ -23,6 +23,8 @@ export async function generate(prompt: string, id: string) {
       },
     );
 
+    console.log(response.status);
+
     if(response.status === 200) {
       fs.writeFileSync(`./uploads/${id}.jpeg`, Buffer.from(response.data));
       return `http://localhost:3000/images/${id}.jpeg`

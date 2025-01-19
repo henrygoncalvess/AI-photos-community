@@ -20,7 +20,7 @@ export async function usersRoutes(app: FastifyTypedInstance) {
     app.post('/users', {
         schema: {
             tags: ['user'],
-            description: 'verify a registered user',
+            description: 'checks the password of a registered user',
             body: z.object({
                 email: z.string().email().default("test@test.com"),
                 password: z.string().min(8).default("12345678")

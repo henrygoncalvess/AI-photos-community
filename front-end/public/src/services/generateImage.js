@@ -12,6 +12,7 @@ export async function generateImage(prompt, id) {
     const responseData = await POST.json()
 
     console.log(responseData);
+    RemoveLoadingScreen(document.querySelector("div#loadingScreen"))
 
     if (responseData.ok){
         RemoveLoadingScreen(document.querySelector("div#loadingScreen"))
@@ -19,6 +20,7 @@ export async function generateImage(prompt, id) {
         document.querySelector("h2").innerHTML = "Prontinho! <br> Divirta-se compartilhando <br> seu resultado"
             
         await showImages()
+        return responseData
 
     }else{
         RemoveLoadingScreen(document.querySelector("div#loadingScreen"))
