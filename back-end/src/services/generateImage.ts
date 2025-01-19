@@ -27,7 +27,7 @@ export async function generate(prompt: string, id: string) {
     //   fs.writeFileSync(`./uploads/${id}.jpeg`, Buffer.from(response.data));
     //   return `http://localhost:3000/images/${id}.jpeg`
     // } else {
-    //   throw new Error(`${response.status}: ${response.data.toString()}`);
+    //   return { message: "failed to generate image, insufficient credits", ok: false }
     // }
 
     return `http://localhost:3000/images/${id}.jpeg`

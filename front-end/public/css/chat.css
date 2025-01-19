@@ -11,7 +11,8 @@ body {
     background-color: #f4f4f4;
 }
 
-header{
+header,
+div#root{
     text-align: center;
 }
 
@@ -47,4 +48,8 @@ p{
     font-size: 0.9em;
     text-align: center;
     margin: 0px;
+}
+
+div#savedImage{
+    display: none;
 }

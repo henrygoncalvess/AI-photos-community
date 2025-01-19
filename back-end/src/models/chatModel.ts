@@ -6,7 +6,7 @@ export class ChatModel {
     static async requestImage({ prompt, id }: { prompt: string, id: string }){
         const urlImage = await generate(prompt, id)
 
-        if (urlImage){
+        if (typeof(urlImage) === "string"){
             const collection = await usersCollection()
 
             const mongoObjectId = ObjectId.createFromHexString(id)
