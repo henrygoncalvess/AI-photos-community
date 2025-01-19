@@ -18,8 +18,8 @@ export async function chatRoutes(app: FastifyTypedInstance) {
                     ok: z.boolean().default(true)
                 }),
                 500: z.object({
-                    message: z.string().default("failed to generate image, insufficient credits"),
-                    ok: z.boolean().default(false)
+                    status: z.number().default(403),
+                    message: z.string().default("Your request was flagged by our content moderation system")
                 })
             }
         }

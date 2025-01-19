@@ -20,7 +20,7 @@ export class ChatModel {
 
             return { message: "generated", urlImage, ok: true }
         }else{
-            return { message: "failed to generate image, insufficient credits", ok: false }
+            return urlImage
         }
     }
 }

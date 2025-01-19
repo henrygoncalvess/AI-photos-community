@@ -6,7 +6,7 @@ export async function generate(prompt: string, id: string) {
     const payload = {
       prompt: prompt,
       output_format: "jpeg",
-      model: "sd3.5-medium",
+      model: "sd3-medium",
       cfg_scale: 10
     };
 
@@ -23,12 +23,10 @@ export async function generate(prompt: string, id: string) {
       },
     );
 
-    console.log(response);
-
     if(response.status === 200) {
       fs.writeFileSync(`./uploads/${id}.jpeg`, Buffer.from(response.data));
       return `http://localhost:3000/images/${id}.jpeg`
     } else {
-      return { message: "failed to generate image, insufficient credits", ok: false }
+      return { status: response.status, message: response.data.toString() }
     }
 }

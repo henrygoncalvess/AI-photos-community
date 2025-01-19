@@ -37,13 +37,9 @@ if (isUserGeneratedImage.ok){
     
             document.querySelector("h2").innerHTML = "A IA está gerando sua imagem..."
             
-            const generetadImageResult = await generateImage(prompt.value, name, id)
+            const generetadImageResult = await generateImage(prompt.value, id)
             
             console.log(generetadImageResult);
-            
-            document.querySelector("h2").innerHTML = "Prontinho! <br> Divirta-se compartilhando <br> seu resultado"
-            
-            await showImages()
             
         }else{
             alert("Peça uma imagem à IA")
