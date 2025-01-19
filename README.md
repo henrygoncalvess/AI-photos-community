@@ -224,6 +224,7 @@ com pelo menos a extensão de arquivo "`.env`" incluída
 ``` .env
 .env
 node_modules/
+uploads/
 package.json
 package-lock.json
 tsconfig.json
@@ -420,5 +421,70 @@ teste manualmente as respostas da API do sistema seguindo os **endpoints** abaix
 ## Fluxo de autenticação
 
 ``` mermaid
+---
+title: Fluxo de Autenticação
+---
+sequenceDiagram
+    autonumber
+    actor c as client
+    participant s as server
 
+    note over c,s: /sign-up
+    c ->> s: nome, email e senha válidos
+    activate s
+    s -->> c: cria um token com o nome e envia por e-mail <br> para se verificar na rota "/login?token=abc"
+    deactivate s
+    s ->> s: criação do hash da senha
+    s ->> s: salva informações no banco de dados
+    note over c,s: /login
+
+    create participant m as middleware
+
+    c ->> m: clica no link do email e é redirecionado para <br> "/login" com o token recebido
+    activate m
+
+    alt token inválido
+    m -->> s: erro avisando que o usuário já expirou <br> ou não se registrou ainda
+    deactivate m
+    activate s
+    s -->> c: retorna o erro e mostra mensagem na tela
+    deactivate s
+    else token válido
+    m -->> s: retorna o nome do usuário
+    activate s
+    s -->> c: retorna o nome, email e id do usuário
+    deactivate s
+    activate c
+    c -->> c: armazena no local storage
+    deactivate c
+    destroy m
+    s -x m: fim da verificação
+    end
+
+    note over c,s: /login
+
+
+    c ->> s: senha
+    activate s
+    s ->> s: verifica no banco de dados se a senha está correta
+    deactivate s
+
+    alt senha incorreta
+    s -->> c: erro
+    else senha correta
+    s -->> c: autentica e redireciona o usuário para "/chat"
+    end
+
+    note over c,s: /chat
+
+    c ->> s: envia email
+    activate s
+    s ->> s: verifica se o usuário já gerou alguma imagem
+    deactivate s
+
+    alt já gerou
+    s -->> c: dados de todas as imagens, incluindo <br> quem gerou e o que foi pedido
+    else não gerou
+    s -->> c: avisa que não gerou e é mostrado <br> a tela de geração com IA
+    end
 ```
