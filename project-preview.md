@@ -37,4 +37,4 @@
 
 ## Simulação da geração de uma imagem
 
-![prévia da geração](project-images/generation-preview.mp4)
+https://github.com/user-attachments/assets/713c84a2-299f-4f22-a546-3aaf501ee947
