@@ -38,6 +38,6 @@ export class UsersModel {
     static async findAll(){
         const collection = await usersCollection()
 
-        return await collection.find({}, { projection: { name: 1, urlImage: 1, prompt: 1 } }).toArray()
+        return await collection.find({}, { projection: { name: 1, urlImage: 1, prompt: 1 } }).sort({ _id: -1 }).toArray()
     }
 }

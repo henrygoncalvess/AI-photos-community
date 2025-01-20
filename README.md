@@ -4,7 +4,7 @@ O sistema desenvolvido é uma plataforma que funciona como uma "comunidade de fo
 Para acessar as funcionalidades, os usuários precisam se autenticar por meio de um sistema de cadastro simples, sign-up e login (registrar e entrar), que inclui a 
 verificação de e-mail e a utilização de tokens JWT. Após a autenticação, os usuários conseguem gerar imagens utilizando a API da Stability AI, integrada ao sistema.
 
-O projeto enfrenta uma limitação relacionada ao plano padrão da API da Stability AI, que permite a geração de apenas 7 imagens por usuário, álem de possuir um limite diário de requisições.
+O projeto enfrenta uma limitação relacionada ao plano padrão da API da Stability AI, que permite a geração de apenas 8 imagens por usuário, álem de possuir um limite diário de requisições.
 
 Este projeto teve como objetivo principal reunir todos os meus conhecimentos adquiridos até o momento e aplicá-los de maneira prática.
 
@@ -194,8 +194,8 @@ flowchart LR
 > **Para gerar imagens utilizando a API da Stability AI, o usuário precisa de `"créditos"`. Todo novo usuário**  
 > **recebe 25 créditos iniciais para geração de imagens. Além disso, existe um limite de requisições que podem**  
 > **ser feitas para o servidor em um determinado período de tempo (Esse limite é importante para evitar sobrecarga**  
-> **no servidor e garantir que todos os usuários tenham acesso justo aos recursos). Com o modelo `SD3-Medium`,**  
-> **(que está sendo utilizado) que custa 3,5 créditos por imagem, é possível gerar 7 imagens com os 25 créditos iniciais.**
+> **no servidor e garantir que todos os usuários tenham acesso justo aos recursos). Com o modelo `Stable Image Core`,**  
+> **(que está sendo utilizado) que custa 3 créditos por imagem, é possível gerar 8 imagens com os 25 créditos iniciais.**
 
 Para a instalação dos frameworks, middlewares e dependências que possibilitaram a criação do Sistema  
 é necessário que você possua as seguintes ferramentas:

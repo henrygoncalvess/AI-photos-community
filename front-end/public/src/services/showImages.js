@@ -13,6 +13,7 @@ export async function showImages(){
     responseData.map(value => {
         let p = document.createElement("p")
         let img = document.createElement("img")
+        let div = document.createElement("div")
         
         p.innerHTML = `
         <strong>Gerada por:</strong> ${value.name}<br>
@@ -20,8 +21,9 @@ export async function showImages(){
         
         img.setAttribute("src", value.urlImage)
     
-        containerImage.appendChild(p)
-        containerImage.appendChild(img)
+        div.appendChild(p)
+        div.appendChild(img)
+        containerImage.appendChild(div)
     })
     
     return containerImage

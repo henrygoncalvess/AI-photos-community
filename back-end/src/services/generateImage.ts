@@ -6,12 +6,11 @@ export async function generate(prompt: string, id: string) {
     const payload = {
       prompt: prompt,
       output_format: "jpeg",
-      model: "sd3-medium",
-      cfg_scale: 10
+      style_preset: "enhance"
     };
 
     const response = await axios.postForm(
-      `https://api.stability.ai/v2beta/stable-image/generate/sd3`,
+      `https://api.stability.ai/v2beta/stable-image/generate/core`,
       axios.toFormData(payload, new FormData()),
       {
         validateStatus: undefined,

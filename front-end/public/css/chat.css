@@ -17,7 +17,7 @@ body {
 }
 
 div#root{
-    margin-top: calc(50% - 50px);
+    margin-top: 200px;
 }
 
 header,
@@ -46,22 +46,30 @@ button{
 
 button:hover{ background-color: #ffc2292d; }
 
+section{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+section > div{
+    margin: 0px 10px;
+}
+
 img{
     display: block;
-    margin: auto;
     border: 1px solid black;
     border-radius: 3px;
-    width: 420px;
+    width: 460px;
 }
 
 p{
     font-size: 0.9em;
     margin-top: 30px;
     margin-bottom: 3px;
-}
-
-p:nth-child(3n){
-    text-align: right;
+    text-align: center;
+    width: 460px;
 }
 
 div#savedImage{
