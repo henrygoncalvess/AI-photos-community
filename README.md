@@ -1,8 +1,14 @@
 # AI-photos-community
 
-descrição
+O sistema desenvolvido é uma plataforma que funciona como uma "comunidade de fotos", onde os usuários podem gerar e compartilhar imagens geradas por uma IA de forma colaborativa. 
+Para acessar as funcionalidades, os usuários precisam se autenticar por meio de um sistema de cadastro simples, sign-up e login (registrar e entrar), que inclui a 
+verificação de e-mail e a utilização de tokens JWT. Após a autenticação, os usuários conseguem gerar imagens utilizando a API da Stability AI, integrada ao sistema.
 
-Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
+O projeto enfrenta uma limitação relacionada ao plano padrão da API da Stability AI, que permite a geração de apenas 7 imagens por usuário, álem de possuir um limite diário de requisições.
+
+Este projeto teve como objetivo principal reunir todos os meus conhecimentos adquiridos até o momento e aplicá-los de maneira prática.
+
+### Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
 
 <br>
 
