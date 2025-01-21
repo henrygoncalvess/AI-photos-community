@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import { env } from '../env';
 
 export function loginToken(request, reply, done){
     const authHeader = request.headers.authorization
@@ -12,7 +13,7 @@ export function loginToken(request, reply, done){
 
     const token = authHeader.split(" ")[1]
 
-    jwt.verify(token, String(process.env.JWT_SECRET), (error, data) => {
+    jwt.verify(token, env.JWT_SECRET, (error, data) => {
         if (error){
             reply.code(498).send({
                 message: 'Invalid or expired token',

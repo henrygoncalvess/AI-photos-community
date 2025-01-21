@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import axios from "axios";
 import FormData from "form-data";
+import { env }from '../env';
 
 export async function generate(prompt: string, id: string) {
     const payload = {
@@ -16,7 +17,7 @@ export async function generate(prompt: string, id: string) {
         validateStatus: undefined,
         responseType: "arraybuffer",
         headers: { 
-          Authorization: `Bearer ${process.env.STABILITY_API_KEY}`, 
+          Authorization: `Bearer ${env.STABILITY_API_KEY}`, 
           Accept: "image/*" 
         },
       },
