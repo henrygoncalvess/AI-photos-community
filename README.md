@@ -81,6 +81,7 @@ flowchart LR
     utils --- encryptAuthUser.ts("📄 **encryptAuthUser.ts**")@{ shape: card }
     src --- app.ts("📄 **app.ts**")@{ shape: card }
     src --- server.ts("📄 **server.ts**")@{ shape: card }
+    src --- env.ts("📄 **env.ts**")@{ shape: card }
     back --o uploads("📁 _uploads_")@{ shape: processes }
     back --o env("⚙️ .env")
     
