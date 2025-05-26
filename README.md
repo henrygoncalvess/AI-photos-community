@@ -1,5 +1,32 @@
 # AI-photos-community
 
+> Resultado final (tamanho de imagens modificado para melhor visualização)
+
+![photos-community](project-images/comunidade-de-fotos.png)
+
+<br>
+
+## 📋 Conteúdo
+
+- [Visão Geral](#Overview)
+- [Previews](#previews)
+- [Tecnologias utilizadas](#techs)
+- [Instrução de instalação](#installation)
+  - [Pré-requisitos](#prerequisites)
+  - [Clonando Repositório](#cloning-repo)
+  - [Configuração do Projeto](#config)
+    - [Back-End](#back-end)
+    - [Front-End](#front-end)
+- [Instrução de uso](#use)
+- [AI-photos-community endpoints](#photos-community-endpoints)
+- [Fluxo de autenticação](#auth-flow)
+- [Licença](#license)
+
+<br>
+
+<a name="Overview"></a>
+## 🔍 Visão Geral
+
 O sistema desenvolvido é uma plataforma que funciona como uma "comunidade de fotos", onde os usuários podem gerar e compartilhar imagens geradas por uma IA de forma colaborativa. 
 Para acessar as funcionalidades, os usuários precisam se autenticar por meio de um sistema de cadastro simples, sign-up e login (registrar e entrar), que inclui a 
 verificação de e-mail e a utilização de tokens JWT. Após a autenticação, os usuários conseguem gerar imagens utilizando a API da Stability AI, integrada ao sistema.
@@ -8,181 +35,107 @@ O projeto enfrenta uma limitação relacionada ao plano padrão da API da Stabil
 
 Este projeto teve como objetivo principal reunir todos os meus conhecimentos adquiridos até o momento e aplicá-los de maneira prática.
 
-### Prévia do projeto: 📷 [ver fotos](project-preview.md) 📷
+<a name="previews"></a>
+## 👀 Previews
 
-<br>
-
-**licença e tecnologias utilizadas**:  
-<img src="https://img.shields.io/github/license/henrygoncalvess/AI-photos-community?style=for-the-badge&labelColor=gray&color=97ca00"> <a href="https://fastify.dev/docs/latest/Guides/Getting-Started/"><img src="https://img.shields.io/badge/fastify-5.2.0-000000?style=for-the-badge&logo=fastify&logoColor=000000&labelColor=gray"></a> <a href="https://www.typescriptlang.org/docs/"><img src="https://img.shields.io/badge/typescript-5.7.2-3178C6?style=for-the-badge&logo=typescript&logoColor=3178C6&labelColor=gray"></a> <a href="https://zod.dev/"><img src="https://img.shields.io/badge/zod-3.24.1-3E67B1?style=for-the-badge&logo=zod&logoColor=darkblue&labelColor=gray"></a> <a href="https://nodejs.org/pt"><img src="https://img.shields.io/badge/node-22.12.0-5FA04E?style=for-the-badge&logo=node.js&logoColor=5FA04E&labelColor=gray"></a> <a href="https://www.mongodb.com/docs/"><img src="https://img.shields.io/badge/mongodb-6.12.0-47A248?style=for-the-badge&logo=mongodb&logoColor=47A248&labelColor=gray"></a> <a href="https://learning.postman.com/docs/introduction/overview/"><img src="https://img.shields.io/badge/postman-11.28.3-FF6C37?style=for-the-badge&logo=postman&logoColor=FF6C37&labelColor=gray"></a> <a href="https://jwt.io/"><img src="https://img.shields.io/badge/jwt-9.0.2-FD3456?style=for-the-badge&logo=jsonwebtokens&logoColor=cyan&labelColor=black"></a> <a href="https://vite.dev/guide/"><img src="https://img.shields.io/badge/vite-6.0.7-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=gray"></a>
-
-**Insalador de pacotes**:  
-<a href="https://docs.npmjs.com"><img src="https://img.shields.io/badge/npm-11.0.0-CB3837?style=for-the-badge&logo=npm&logoColor=CB3837&labelColor=gray"></a>
-
-**Ponto de Entrada**:  
-<span><img src="https://img.shields.io/badge/server.ts-333333?style=for-the-badge"></span>
-
-**Caminho**:  
-<span><img src="https://img.shields.io/badge/back--end/src/server.ts-333333?style=for-the-badge"></span>
-
-<br>
-
-<details open="open">
-<summary>Tabela de Conteúdos</summary>
+<details>
+<summary>📄 Documentação das rotas com Scalar API (Clique para expandir)</summary>
+<div align="center">
   
-- [Instrução de instalação](#instrução-de-instalação)
-  - [Pré-requisitos](#pré-requisitos)
-  - [Clonando Repositório](#clonando-repositório)
-  - [Configuração do Projeto](#configuração-do-projeto)
-    - [Back-End](#back-end)
-    - [Front-End](#front-end)
-- [Instrução de uso](#instrução-de-uso)
-- [AI-photos-community endpoints](#ai-photos-community-endpoints)
-- [Fluxo de autenticação](#fluxo-de-autenticação)
+  ![routes-documentation-preview](project-images/documentation-routes.png)
   
+</div>
+</details>
+
+<details>
+<summary>📷 Página inicial (Clique para expandir)</summary>
+<div align="center">
+  
+  ![home](project-images/home.png)
+  
+</div>
+</details>
+
+<details>
+<summary>📷 Página para se registrar (mostrando erros da validação) (Clique para expandir)</summary>
+<div align="center">
+  
+  ![sign-up](project-images/sign-up.png)
+  
+</div>
+</details>
+
+<details>
+<summary>📷 Página de Login, sem estar registrado (Clique para expandir)</summary>
+<div align="center">
+  
+  ![login sem registro](project-images/entrar-sem-se-registrar.png)
+  
+</div>
+</details>
+
+<details>
+<summary>✉️ Mensagens de e-mail enviado (Clique para expandir)</summary>
+<div align="center">
+  
+  ![sign-up](project-images/email-novo.png)
+  ![sign-up](project-images/email-registrado.png)
+  
+</div>
+</details>
+
+<details>
+<summary>✉️ E-mail recebido (Clique para expandir)</summary>
+<div align="center">
+  
+  ![email recebido](project-images/verificação-de-email.png)
+  
+</div>
+</details>
+
+<details>
+<summary>📷 Página de login após e-mail confirmado (com erro de validação) (Clique para expandir)</summary>
+<div align="center">
+  
+  ![login com registro](project-images/bem-vindo-login.png)
+  
+</div>
+</details>
+
+<details>
+<summary>📷 Página do chat após fazer login com sucesso (Clique para expandir)</summary>
+<div align="center">
+  
+  ![login com sucesso](project-images/pedindo-imagem.png)
+  
+</div>
+</details>
+
+<details>
+<summary>🎥 Simulação da geração de uma imagem (Clique para expandir)</summary>
+<div align="center">
+  
+https://github.com/user-attachments/assets/713c84a2-299f-4f22-a546-3aaf501ee947
+  
+</div>
 </details>
 
 <br>
 
-``` mermaid
----
-title:  Estrutura de pastas (back-end)
----
-flowchart LR
-    sistema("📁 _AI_photos_community_")@{ shape: processes }
-    sistema --o back("📁 _back-end_")@{ shape: processes }
-    back ---o src("📁 _src_")@{ shape: processes }
-    src --o config("📁 _config_")@{ shape: processes }
-    config --- db.ts("📄 **db.ts**")@{ shape: card }
-    src --o controllers("📁 _controllers_")@{ shape: processes }
-    controllers --- authController.ts("📄 **authController.ts**")@{ shape: card }
-    controllers --- chatController.ts("📄 **chatController.ts**")@{ shape: card }
-    controllers --- usersController.ts("📄 **usersController.ts**")@{ shape: card }
-    src --o middle("📁 _middlewares_")@{ shape: processes }
-    middle --- auth.ts("📄 **auth.ts**")@{ shape: card }
-    src --o models("📁 _models_")@{ shape: processes }
-    models --- authModel.ts("📄 **authModel.ts**")@{ shape: card }
-    models --- chatModel.ts("📄 **chatModel.ts**")@{ shape: card }
-    models --- usersModel.ts("📄 **authModel.ts**")@{ shape: card }
-    src --o routes("📁 _routes_")@{ shape: processes }
-    routes --- login.ts("📄 **login.ts**")@{ shape: card }
-    routes --- chat.ts("📄 **chat.ts**")@{ shape: card }
-    routes --- users.ts("📄 **users.ts**")@{ shape: card }
-    src --o services("📁 _services_")@{ shape: processes }
-    services --- email.ts("📄 **email.ts**")@{ shape: card }
-    services --- generateImage.ts("📄 **generateImage.ts**")@{ shape: card }
-    src --o types("📁 _types_")@{ shape: processes }
-    types --- authInterface.ts("📄 **authInterface.ts**")@{ shape: card }
-    types --- fastify.ts("📄 **fastify.ts**")@{ shape: card }
-    src --o utils("📁 _utils_")@{ shape: processes }
-    utils --- checkDocument.ts("📄 **checkDocument.ts**")@{ shape: card }
-    utils --- connectCollections.ts("📄 **connectCollections.ts**")@{ shape: card }
-    utils --- createHTMLMessage.ts("📄 **createHTMLMessage.ts**")@{ shape: card }
-    utils --- decryptUser.ts("📄 **decryptUser.ts**")@{ shape: card }
-    utils --- encryptAuthUser.ts("📄 **encryptAuthUser.ts**")@{ shape: card }
-    src --- app.ts("📄 **app.ts**")@{ shape: card }
-    src --- server.ts("📄 **server.ts**")@{ shape: card }
-    src --- env.ts("📄 **env.ts**")@{ shape: card }
-    back --o uploads("📁 _uploads_")@{ shape: processes }
-    back --o env("⚙️ .env")
-    
+<a name="techs"></a>
+## 🛠️ Tecnologias utilizadas
+<a href="https://fastify.dev/docs/latest/Guides/Getting-Started/"><img src="https://img.shields.io/badge/fastify-5.2.0-000000?style=for-the-badge&logo=fastify&logoColor=000000&labelColor=gray"></a> <a href="https://www.typescriptlang.org/docs/"><img src="https://img.shields.io/badge/typescript-5.7.2-3178C6?style=for-the-badge&logo=typescript&logoColor=3178C6&labelColor=gray"></a> <a href="https://zod.dev/"><img src="https://img.shields.io/badge/zod-3.24.1-3E67B1?style=for-the-badge&logo=zod&logoColor=darkblue&labelColor=gray"></a> <a href="https://nodejs.org/pt"><img src="https://img.shields.io/badge/node-22.12.0-5FA04E?style=for-the-badge&logo=node.js&logoColor=5FA04E&labelColor=gray"></a> <a href="https://www.mongodb.com/docs/"><img src="https://img.shields.io/badge/mongodb-6.12.0-47A248?style=for-the-badge&logo=mongodb&logoColor=47A248&labelColor=gray"></a> <a href="https://learning.postman.com/docs/introduction/overview/"><img src="https://img.shields.io/badge/postman-11.28.3-FF6C37?style=for-the-badge&logo=postman&logoColor=FF6C37&labelColor=gray"></a> <a href="https://jwt.io/"><img src="https://img.shields.io/badge/jwt-9.0.2-FD3456?style=for-the-badge&logo=jsonwebtokens&logoColor=cyan&labelColor=black"></a> <a href="https://vite.dev/guide/"><img src="https://img.shields.io/badge/vite-6.0.7-646CFF?style=for-the-badge&logo=vite&logoColor=white&labelColor=gray"></a>
 
-
-
-    %%CLASSES
-    classDef default fill:#191919,color:white;
-    
-    classDef pasta fill:#403211,stroke:#c99e34,stroke-width:2px,color:#fff1cc;
-
-    classDef envStyle fill:#000000,stroke:#000000,color:gray;
-
-    %%aplicação de classes
-    class sistema,back,src,config,controllers,middle,models,routes,services,utils,types,uploads pasta
-
-    class env envStyle
-
-
-
-    %%LINKS
-    
-    %%pastas
-    linkStyle 0,1,2,4,8,10,14,18,21,24 stroke:#f2c04b
-
-    %%arquivos
-    linkStyle default stroke-width:2px;
-```
-
-``` mermaid
----
-title:  Estrutura de pastas (fron-ent)
----
-flowchart LR
-    sistema("📁 _AI_photos_community_")@{ shape: processes }
-    sistema --o front("📁 _front-end_")@{ shape: processes }
-    front ---o public("📁 _public_")@{ shape: processes }
-    public --- index.html("📄 **index.html**")@{ shape: card }
-    public --- email.html("📄 **email.html**")@{ shape: card }
-    public --o css("📁 _css_")@{ shape: processes }
-    public --o images("📁 _images_")@{ shape: processes }
-    public --o src("📁 _src_")@{ shape: processes }
-    css --- chat.css("📄 **chat.css**")@{ shape: card }
-    css --- home.css("📄 **home.css**")@{ shape: card }
-    css --- login.css("📄 **login.css**")@{ shape: card }
-    css --- sign.css("📄 **sign-up.css**")@{ shape: card }
-    images --- background.png("📄 **background.png**")@{ shape: card }
-    images --- important_icon.png("📄 **important_icon.png**")@{ shape: card }
-    images --- verified_icon.png("📄 **verified_icon.png**")@{ shape: card }
-    src ---o components("📁 _components_")@{ shape: processes }
-    src ---o pages("📁 _pages_")@{ shape: processes }
-    src ---o services("📁 _services_")@{ shape: processes }
-    src ---o utils("📁 _utils_")@{ shape: processes }
-    src ---- App.js("📄 **App.js**")@{ shape: card }
-    src ---- main.js("📄 **main.js**")@{ shape: card }
-    components --- Button.js("📄 **Button.js**")@{ shape: card }
-    components --- InputForm.js("📄 **InputForm.js**")@{ shape: card }
-    components --- LoadingScreen.js("📄 **LoadingScreen.js**")@{ shape: card }
-    components --- LoginError.js("📄 **LoginError.js**")@{ shape: card }
-    components --- SetupLoginForm.js("📄 **SetupLoginForm.js**")@{ shape: card }
-    components --- Sign-upMessage.js("📄 **Sign-upMessage.js**")@{ shape: card }
-    pages --- chat.js("📄 **chat.js**")@{ shape: card }
-    pages --- home.js("📄 **home.js**")@{ shape: card }
-    pages --- login.js("📄 **login.js**")@{ shape: card }
-    pages --- sign.js("📄 **sign-up.js**")@{ shape: card }
-    services --- checkUserImage.js("📄 **checkUserImage.js**")@{ shape: card }
-    services --- confirmLogin.js("📄 **confirmLogin.js**")@{ shape: card }
-    services --- generateImage.js("📄 **generateImage.js**")@{ shape: card }
-    services --- handleAuthorization.js("📄 **handleAuthorization.js**")@{ shape: card }
-    services --- sendVerificationEmail.js("📄 **sendVerificationEmail.js**")@{ shape: card }
-    services --- showImages.js("📄 **showImages.js**")@{ shape: card }
-    utils --- validator.js("📄 **validator.js**")@{ shape: card }
-
-
-
-    %%CLASSES
-    classDef default fill:#191919,color:white;
-    
-    classDef pasta fill:#403211,stroke:#c99e34,stroke-width:2px,color:#fff1cc;
-
-    classDef envStyle fill:#000000,stroke:#000000,color:gray;
-
-    %%aplicação de classes
-    class sistema,front,public,css,images,src,components,pages,services,utils pasta
-
-
-
-    %%LINKS
-    
-    %%pastas
-    linkStyle 0,1,4,5,6,14,15,16,17 stroke:#f2c04b
-
-    %%arquivos
-    linkStyle default stroke-width:2px;
-```
+**Insalador de pacotes**:  
+<a href="https://docs.npmjs.com"><img src="https://img.shields.io/badge/npm-11.0.0-CB3837?style=for-the-badge&logo=npm&logoColor=CB3837&labelColor=gray"></a>
 
 <br>
 
-## Instrução de instalação
+<a name="installation"></a>
+## ⚙️ Instrução de instalação
 
-### Pré-requisitos
+<a name="prerequisites"></a>
+### 📦 Pré-requisitos
 > [!IMPORTANT]
 > **Possuir uma "senha de app" do google**  
 > [Tutorial para criar uma senha de app](https://support.google.com/accounts/answer/185833?hl=pt-br)
@@ -211,12 +164,13 @@ Para fazer requisições e testar as respostas da API:
 - <img src="https://cdn.simpleicons.org/postman/FF6C37/FF6C37" width=24>&nbsp; **Postman** - [Tutorial de instalação](https://www.postman.com/downloads/)
 
 > [!tip]
-> <img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>&nbsp; Também é possível fazer requisições pela linha de comando. &nbsp;<img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>  
+> Também é possível fazer requisições pela linha de comando. &nbsp;<img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>  
 [Clique aqui](https://www.campuscode.com.br/conteudos/comandos-curl-para-testar-requisicoes-api) para aprender a fazer requisições pelo terminal
 
 <br>
 
-### Clonando Repositório
+<a name="cloning-repo"></a>
+### 💻 Clonando Repositório
 No Terminal, certifique de que você está na pasta onde vai ficar o repositório
 
 `repositorios\clonados`
@@ -240,8 +194,10 @@ vite.config.js
 
 <br>
 
-### Configuração do Projeto
+<a name="config"></a>
+### ⚙️ Configuração do Projeto
 
+<a name="back-end"></a>
 ### Back-End
 
 #### 1. Inicialize o projeto Node.js
@@ -340,6 +296,7 @@ STABILITY_API_KEY = "sua api_key no perfil do Stability AI"
 
 <br>
 
+<a name="front-end"></a>
 ### Front-End
 
 #### 1. Inicialize o projeto Node.js
@@ -392,7 +349,8 @@ export default defineConfig({
 
 <br>
 
-## Instrução de uso
+<a name="use"></a>
+## 📜 Instrução de uso
 
 #### 1. inicie o servidor de back-end em um terminal.
 
@@ -410,7 +368,8 @@ npm run dev
 
 <br>
 
-## AI-photos-community endpoints
+<a name="photos-community-endpoints"></a>
+## 📍 AI-photos-community endpoints
 
 No Postman *ou na linha de comando*  
 teste manualmente as respostas da API do sistema seguindo os **endpoints** abaixo.
@@ -425,7 +384,8 @@ teste manualmente as respostas da API do sistema seguindo os **endpoints** abaix
 
 ![routes-documentation-preview](project-images/documentation-routes.png)
 
-## Fluxo de autenticação
+<a name="auth-flow"></a>
+## 🔐 Fluxo de autenticação
 
 ``` mermaid
 ---
@@ -495,3 +455,17 @@ sequenceDiagram
     s -->> c: avisa que não gerou e é mostrado <br> a tela de geração com IA
     end
 ```
+
+<br>
+
+<a name="license"></a>
+## 📄 Licença
+
+Este projeto está licenciado sob a [MIT License](https://github.com/henrygoncalvess/AI-photos-community/blob/main/LICENSE).
+
+---
+
+<div align="center">
+  <p>Feito com ❤️ por <a href="https://github.com/henrygoncalvess">Henry Gonçalves</a></p>
+  <p>Deixe uma ⭐ no repositório se ele for útil para você!</p>
+</div>
