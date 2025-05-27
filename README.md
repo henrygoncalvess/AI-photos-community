@@ -39,7 +39,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 ## 👀 Previews
 
 <details>
-<summary>📄 Documentação das rotas com Scalar API (Clique para expandir)</summary>
+<summary>📄 Documentação das rotas com Scalar API <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![routes-documentation-preview](project-images/documentation-routes.png)
@@ -48,7 +48,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>📷 Página inicial (Clique para expandir)</summary>
+<summary>📷 Página inicial <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![home](project-images/home.png)
@@ -57,7 +57,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>📷 Página para se registrar (mostrando erros da validação) (Clique para expandir)</summary>
+<summary>📷 Página para se registrar (mostrando erros da validação) <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![sign-up](project-images/sign-up.png)
@@ -66,7 +66,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>📷 Página de Login, sem estar registrado (Clique para expandir)</summary>
+<summary>📷 Página de Login, sem estar registrado <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![login sem registro](project-images/entrar-sem-se-registrar.png)
@@ -75,7 +75,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>✉️ Mensagens de e-mail enviado (Clique para expandir)</summary>
+<summary>✉️ Mensagens de e-mail enviado <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![sign-up](project-images/email-novo.png)
@@ -85,7 +85,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>✉️ E-mail recebido (Clique para expandir)</summary>
+<summary>✉️ E-mail recebido <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![email recebido](project-images/verificação-de-email.png)
@@ -94,7 +94,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>📷 Página de login após e-mail confirmado (com erro de validação) (Clique para expandir)</summary>
+<summary>📷 Página de login após e-mail confirmado (com erro de validação) <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![login com registro](project-images/bem-vindo-login.png)
@@ -103,7 +103,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>📷 Página do chat após fazer login com sucesso (Clique para expandir)</summary>
+<summary>📷 Página do chat após fazer login com sucesso <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![login com sucesso](project-images/pedindo-imagem.png)
@@ -112,7 +112,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>🎥 Simulação da geração de uma imagem (Clique para expandir)</summary>
+<summary>🎥 Simulação da geração de uma imagem <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
 https://github.com/user-attachments/assets/713c84a2-299f-4f22-a546-3aaf501ee947
