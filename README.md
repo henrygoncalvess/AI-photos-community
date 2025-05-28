@@ -178,20 +178,6 @@ No Terminal, certifique de que você está na pasta onde vai ficar o repositóri
 git clone https://github.com/henrygoncalvess/AI-photos-community.git
 ```
 
-certifique de que exista um arquivo chamado `.gitignore` na raiz do projeto  
-com pelo menos a extensão de arquivo "`.env`" incluída
-
-`repositorios\clonados\AI-photos-community\.gitignore`
-``` .env
-.env
-node_modules/
-uploads/
-package.json
-package-lock.json
-tsconfig.json
-vite.config.js
-```
-
 <br>
 
 <a name="config"></a>
@@ -200,86 +186,14 @@ vite.config.js
 <a name="back-end"></a>
 ### Back-End
 
-#### 1. Inicialize o projeto Node.js
-
-`repositorios\clonados\AI-photos-community\back-end`
-``` bash
-npm init
-```
-
-#### 2. Adicione o seguinte código ao package.json:
-
-`repositorios\clonados\AI-photos-community\back-end\package.json`
-``` json
-"scripts": {
-  "dev": "tsx --watch src/server.ts"
-},
-"dependencies": {
-  "@fastify/cors": "10.0.2",
-  "@fastify/static": "8.0.4",
-  "@fastify/swagger": "9.4.0",
-  "@scalar/fastify-api-reference": "1.25.100",
-  "axios": "1.7.9",
-  "bcryptjs": "2.4.3",
-  "dotenv": "16.4.7",
-  "fastify": "5.2.0",
-  "fastify-type-provider-zod": "4.0.2",
-  "form-data": "4.0.1",
-  "jsonwebtoken": "9.0.2",
-  "mongodb": "6.12.0",
-  "nodemailer": "6.9.16",
-  "zod": "3.24.1"
-},
-"devDependencies": {
-  "@types/bcryptjs": "2.4.6",
-  "@types/jsonwebtoken": "9.0.7",
-  "@types/node": "22.10.5",
-  "@types/nodemailer": "6.4.17",
-  "tsx": "4.19.2",
-  "typescript": "5.7.2"
-}
-```
-
-#### 3. com as dependências listadas em `package.json`, inicie a instalação.
+#### 1. inicie a instalação das dependências.
 
 `repositorios\clonados\AI-photos-community\back-end`
 ``` bash
 npm install
 ```
 
-#### 4. Inicialize o TypeScript e configure o arquivo `tsconfig.json`.
-
-`repositorios\clonados\AI-photos-community\back-end`
-``` bash
-npx tsc --init
-```
-
-#### 5. Atualize o `tsconfig.json` com as seguintes configurações básicas:
-_este padrão de arquivo typescript está de acordo com esta [documentação](https://github.com/tsconfig/bases)_  
-_baseado na versão node utilizada_
-
-`repositorios\clonados\AI-photos-community\back-end\tsconfig.json`
-``` json
-{
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "Node 22",
-  "_version": "22.0.0",
-
-  "compilerOptions": {
-    "lib": ["es2023"],
-    "module": "node16",
-    "target": "es2022",
-
-    "noImplicitAny": false,
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "moduleResolution": "node16"
-  }
-}
-```
-
-**6. crie o arquivo `.env` na raiz do projeto.**  
+**2. crie o arquivo `.env` na raiz do projeto.**  
 **configure as variáveis de acordo com seus dados.**  
 **utilize a senha de aplicativo que foi criada em** [Tutorial para criar uma senha de app](#pré-requisitos)
 
@@ -299,52 +213,11 @@ STABILITY_API_KEY = "sua api_key no perfil do Stability AI"
 <a name="front-end"></a>
 ### Front-End
 
-#### 1. Inicialize o projeto Node.js
-
-`repositorios\clonados\AI-photos-community\front-end`
-``` bash
-npm init
-```
-
-#### 2. Adicione o seguinte código ao package.json:
-
-`repositorios\clonados\AI-photos-community\front-end\package.json`
-``` json
-"scripts": {
-  "dev": "npx vite"
-},
-"dependencies": {
-  "zod": "3.24.1"
-},
-"devDependencies": {
-  "vite": "6.0.7"
-}
-```
-
-> [!IMPORTANT]
-> Certifique-se de que:  
-> `"type": "module"` dentro de `package.json`
-
-#### 3. com as dependências listadas em `package.json`, inicie a instalação
+#### 1. inicie a instalação das dependências.
 
 `repositorios\clonados\AI-photos-community\front-end`
 ``` bash
 npm install
-```
-
-#### 4. Crie um arquivo chamado `vite.config.js` na raiz do projeto e configure-o
-
-`repositorios\clonados\AI-photos-community\front-end\vite.config.js`
-``` js
-import { defineConfig } from "vite";
-
-export default defineConfig({
-    root: "public",
-    server: {
-        port: 3001,
-        open: "home.html"
-    }
-})
 ```
 
 <br>
@@ -379,10 +252,6 @@ teste manualmente as respostas da API do sistema seguindo os **endpoints** abaix
 > <img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>&nbsp; acesse este link, caso não saiba fazer requisições pela linha de comando [Clique aqui](https://www.campuscode.com.br/conteudos/comandos-curl-para-testar-requisicoes-api) &nbsp;<img src="https://cdn.simpleicons.org/gnubash/000000/ffffff" width=24>
 
 #### em seu navegador, acesse [`http://localhost:3000/docs`](http://localhost:3000/docs) para acessar a documentação das rotas
-
-`PRÉVIA`:
-
-![routes-documentation-preview](project-images/documentation-routes.png)
 
 <a name="auth-flow"></a>
 ## 🔐 Fluxo de autenticação
