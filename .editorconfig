@@ -1,0 +1,7 @@
+# flag to identify which file defines when settings will stop being applied within a chain of other files where settings have accumulated
+root = true
+
+
+[*]
+indent_style = space
+indent_size = 2
