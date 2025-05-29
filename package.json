@@ -1,0 +1,18 @@
+{
+  "name": "ai-photos-community",
+  "version": "1.0.0",
+  "description": "O sistema desenvolvido é uma plataforma que funciona como uma 'comunidade de fotos', onde os usuários podem gerar e compartilhar imagens geradas por uma IA. Para acessar as funcionalidades, os usuários precisam se autenticar por meio de um sistema de cadastro simples, sign-up e login (registrar e entrar).",
+  "scripts": {
+    "lint:prettier:check": "prettier --check .",
+    "lint:prettier:fix": "prettier --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrygoncalvess/AI-photos-community.git"
+  },
+  "author": "Henry Gonçalves",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^3.5.3"
+  }
+}
