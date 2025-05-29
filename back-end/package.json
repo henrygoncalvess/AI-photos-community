@@ -1,0 +1,35 @@
+{
+  "name": "ai-photos-community",
+  "version": "1.0.0",
+  "description": "O sistema desenvolvido é uma plataforma que funciona como uma \"comunidade de fotos\", onde os usuários podem gerar e compartilhar imagens geradas por uma IA. Para acessar as funcionalidades, os usuários precisam se autenticar por meio de um sistema de cadastro simples, sign-up e login (registrar e entrar).",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "tsx --watch src/server.ts"
+  },
+  "dependencies": {
+    "@fastify/cors": "10.0.2",
+    "@fastify/static": "8.0.4",
+    "@fastify/swagger": "9.4.0",
+    "@scalar/fastify-api-reference": "1.25.100",
+    "axios": "1.7.9",
+    "bcryptjs": "2.4.3",
+    "dotenv": "16.4.7",
+    "fastify": "5.2.0",
+    "fastify-type-provider-zod": "4.0.2",
+    "form-data": "4.0.1",
+    "jsonwebtoken": "9.0.2",
+    "mongodb": "6.12.0",
+    "nodemailer": "6.9.16",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "2.4.6",
+    "@types/jsonwebtoken": "9.0.7",
+    "@types/node": "22.10.5",
+    "@types/nodemailer": "6.4.17",
+    "tsx": "4.19.2",
+    "typescript": "5.7.2"
+  },
+  "author": "Henry Gonçalves",
+  "license": "ISC"
+}
