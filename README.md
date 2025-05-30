@@ -1,4 +1,4 @@
-# AI-photos-community
+# AI-photos-community - não concluído (em processo de refatoração)
 
 > Resultado final (tamanho de imagens modificado para melhor visualização)
 
