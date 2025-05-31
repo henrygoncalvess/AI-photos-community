@@ -1,26 +1,29 @@
 import { ObjectId } from "mongodb";
 import { generate } from "../services/generateImage";
-import { usersCollection } from "../utils/connectCollections"
+import { usersCollection } from "../utils/connectCollections";
 
 export class ChatModel {
-    static async requestImage({ prompt, id }: { prompt: string, id: string }){
-        const urlImage = await generate(prompt, id)
+  static async requestImage({ prompt, id }: { prompt: string; id: string }) {
+    const urlImage = await generate(prompt, id);
 
-        if (typeof(urlImage) === "string"){
-            const collection = await usersCollection()
+    if (typeof urlImage === "string") {
+      const collection = await usersCollection();
 
-            const mongoObjectId = ObjectId.createFromHexString(id)
+      const mongoObjectId = ObjectId.createFromHexString(id);
 
-            const updatedUserInfo = {
-                urlImage,
-                prompt
-            }
+      const updatedUserInfo = {
+        urlImage,
+        prompt,
+      };
 
-            collection.updateOne({ _id: new ObjectId(mongoObjectId)}, { $set: updatedUserInfo })
+      collection.updateOne(
+        { _id: new ObjectId(mongoObjectId) },
+        { $set: updatedUserInfo },
+      );
 
-            return { message: "generated", urlImage, ok: true }
-        }else{
-            return urlImage
-        }
+      return { message: "generated", urlImage, ok: true };
+    } else {
+      return urlImage;
     }
+  }
 }

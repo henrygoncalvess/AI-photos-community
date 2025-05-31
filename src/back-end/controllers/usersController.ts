@@ -1,47 +1,40 @@
-import { UsersModel } from "../models/usersModel"
+import { UsersModel } from "../models/usersModel";
 
 export class UsersController {
-    static async all(request, reply){
-        try{
-            const allUsers = await UsersModel.findAll()
+  static async all(request, reply) {
+    try {
+      const allUsers = await UsersModel.findAll();
 
-            reply.status(200).send(allUsers)
-
-        }catch (error){
-            reply.status(500)
-            throw error
-        }
+      reply.status(200).send(allUsers);
+    } catch (error) {
+      reply.status(500);
+      throw error;
     }
+  }
 
-    static async verify(request, reply){
-        try{
-            const validUser = await UsersModel.check(request.body)
+  static async verify(request, reply) {
+    try {
+      const validUser = await UsersModel.check(request.body);
 
-            if (validUser.ok) reply.status(200).send(validUser)
-
-            else if (validUser.password == false) reply.status(403).send(validUser)
-                    
-            else reply.status(400).send(validUser)
-
-        }catch (error){
-            reply.status(500)
-            throw error
-        }
+      if (validUser.ok) reply.status(200).send(validUser);
+      else if (validUser.password == false) reply.status(403).send(validUser);
+      else reply.status(400).send(validUser);
+    } catch (error) {
+      reply.status(500);
+      throw error;
     }
+  }
 
-    static async check(request, reply){
-        try{
-            const response = await UsersModel.checkImage(request.body)
+  static async check(request, reply) {
+    try {
+      const response = await UsersModel.checkImage(request.body);
 
-            if (response.ok) reply.status(200).send(response)
-
-            else if (response.image == false) reply.status(401).send(response)
-                    
-            else reply.status(400).send(response)
-
-        }catch (error){
-            reply.status(500)
-            throw error
-        }
+      if (response.ok) reply.status(200).send(response);
+      else if (response.image == false) reply.status(401).send(response);
+      else reply.status(400).send(response);
+    } catch (error) {
+      reply.status(500);
+      throw error;
     }
+  }
 }

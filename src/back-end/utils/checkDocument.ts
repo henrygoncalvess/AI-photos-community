@@ -1,11 +1,11 @@
-import { usersCollection } from "./connectCollections"
+import { usersCollection } from "./connectCollections";
 
-export async function checkIfUserDocumentExists(findQuery: object){
-    const users = await usersCollection()
-    
-    const userExists = await users.find(findQuery).next()
+export async function checkIfUserDocumentExists(findQuery: object) {
+  const users = await usersCollection();
 
-    if (userExists !== null) return userExists
+  const userExists = await users.find(findQuery).next();
 
-    return false
+  if (userExists !== null) return userExists;
+
+  return false;
 }

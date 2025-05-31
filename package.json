@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "tsx --watch src/server.ts",
     "lint:prettier:check": "prettier --check .",
-    "lint:prettier:fix": "prettier --fix .",
+    "lint:prettier:fix": "prettier --write .",
     "vite:dev": "npx vite"
   },
   "dependencies": {

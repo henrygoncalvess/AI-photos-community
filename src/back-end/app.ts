@@ -1,5 +1,5 @@
-import { fastify } from 'fastify';
-import { fastifyCors } from '@fastify/cors';
+import { fastify } from "fastify";
+import { fastifyCors } from "@fastify/cors";
 // import { fastifySwagger } from '@fastify/swagger';
 // import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 // import { authRoutes, authRoutesMiddle } from './routes/login';
@@ -8,53 +8,53 @@ import { fastifyCors } from '@fastify/cors';
 // import path from 'node:path';
 
 class App {
-    public fastify
+  public fastify;
 
-    constructor(){
-        // this.fastify = fastify().withTypeProvider<ZodTypeProvider>()
-        this.#middlewares()
-    }
+  constructor() {
+    // this.fastify = fastify().withTypeProvider<ZodTypeProvider>()
+    this.#middlewares();
+  }
 
-    #middlewares(){
-        this.fastify.register(fastifyCors, { origin: 'http://localhost:3000' });
+  #middlewares() {
+    this.fastify.register(fastifyCors, { origin: "http://localhost:3000" });
 
-        // this.fastify.setValidatorCompiler(validatorCompiler);
+    // this.fastify.setValidatorCompiler(validatorCompiler);
 
-        // this.fastify.setSerializerCompiler(serializerCompiler);
+    // this.fastify.setSerializerCompiler(serializerCompiler);
 
-        // this.fastify.register(fastifySwagger, {
-        //     openapi: {
-        //         info: {
-        //             title: "AI-photos-community",
-        //             version: '1.0.0'
-        //         },
-        //     },
-        //     transform: jsonSchemaTransform
-        // });
+    // this.fastify.register(fastifySwagger, {
+    //     openapi: {
+    //         info: {
+    //             title: "AI-photos-community",
+    //             version: '1.0.0'
+    //         },
+    //     },
+    //     transform: jsonSchemaTransform
+    // });
 
-        // this.fastify.register(import("@scalar/fastify-api-reference"), {
-        //     routePrefix: '/docs',
-        //     configuration: {
-        //         hideDownloadButton: true,
-        //         forceDarkModeState: 'dark',
-        //         defaultHttpClient: {
-        //             targetKey: 'js',
-        //             clientKey: 'fetch',
-        //         }
-        //     }
-        // });
+    // this.fastify.register(import("@scalar/fastify-api-reference"), {
+    //     routePrefix: '/docs',
+    //     configuration: {
+    //         hideDownloadButton: true,
+    //         forceDarkModeState: 'dark',
+    //         defaultHttpClient: {
+    //             targetKey: 'js',
+    //             clientKey: 'fetch',
+    //         }
+    //     }
+    // });
 
-        // this.fastify.register(import("@fastify/static"), {
-        //     root: path.join(__dirname, "../uploads"),
-        //     prefix: "/images"
-        // })
-        
-        this.fastify.register()
-        // this.fastify.register(authRoutes);
-        // this.fastify.register(authRoutesMiddle);
-        // this.fastify.register(usersRoutes);
-        // this.fastify.register(chatRoutes);
-    }
+    // this.fastify.register(import("@fastify/static"), {
+    //     root: path.join(__dirname, "../uploads"),
+    //     prefix: "/images"
+    // })
+
+    this.fastify.register();
+    // this.fastify.register(authRoutes);
+    // this.fastify.register(authRoutesMiddle);
+    // this.fastify.register(usersRoutes);
+    // this.fastify.register(chatRoutes);
+  }
 }
 
-export default new App().fastify
+export default new App().fastify;

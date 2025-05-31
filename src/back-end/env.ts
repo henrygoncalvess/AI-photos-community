@@ -1,13 +1,13 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const envSchema = z.object({
-    EMAIL: z.string().email(),
-    PASSWORD_EMAIL: z.string(),
-    URI_MONGODB: z.string().url(),
-    DATABASE: z.string(),
-    COLLECTION: z.string(),
-    JWT_SECRET: z.string(),
-    STABILITY_API_KEY: z.string()
-})
+  EMAIL: z.string().email(),
+  PASSWORD_EMAIL: z.string(),
+  URI_MONGODB: z.string().url(),
+  DATABASE: z.string(),
+  COLLECTION: z.string(),
+  JWT_SECRET: z.string(),
+  STABILITY_API_KEY: z.string(),
+});
 
-export const env = envSchema.parse(process.env)
+export const env = envSchema.parse(process.env);
