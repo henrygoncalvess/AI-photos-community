@@ -1,5 +1,6 @@
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
+import { statusRoutes } from "./routes/status";
 // import { fastifySwagger } from '@fastify/swagger';
 // import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 // import { authRoutes, authRoutesMiddle } from './routes/login';
@@ -12,6 +13,7 @@ class App {
 
   constructor() {
     // this.fastify = fastify().withTypeProvider<ZodTypeProvider>()
+    this.fastify = fastify()
     this.#middlewares();
   }
 
@@ -49,7 +51,7 @@ class App {
     //     prefix: "/images"
     // })
 
-    this.fastify.register();
+    this.fastify.register(statusRoutes, { prefix: "/api/v1" });
     // this.fastify.register(authRoutes);
     // this.fastify.register(authRoutesMiddle);
     // this.fastify.register(usersRoutes);
