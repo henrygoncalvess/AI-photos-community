@@ -1,0 +1,9 @@
+services:
+  database:
+    container_name: "mongodb-dev"
+    image: "mongodb/mongodb-community-server:7.0-ubi8"
+    env_file:
+      - ../../../.env
+    ports:
+      - "27017:27017"
+      
