@@ -9,7 +9,7 @@
     "services:up": "docker compose -f src/back-end/infra/compose.yaml up -d",
     "services:stop": "docker compose -f src/back-end/infra/compose.yaml stop",
     "services:down": "docker compose -f src/back-end/infra/compose.yaml down",
-    "test": "jest",
+    "test": "tsc --noEmit --skipLibCheck src/back-end/**/*.ts && jest",
     "test:watch": "jest --watchAll",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
