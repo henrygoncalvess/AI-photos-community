@@ -1,4 +1,4 @@
-import { client } from "../config/db";
+import { client } from "../infra/db";
 import { env } from "../env";
 
 export async function usersCollection() {

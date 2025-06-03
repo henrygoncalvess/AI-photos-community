@@ -3,7 +3,7 @@ import { AuthModel } from "../models/authModel";
 export class AuthController {
   static async sigup(request, reply) {
     try {
-      const sendMail = await AuthModel.signup(request.body);
+      const sendMail = await AuthModel.signup(request.body) as { registered: boolean };
 
       if (sendMail.registered) {
         reply.status(400).send(sendMail);

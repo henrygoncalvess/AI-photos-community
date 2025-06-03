@@ -23,7 +23,7 @@ export class ChatModel {
 
       return { message: "generated", urlImage, ok: true };
     } else {
-      return urlImage;
+      return { message: "...", urlImage, ok: false };
     }
   }
 }
