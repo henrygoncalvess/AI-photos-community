@@ -5,12 +5,10 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "tsx --watch src/back-end/server.ts",
-    "dev:infra": "tsx --watch src/back-end/infra/db.ts",
     "services:up": "docker compose -f src/back-end/infra/compose.yaml up -d",
     "services:stop": "docker compose -f src/back-end/infra/compose.yaml stop",
     "services:down": "docker compose -f src/back-end/infra/compose.yaml down",
     "test": "tsc -p src/back-end --noEmit --skipLibCheck && jest",
-    "test:watch": "tsc -p src/back-end --noEmit --skipLibCheck && jest --watchAll",
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "vite:dev": "npx vite"

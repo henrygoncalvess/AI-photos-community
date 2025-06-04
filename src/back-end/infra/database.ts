@@ -9,14 +9,20 @@ export const client = new MongoClient(env.URI_MONGODB, {
   },
 });
 
-async function run() {
+async function query(queryObject) {
   try {
     await client.connect();
-    console.log("conectado ao MongoDB Atlas com sucesso");
+    console.log("conectado ao MongoDB com sucesso");
+    const result = await client.db("admin").command(queryObject)
+    return result
   } catch (erro) {
     console.error("falha na conexão com o banco: ", erro);
+    await client.close();
+  } finally {
     await client.close();
   }
 }
 
-run();
+export default {
+  query: query
+}
