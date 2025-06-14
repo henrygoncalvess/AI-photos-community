@@ -1,0 +1,6 @@
+project-images
+src/front-end/public/*
+!src/front-end/public/home.html
+!src/front-end/public/src/pages/home.js
+!src/front-end/public/src/components/Button.js
+!src/front-end/public/src/css/home.css
