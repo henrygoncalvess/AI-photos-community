@@ -1,20 +1,13 @@
-import { MongoClient, ServerApiVersion } from "mongodb";
+import { MongoClient } from "mongodb";
 import { env } from "../env";
 
-export const client = new MongoClient(env.URI_MONGODB, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
+export const client = new MongoClient(env.URI_MONGODB);
 
 async function query(queryObject) {
   try {
     await client.connect();
-    console.log("conectado ao MongoDB com sucesso");
-    const result = await client.db("admin").command(queryObject)
-    return result
+    const result = await client.db("admin").command(queryObject);
+    return result;
   } catch (erro) {
     console.error("falha na conexão com o banco: ", erro);
     await client.close();
@@ -24,5 +17,5 @@ async function query(queryObject) {
 }
 
 export default {
-  query: query
-}
+  query: query,
+};
