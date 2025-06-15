@@ -6,24 +6,19 @@ export async function statusRoutes(app: FastifyTypedInstance) {
   app.get("/status", async (request, reply) => {
     const updatedAt = new Date().toISOString();
 
-    const databaseVersionResult = (await database.query({
-      buildInfo: 1,
-    })) as Document;
-
-    const databaseVersionValue = databaseVersionResult.version;
-
-    const databaseInfoConnectionsResult = (await database.query({
+    const databaseServerStatusResult = await database.query({
       serverStatus: 1,
-    })) as Document;
+    });
+
+    const databaseVersionValue = databaseServerStatusResult.version;
 
     const databaseMaxConnectionsValue =
-      databaseInfoConnectionsResult.connections.available;
+      databaseServerStatusResult.connections.available;
 
-    const databaseOpenedConnectionsValue =
-      databaseInfoConnectionsResult.connections.active;
-
-    const databaseCurrentConnectionValue =
-      databaseInfoConnectionsResult.connections.current;
+    const databaseOpenedConnectionsValue = databaseServerStatusResult
+      .connections.active
+      ? databaseServerStatusResult.connections.active
+      : databaseServerStatusResult.connections.current;
 
     reply.status(200).send({
       updated_at: updatedAt,
@@ -32,7 +27,6 @@ export async function statusRoutes(app: FastifyTypedInstance) {
           version: databaseVersionValue,
           max_connections: databaseMaxConnectionsValue,
           opened_connections: databaseOpenedConnectionsValue,
-          current_connections: databaseCurrentConnectionValue,
         },
       },
     });
