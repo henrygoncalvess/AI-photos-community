@@ -1,6 +1,5 @@
 import { FastifyTypedInstance } from "../types/fastify";
 import database from "../infra/database";
-import { Document } from "mongodb";
 
 export async function statusRoutes(app: FastifyTypedInstance) {
   app.get("/status", async (request, reply) => {
