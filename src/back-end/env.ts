@@ -1,4 +1,9 @@
-import "dotenv/config"
+import dotenv from "dotenv";
+
+dotenv.config({
+  path: ".env.development",
+});
+
 import { z } from "zod";
 
 const envSchema = z.object({

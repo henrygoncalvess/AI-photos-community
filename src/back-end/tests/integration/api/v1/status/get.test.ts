@@ -23,7 +23,7 @@ describe("GET to /api/v1/status", () => {
     const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
     expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
 
-    expect(responseBody.dependencies.database.version).toEqual("7.0.20");
+    expect(responseBody.dependencies.database.version).toEqual("7.0.21");
     expect(responseBody.dependencies.database.max_connections).toEqual(838858);
     expect(responseBody.dependencies.database.opened_connections).toEqual(1);
   });
