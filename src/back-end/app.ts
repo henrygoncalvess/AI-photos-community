@@ -13,7 +13,7 @@ class App {
 
   constructor() {
     // this.fastify = fastify().withTypeProvider<ZodTypeProvider>()
-    this.fastify = fastify()
+    this.fastify = fastify();
     this.#middlewares();
   }
 
