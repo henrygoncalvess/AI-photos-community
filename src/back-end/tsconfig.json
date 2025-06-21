@@ -13,5 +13,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node16"
-  }
+  },
+
+  "include": ["."],
+  "exclude": ["node_modules"]
 }
