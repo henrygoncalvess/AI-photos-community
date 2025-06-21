@@ -9,10 +9,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/jod"
 
-      - run: npm ci
+      - name: Install dependencies
+        working-directory: src/back-end
+        run: npm ci
 
-      - run: npm test
+      - name: Run tests
+        working-directory: src/back-end
+        run: npm run test
