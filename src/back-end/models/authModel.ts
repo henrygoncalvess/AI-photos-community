@@ -8,7 +8,7 @@ export class AuthModel {
   static async signup({ name, password, email }: User) {
     const userExists = await checkIfUserDocumentExists({ email });
 
-    var registered = false;
+    let registered = false;
 
     if (userExists) {
       registered = true;
