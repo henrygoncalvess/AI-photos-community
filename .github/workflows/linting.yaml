@@ -55,7 +55,9 @@ jobs:
           node-version: "lts/hydrogen"
 
       - name: Install dependencies
+        working-directory: src/back-end
         run: npm ci
 
       - name: Check all commit messages from the Pull Request
+        working-directory: src/back-end
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
