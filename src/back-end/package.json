@@ -15,7 +15,8 @@
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "eslint",
     "wait-for-mongodb": "tsx infra/scripts/wait-for-mongodb.ts",
-    "prepare": "cd ../../ && husky src/back-end/.husky"
+    "prepare": "cd ../../ && husky src/back-end/.husky",
+    "commit": "cz"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.1",
@@ -44,7 +45,9 @@
     "@types/mongodb": "^4.0.6",
     "@types/node": "^24.0.3",
     "@types/nodemailer": "^6.4.17",
+    "commitizen": "^4.3.1",
     "concurrently": "^9.1.2",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^9.29.0",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
@@ -57,5 +60,10 @@
     "typescript-eslint": "^8.34.1"
   },
   "author": "Henry Gonçalves",
-  "license": "ISC"
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "./src/back-end/node_modules/cz-conventional-changelog"
+    }
+  }
 }
