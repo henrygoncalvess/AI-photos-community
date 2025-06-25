@@ -1,0 +1,1 @@
+npx commitlint -d src/back-end --edit $1
