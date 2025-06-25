@@ -14,7 +14,8 @@
     "lint:prettier:check": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "lint:eslint:check": "eslint",
-    "wait-for-mongodb": "tsx infra/scripts/wait-for-mongodb.ts"
+    "wait-for-mongodb": "tsx infra/scripts/wait-for-mongodb.ts",
+    "prepare": "cd ../../ && husky src/back-end/.husky"
   },
   "dependencies": {
     "@fastify/cors": "^11.0.1",
@@ -46,6 +47,7 @@
     "concurrently": "^9.1.2",
     "eslint": "^9.29.0",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
     "jest": "^30.0.2",
     "prettier": "^3.5.3",
     "ts-jest": "^29.4.0",
