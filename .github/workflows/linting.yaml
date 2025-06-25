@@ -61,3 +61,22 @@ jobs:
       - name: Check all commit messages from the Pull Request
         working-directory: src/back-end
         run: npx commitlint --from ${{ github.event.pull_request.base.sha }} --to ${{ github.event.pull_request.head.sha }} --verbose
+
+  secretlint:
+    name: Secretlint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/hydrogen"
+
+      - name: Install dependencies
+        working-directory: src/back-end
+        run: npm ci
+
+      - name: Starts Secretlint scanning for credentials
+        working-directory: src/back-end
+        run: npx secretlint "**/*"
