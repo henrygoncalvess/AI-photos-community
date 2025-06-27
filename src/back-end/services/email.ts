@@ -7,7 +7,7 @@ const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
     user: env.EMAIL,
-    pass: env.PASSWORD_EMAIL,
+    pass: env.APP_PASSWORD,
   },
 });
 
@@ -15,9 +15,11 @@ export async function sendVerificationEmail(
   { name, email }: { name: string; email: string },
   registered: boolean,
 ) {
-  const token = await jwt.sign({ name }, env.JWT_SECRET, { expiresIn: "2min" });
+  const token = await jwt.sign({ name }, env.JWT_SECRET, {
+    expiresIn: "3min",
+  });
 
-  const verificationLink = `http://localhost:3001/login?token=${token}`;
+  const verificationLink = `http://localhost:3000/login?token=${token}`;
 
   const message = createHTMLMessage(name, verificationLink);
 
