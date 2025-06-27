@@ -1,2 +1,3 @@
 cd src/back-end && npm run lint:secretlint:check
 npm run lint:prettier:check
+npm run lint:eslint:check
