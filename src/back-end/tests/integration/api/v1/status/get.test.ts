@@ -5,26 +5,30 @@ beforeAll(async () => {
 });
 
 describe("GET to /api/v1/status", () => {
-  test("should return 200 and valid response body", async () => {
-    const response = await fetch("http://localhost:3000/api/v1/status");
-    expect(response.status).toBe(200);
+  describe("Anonymous user", () => {
+    test("Retrieving current system status", async () => {
+      const response = await fetch("http://localhost:3000/api/v1/status");
+      expect(response.status).toBe(200);
 
-    const responseBody = (await response.json()) as {
-      updated_at: string;
-      dependencies: {
-        database: {
-          version: string;
-          max_connections: number;
-          opened_connections: number;
+      const responseBody = (await response.json()) as {
+        updated_at: string;
+        dependencies: {
+          database: {
+            version: string;
+            max_connections: number;
+            opened_connections: number;
+          };
         };
       };
-    };
 
-    const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
-    expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
+      const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
+      expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
 
-    expect(responseBody.dependencies.database.version).toEqual("7.0.21");
-    expect(responseBody.dependencies.database.max_connections).toEqual(838858);
-    expect(responseBody.dependencies.database.opened_connections).toEqual(1);
+      expect(responseBody.dependencies.database.version).toEqual("7.0.21");
+      expect(responseBody.dependencies.database.max_connections).toEqual(
+        838858,
+      );
+      expect(responseBody.dependencies.database.opened_connections).toEqual(1);
+    });
   });
 });
