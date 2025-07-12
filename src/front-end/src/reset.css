@@ -26,16 +26,6 @@ body {
   padding: 10px;
 }
 
-#root {
-  display: flex;
-  justify-content: center;
-  align-content: space-evenly;
-  flex-flow: row wrap;
-  min-height: 100vh;
-  width: clamp(200px, 100%, 80vw);
-  margin: auto;
-}
-
 button,
 input,
 textarea,
