@@ -8,7 +8,7 @@ async function fetchAPI(key) {
 
 function UpdatedAt() {
   const { isLoading, data } = useSWR(
-    import.meta.env.VITE_BACK_END_ROUTE,
+    `${import.meta.env.VITE_BACK_END_ROUTE}/api/v1/status`,
     fetchAPI,
     { refreshInterval: 5000 }
   );
@@ -30,7 +30,7 @@ function UpdatedAt() {
 
 function Database() {
   const { isLoading, data } = useSWR(
-    import.meta.env.VITE_BACK_END_ROUTE,
+    `${import.meta.env.VITE_BACK_END_ROUTE}/api/v1/status`,
     fetchAPI,
     { refreshInterval: 5000 }
   );
