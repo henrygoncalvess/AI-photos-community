@@ -9,12 +9,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: "3001",
-    open: "home.html",
+    open: "index.html",
   },
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "home.html"),
+        main: resolve(__dirname, "index.html"),
       },
     },
   },
