@@ -1,6 +1,7 @@
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
 import { statusRoutes } from "./routes/status";
+import { env } from "./env";
 // import { fastifySwagger } from '@fastify/swagger';
 // import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 // import { authRoutes, authRoutesMiddle } from './routes/login';
@@ -18,7 +19,7 @@ class App {
   }
 
   #middlewares() {
-    this.fastify.register(fastifyCors, { origin: "http://localhost:3000" });
+    this.fastify.register(fastifyCors, { origin: env.STATIC_PAGE_URL });
 
     // this.fastify.setValidatorCompiler(validatorCompiler);
 

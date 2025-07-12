@@ -14,6 +14,7 @@ const envSchema = z.object({
   COLLECTION: z.string(),
   JWT_SECRET: z.string(),
   STABILITY_API_KEY: z.string(),
+  STATIC_PAGE_URL: z.string(),
 });
 
 export const env = envSchema.parse(process.env);
