@@ -1,45 +1,57 @@
 import { FastifyTypedInstance } from "../types/fastify";
 import database from "../infra/database";
-import { InternalServerError } from "../infra/error";
+import { InternalServerError, MethodNotAllowedError } from "../infra/error";
+
+const opts = {
+  errorHandler: errorHandlerController,
+};
+
+function errorHandlerController(error, request, reply) {
+  const publicErrorObject = new InternalServerError({
+    statusCode: error.statusCode,
+    cause: error,
+  });
+
+  console.log("\nErro Dentro do catch do errorHandlerController:");
+  console.error(publicErrorObject);
+
+  reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
+}
+
+function notFoundHandler(request, reply) {
+  const publicErrorObject = new MethodNotAllowedError();
+  reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
+}
 
 export async function statusRoutes(app: FastifyTypedInstance) {
-  app.get("/status", async (request, reply) => {
-    try {
-      const updatedAt = new Date().toISOString();
+  app.setNotFoundHandler(notFoundHandler);
 
-      const databaseServerStatusResult = await database.query({
-        serverStatus: 1,
-      });
+  app.get("/status", opts, async (request, reply) => {
+    const updatedAt = new Date().toISOString();
 
-      const databaseVersionValue = databaseServerStatusResult.version;
+    const databaseServerStatusResult = await database.query({
+      serverStatus: 1,
+    });
 
-      const databaseMaxConnectionsValue =
-        databaseServerStatusResult.connections.available;
+    const databaseVersionValue = databaseServerStatusResult.version;
 
-      const databaseOpenedConnectionsValue = databaseServerStatusResult
-        .connections.active
-        ? databaseServerStatusResult.connections.active
-        : databaseServerStatusResult.connections.current;
+    const databaseMaxConnectionsValue =
+      databaseServerStatusResult.connections.available;
 
-      reply.status(200).send({
-        updated_at: updatedAt,
-        dependencies: {
-          database: {
-            version: databaseVersionValue,
-            max_connections: databaseMaxConnectionsValue,
-            opened_connections: databaseOpenedConnectionsValue,
-          },
+    const databaseOpenedConnectionsValue = databaseServerStatusResult
+      .connections.active
+      ? databaseServerStatusResult.connections.active
+      : databaseServerStatusResult.connections.current;
+
+    reply.status(200).send({
+      updated_at: updatedAt,
+      dependencies: {
+        database: {
+          version: databaseVersionValue,
+          max_connections: databaseMaxConnectionsValue,
+          opened_connections: databaseOpenedConnectionsValue,
         },
-      });
-    } catch (error) {
-      const publicErrorObject = new InternalServerError({
-        cause: error,
-      });
-
-      console.log("\nErro Dentro do catch do controller:");
-      console.error(publicErrorObject);
-
-      reply.status(publicErrorObject.statusCode).send(publicErrorObject);
-    }
+      },
+    });
   });
 }
