@@ -31,7 +31,7 @@ function Home() {
               <button className="register-button">Criar Conta</button>
             </div>
             <div className="image-wrapper">
-              <img src="src/images/home-img.png" />
+              <img src="/images/home-img.png" />
             </div>
           </div>
         </div>
