@@ -1,33 +1,53 @@
-// import { CreateButton } from "../components/Button";
-
-// const root = document.querySelector("div#homeRoot")
-
-// const div = document.createElement("div")
-
-// div.setAttribute("id", "conteinerButtons")
-
-// const loginButton = CreateButton("submit", "entrar")
-
-// loginButton.setAttribute("id", "loginButton")
-
-// const registerButton = CreateButton("submit", "Registrar")
-
-// registerButton.setAttribute("id", "registerButton")
-
-// div.appendChild(registerButton)
-// div.appendChild(loginButton)
-// root.appendChild(div)
-
-// document.querySelector("button#loginButton").addEventListener("click", () => {
-//     window.location.href = "login.html"
-// })
-
-// document.querySelector("button#registerButton").addEventListener("click", () => {
-//     window.location.href = "sign-up.html"
-// })
+import styles from "@/css/home.module.css";
+import { Link } from "react-router-dom";
 
 function Home() {
-  return <h1>Home</h1>;
+  return (
+    <>
+      <div className={styles["container"]}>
+        <div className={styles["glass-container"]}>
+          <nav className={styles["navbar"]}>
+            <div className={styles["logo"]}>
+              <a href="https://github.com/henrygoncalvess/AI-photos-community">
+                AI photos community
+              </a>
+            </div>
+            <ul className={styles["nav-links"]}>
+              <li className={styles["nav-link"]}>
+                <Link to={"/status"}>Status</Link>
+              </li>
+              <li className={styles["nav-link"]}>
+                <Link to={"/login"}>Entrar</Link>
+              </li>
+            </ul>
+          </nav>
+          <div className={styles["content"]}>
+            <div className={styles["main"]}>
+              <h2>&#x2B50; Peça uma imagem à IA</h2>
+              <p>
+                Veja o que a <b>IA</b> cria e se divirta compartilhando e
+                vizualizando o que outras pessoas também criaram. Clique no
+                botão abaixo para criar sua conta e gerar uma imagem
+              </p>
+              <Link to={"/signin"}>
+                <button className={styles["register-button"]}>
+                  Criar Conta
+                </button>
+              </Link>
+            </div>
+            <div className={styles["image-wrapper"]}>
+              <img src="/images/home-img.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <a className={styles[""]} href="https://github.com/henrygoncalvess">
+          &copy; Henry Gonçalves
+        </a>
+      </footer>
+    </>
+  );
 }
 
 export default Home;

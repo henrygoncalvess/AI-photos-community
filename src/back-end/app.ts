@@ -19,7 +19,9 @@ class App {
   }
 
   #middlewares() {
-    this.fastify.register(fastifyCors, { origin: env.STATIC_PAGE_URL });
+    this.fastify.register(fastifyCors, {
+      origin: process.env.NODE_ENV === "production" ? env.STATIC_PAGE_URL : "*",
+    });
 
     // this.fastify.setValidatorCompiler(validatorCompiler);
 
