@@ -1,4 +1,5 @@
 import styles from "@/css/home.module.css";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -13,10 +14,10 @@ function Home() {
             </div>
             <ul className={styles["nav-links"]}>
               <li className={styles["nav-link"]}>
-                <a href="#">Status</a>
+                <Link to={"/status"}>Status</Link>
               </li>
               <li className={styles["nav-link"]}>
-                <a href="#">Entrar</a>
+                <Link to={"/login"}>Entrar</Link>
               </li>
             </ul>
           </nav>
@@ -28,7 +29,11 @@ function Home() {
                 vizualizando o que outras pessoas também criaram. Clique no
                 botão abaixo para criar sua conta e gerar uma imagem
               </p>
-              <button className={styles["register-button"]}>Criar Conta</button>
+              <Link to={"/signin"}>
+                <button className={styles["register-button"]}>
+                  Criar Conta
+                </button>
+              </Link>
             </div>
             <div className={styles["image-wrapper"]}>
               <img src="/images/home-img.png" />
