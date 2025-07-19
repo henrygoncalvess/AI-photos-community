@@ -66,11 +66,13 @@ li.nav-link {
 
 .content {
   display: flex;
+  justify-content: space-between;
   width: 100%;
 }
 
 .main {
   display: inline-block;
+  flex: 0 1 650px;
   padding: 20px;
   align-self: center;
 }
@@ -113,6 +115,12 @@ button.register-button:hover {
   max-width: 500px;
 }
 
+footer {
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
 @media screen and (max-width: 1075px) {
   .glass-container {
     width: 80vw;
@@ -120,10 +128,12 @@ button.register-button:hover {
 
   .content {
     flex-direction: column;
+    align-items: center;
   }
 
   .main {
     margin-top: 3vh;
+    flex: 1 1 100%;
   }
 }
 
@@ -158,6 +168,10 @@ button.register-button:hover {
 }
 
 @media screen and (max-width: 675px) {
+  .glass-container {
+    padding: 40px 40px 20px 40px;
+  }
+
   .logo {
     width: 110px;
     font-size: 23px;
@@ -168,8 +182,26 @@ button.register-button:hover {
   }
 }
 
-footer {
-  text-align: center;
-  margin-bottom: 30px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+@media screen and (max-width: 450px) {
+  .glass-container {
+    width: 95vw;
+  }
+
+  .logo {
+    font-size: 18px;
+    width: 100px;
+  }
+
+  li.nav-link {
+    font-size: 10px;
+    margin-left: 15px;
+  }
+
+  .main h2 {
+    font-size: 22px;
+  }
+
+  .main p {
+    font-size: 13px;
+  }
 }
