@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-unused-vars
+import styles from "@/css/status.module.css";
 import useSWR from "swr";
 
 async function fetchAPI(key) {
