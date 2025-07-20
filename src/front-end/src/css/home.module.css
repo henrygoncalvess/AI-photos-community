@@ -1,4 +1,4 @@
-body {
+.home-body {
   color: white;
   background-image: radial-gradient(
       at 25% 75%,
@@ -13,7 +13,7 @@ body {
   font-weight: 500;
 }
 
-a {
+a.home-a {
   text-decoration: none;
   color: white;
 }
@@ -77,11 +77,11 @@ li.nav-link {
   align-self: center;
 }
 
-.main h2 {
+.main h2.home-h2 {
   font-size: 35px;
 }
 
-.main p {
+.main p.home-p {
   font-size: 16px;
   line-height: 23px;
 }
@@ -111,13 +111,13 @@ button.register-button:hover {
   position: relative;
 }
 
-.image-wrapper img {
+.image-wrapper img.home-img {
   max-width: 500px;
 }
 
-footer {
+footer.home-footer {
   text-align: center;
-  margin-bottom: 30px;
+  padding-bottom: 30px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
@@ -150,11 +150,11 @@ footer {
     font-size: 13px;
   }
 
-  .main h2 {
+  .main h2.home-h2 {
     font-size: 28px;
   }
 
-  .main p {
+  .main p.home-p {
     font-size: 15px;
   }
 
@@ -197,11 +197,11 @@ footer {
     margin-left: 15px;
   }
 
-  .main h2 {
+  .main h2.home-h2 {
     font-size: 22px;
   }
 
-  .main p {
+  .main p.home-p {
     font-size: 13px;
   }
 }
