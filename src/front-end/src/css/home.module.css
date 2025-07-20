@@ -1,26 +1,20 @@
-.home-body {
+.body {
   color: white;
   background-image: radial-gradient(
-      at 25% 75%,
-      hsla(262, 100%, 50%, 0.3) 80px,
+      at 50% 50%,
+      hsl(197, 100%, 50%, 0.25) 10%,
       transparent 60%
     ),
-    radial-gradient(at 80% 10%, hsla(215, 100%, 50%, 0.3) 80px, transparent 60%),
-    radial-gradient(at 22% 20%, hsla(180, 100%, 50%, 0.3) 80px, transparent 60%),
-    radial-gradient(at 80% 85%, hsl(137, 100%, 50%, 0.3) 80px, transparent 60%),
-    radial-gradient(at 50% 50%, hsl(151, 100%, 50%, 0.3) 80px, transparent 60%);
+    radial-gradient(at 20% 80%, hsla(262, 100%, 50%, 0.25) 10%, transparent 60%),
+    radial-gradient(at 80% 10%, hsla(215, 100%, 50%, 0.25) 10%, transparent 60%),
+    radial-gradient(at 22% 20%, hsla(180, 100%, 50%, 0.25) 10%, transparent 60%),
+    radial-gradient(at 80% 85%, hsl(137, 100%, 50%, 0.25) 10%, transparent 60%);
   min-height: 100vh;
   font-weight: 500;
 }
 
-a.home-a {
-  text-decoration: none;
+a.a {
   color: white;
-}
-
-a.copyright {
-  font-weight: bold;
-  font-size: 13px;
 }
 
 .container {
@@ -77,16 +71,18 @@ li.nav-link {
   align-self: center;
 }
 
-.main h2.home-h2 {
+.main h2.h2 {
   font-size: 35px;
+  margin-bottom: 10px;
 }
 
-.main p.home-p {
+.main p.p {
   font-size: 16px;
   line-height: 23px;
+  margin-bottom: 20px;
 }
 
-button.register-button {
+button.button {
   margin-top: 10px;
   width: 100%;
   height: 40px;
@@ -100,7 +96,7 @@ button.register-button {
   transition: all 0.3s ease;
 }
 
-button.register-button:hover {
+button.button:hover {
   border-color: #2668db;
   background-color: #2668db;
 }
@@ -111,14 +107,8 @@ button.register-button:hover {
   position: relative;
 }
 
-.image-wrapper img.home-img {
+.image-wrapper img.img {
   max-width: 500px;
-}
-
-footer.home-footer {
-  text-align: center;
-  padding-bottom: 30px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 @media screen and (max-width: 1075px) {
@@ -150,15 +140,15 @@ footer.home-footer {
     font-size: 13px;
   }
 
-  .main h2.home-h2 {
+  .main h2.h2 {
     font-size: 28px;
   }
 
-  .main p.home-p {
+  .main p.p {
     font-size: 15px;
   }
 
-  button.register-button {
+  button.button {
     font-size: 13px;
   }
 
@@ -197,11 +187,11 @@ footer.home-footer {
     margin-left: 15px;
   }
 
-  .main h2.home-h2 {
+  .main h2.h2 {
     font-size: 22px;
   }
 
-  .main p.home-p {
+  .main p.p {
     font-size: 13px;
   }
 }
