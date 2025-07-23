@@ -8,7 +8,9 @@ function Login() {
       <div className={`global-body ${styles["container"]}`}>
         <div className={styles["card"]}>
           <div className={styles["logo"]}>
-            <span className="material-symbols-outlined">login</span>
+            <span className={`material-symbols-outlined ${styles["icon"]}`}>
+              login
+            </span>
           </div>
           <h2 className={styles["h2"]}>Entrar</h2>
           <form className={styles["form"]}>

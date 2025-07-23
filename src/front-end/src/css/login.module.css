@@ -42,7 +42,7 @@
   translate: -50%;
 }
 
-.logo span {
+.logo .icon {
   font-size: 50px;
   color: #6e8adc;
   font-weight: 500;
@@ -134,7 +134,7 @@ footer .a {
     height: 54px;
   }
 
-  .logo span {
+  .logo .icon {
     font-size: 40px;
   }
 

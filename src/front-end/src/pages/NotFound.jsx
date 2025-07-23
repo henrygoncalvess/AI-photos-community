@@ -1,25 +1,24 @@
+import styles from "@/css/notfound.module.css";
 import { Link } from "react-router-dom";
 
 function NotFound() {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexFlow: "row wrap",
-        justifyContent: "center",
-        alignContent: "center",
-        minHeight: "100vh",
-      }}
-    >
-      <h1>Página não encontrada</h1>
-      <h2
-        style={{
-          flex: "0 1 100%",
-          textAlign: "center",
-        }}
-      >
-        Voltar ao <Link to={"/"}>Ínicio</Link>
-      </h2>
+    <div className={styles["notfound-body"]}>
+      <div className={styles["container"]}>
+        <h1 className={styles["h1-container"]}>
+          <span className={`material-symbols-outlined ${styles["icon"]}`}>
+            terminal
+          </span>{" "}
+          404
+        </h1>
+        <h2>Página não encontrada</h2>
+        <h3>
+          Voltar ao{" "}
+          <Link to={"/"} className={styles["a"]}>
+            Ínicio
+          </Link>
+        </h3>
+      </div>
     </div>
   );
 }

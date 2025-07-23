@@ -8,7 +8,9 @@ function SignIn() {
       <div className={`global-body ${styles["container"]}`}>
         <div className={styles["card"]}>
           <div className={styles["logo"]}>
-            <span className="material-symbols-outlined">app_registration</span>
+            <span className={`material-symbols-outlined ${styles["icon"]}`}>
+              app_registration
+            </span>
           </div>
           <h2 className={styles["h2"]}>Criar Conta</h2>
           <form className={styles["form"]}>
