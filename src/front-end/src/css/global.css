@@ -1,0 +1,24 @@
+.global-body {
+  background: radial-gradient(
+      at 50% 50%,
+      hsl(197, 100%, 50%, 0.1) 10%,
+      transparent 60%
+    ),
+    radial-gradient(at 20% 80%, hsla(262, 100%, 50%, 0.1) 10%, transparent 60%),
+    radial-gradient(at 80% 10%, hsla(215, 100%, 50%, 0.12) 10%, transparent 60%),
+    radial-gradient(at 22% 20%, hsla(180, 100%, 50%, 0.11) 10%, transparent 60%),
+    radial-gradient(at 80% 85%, hsl(137, 100%, 50%, 0.1) 10%, transparent 60%);
+  min-height: 100vh;
+}
+
+footer.footer-main {
+  text-align: center;
+  padding-bottom: 30px;
+  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.8);
+  font-weight: bold;
+  font-size: 13px;
+}
+
+a {
+  text-decoration: none;
+}
