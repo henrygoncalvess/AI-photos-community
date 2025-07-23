@@ -57,6 +57,15 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
+<summary>📷 Página que não existe (rota errada) <ins>(Clique para expandir)</ins></summary>
+<div align="center">
+  
+  ![home](project-images/page-404.png)
+  
+</div>
+</details>
+
+<details>
 <summary>📷 Página para se registrar (mostrando erros da validação) <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
