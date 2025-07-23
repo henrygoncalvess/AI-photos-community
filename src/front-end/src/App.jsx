@@ -1,10 +1,10 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "@/routes/Home";
-import Status from "@/routes/Status";
-import SignIn from "@/routes/SignIn";
-import Login from "@/routes/Login";
-import Gallery from "@/routes/Gallery";
-import NotFound from "@/routes/NotFound";
+import Home from "@/pages/Home";
+import Status from "@/pages/Status";
+import SignIn from "@/pages/SignIn";
+import Login from "@/pages/Login";
+import Gallery from "@/pages/Gallery";
+import NotFound from "@/pages/NotFound";
 
 function App() {
   return (
