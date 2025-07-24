@@ -1,41 +1,32 @@
 import "@/css/global.css";
-import { Link } from "react-router-dom";
-import styles from "@/css/login.module.css";
-import Footer from "../components/Footer/Footer";
+import Footer from "@/components/Footer/Footer";
+import Card from "@/components/Card/Card";
+import Input from "@/components/Input/Input";
+import Button from "@/components/Button/Button";
 
 function Login() {
+  const styles = {
+    display: "flex",
+    flexFlow: "column wrap",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  };
+
   return (
     <>
-      <div className={`global-body ${styles["container"]}`}>
-        <div className={styles["card"]}>
-          <div className={styles["logo"]}>
-            <span className={`material-symbols-outlined ${styles["icon"]}`}>
-              login
-            </span>
-          </div>
-          <h2 className={styles["h2"]}>Entrar</h2>
-          <form className={styles["form"]}>
-            <input
-              type="email"
-              className={styles["input"]}
-              placeholder="Email"
-            />
-            <input
-              type="password"
-              className={styles["input"]}
-              placeholder="Senha"
-            />
-            <button type="submit" className={styles["button"]}>
-              ENTRAR
-            </button>
-          </form>
-          <footer className={styles["footer-form"]}>
-            Não possui uma conta?{" "}
-            <Link to={"/signin"} className={styles["a"]}>
-              Criar Conta
-            </Link>
-          </footer>
-        </div>
+      <div style={styles} className={"global-body"}>
+        <Card
+          iconName={"login"}
+          titleName={"Entrar"}
+          footerMsg={"Não possui uma conta?"}
+          footerMsgLink={"Criar Conta"}
+          linkURL={"/signin"}
+        >
+          <Input type={"email"} placeholder={"Email"} />
+          <Input type={"password"} placeholder={"Senha"} />
+          <Button type={"submit"}>CONFIRMAR</Button>
+        </Card>
+
         <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
       </div>
     </>

@@ -1,7 +1,7 @@
 import styles from "@/components/PageMsgError/pagemsgerror.module.css";
 import Footer from "@/components/Footer/Footer";
 
-function PageMsgError({ iconName, h1Msg, children }) {
+function PageMsgError({ iconName, titleMsg, children }) {
   return (
     <>
       <div className="error-body">
@@ -10,7 +10,7 @@ function PageMsgError({ iconName, h1Msg, children }) {
             <span className={`material-symbols-outlined ${styles["icon"]}`}>
               {iconName}
             </span>{" "}
-            {h1Msg}
+            {titleMsg}
           </h1>
           {children}
         </div>

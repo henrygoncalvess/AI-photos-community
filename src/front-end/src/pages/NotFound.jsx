@@ -7,7 +7,7 @@ function NotFound() {
   };
 
   return (
-    <PageMsgError iconName="terminal" h1Msg="404">
+    <PageMsgError iconName="terminal" titleMsg="404">
       <h2>Página não encontrada</h2>
       <h3>
         Voltar ao{" "}
