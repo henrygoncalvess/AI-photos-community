@@ -11,12 +11,20 @@
   min-height: 100vh;
 }
 
-footer.footer-main {
-  text-align: center;
-  padding-bottom: 30px;
-  text-shadow: 2px 1px 2px rgba(0, 0, 0, 0.8);
-  font-weight: bold;
-  font-size: 13px;
+.error-body {
+  background: radial-gradient(
+      at 50% 50%,
+      hsl(0, 100%, 50%, 0.4) 10%,
+      transparent 60%
+    ),
+    radial-gradient(at 75% 20%, hsla(13, 100%, 50%, 0.5) 10%, transparent 60%),
+    radial-gradient(at 84% 86%, hsla(0, 100%, 43%, 0.6) 10%, transparent 60%),
+    radial-gradient(at 13% 23%, hsla(343, 100%, 50%, 0.5) 10%, transparent 60%),
+    radial-gradient(at 13% 86%, hsla(340, 100%, 28%, 0.6) 15%, transparent 60%);
+  min-height: 100vh;
+
+  color: white;
+  text-shadow: 1px 2px 2px darkred;
 }
 
 a {

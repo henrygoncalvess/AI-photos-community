@@ -1,6 +1,7 @@
 import "@/css/global.css";
-import styles from "@/css/signin.module.css";
 import { Link } from "react-router-dom";
+import styles from "@/css/signin.module.css";
+import Footer from "../components/Footer/Footer";
 
 function SignIn() {
   return (
@@ -40,11 +41,7 @@ function SignIn() {
             </Link>
           </footer>
         </div>
-        <footer className="footer-main">
-          <a className={styles["a"]} href="https://github.com/henrygoncalvess">
-            &copy; Henry Gonçalves
-          </a>
-        </footer>
+        <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
       </div>
     </>
   );
