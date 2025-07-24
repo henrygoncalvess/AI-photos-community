@@ -1,9 +1,3 @@
-.container {
-  display: grid;
-  place-items: center;
-  align-content: space-evenly;
-}
-
 .card {
   position: relative;
   background-color: white;
@@ -42,7 +36,7 @@
   translate: -50%;
 }
 
-.logo .icon {
+.logo > .icon {
   font-size: 50px;
   color: #6e8adc;
   font-weight: 500;
@@ -60,56 +54,18 @@
   gap: 18px;
 }
 
-.form .input,
-.form .button {
-  width: 100%;
-  height: 50px;
-  border-radius: 15px;
-}
-
-.form .input {
-  border: 2px solid #e0e0e0;
-  font-size: 16px;
-  padding: 0 25px;
-  transition: all 0.3s;
-}
-
-.form .input:hover {
-  border: 2px solid black;
-}
-
-.form input::placeholder {
-  color: #aaa;
-}
-
-.form .button {
-  color: #fff;
-  background-color: #7792dc;
-  border: none;
-  font-size: 1rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.form .button:hover {
-  background-color: #4972e1;
-}
-
 .footer-form {
   color: #666666;
 }
 
-.footer-form .a {
+.footer-form > .a {
   color: #6e8adc;
   font-weight: bold;
   text-decoration: underline;
 }
 
-footer .a {
-  color: white;
+.footer-form > .a:hover {
+  color: #3a63de;
 }
 
 @media screen and (max-width: 615px) {
@@ -140,9 +96,5 @@ footer .a {
 
   .h2 {
     font-size: 18px;
-  }
-
-  .form .input {
-    font-size: 1.1em;
   }
 }

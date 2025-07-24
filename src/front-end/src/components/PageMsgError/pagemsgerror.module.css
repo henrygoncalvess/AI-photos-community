@@ -1,0 +1,21 @@
+.container {
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+h1.h1-container {
+  display: flex;
+  align-items: center;
+  height: 35px;
+  font-size: 3em;
+  margin-bottom: 20px;
+  letter-spacing: 5px;
+}
+
+span.icon {
+  font-size: 1.2em;
+  margin-right: 5px;
+}
