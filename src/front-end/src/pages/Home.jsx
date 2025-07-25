@@ -7,8 +7,8 @@ function Home() {
   return (
     <>
       <div className={styles["body"]}>
-        <div className={styles["container"]}>
-          <div className={styles["glass-container"]}>
+        <div className={"container"}>
+          <div className={`${styles["glass-container"]} grid-content`}>
             <nav className={styles["navbar"]}>
               <div className={styles["logo"]}>
                 <a
@@ -20,8 +20,8 @@ function Home() {
               </div>
               <ul className={styles["nav-links"]}>
                 <li className={styles["nav-link"]}>
-                  <Link to={"/status"} className={styles["a"]}>
-                    Status
+                  <Link to={"/community/gallery"} className={styles["a"]}>
+                    Galeria
                   </Link>
                 </li>
                 <li className={styles["nav-link"]}>
@@ -48,8 +48,8 @@ function Home() {
               </div>
             </div>
           </div>
+          <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
         </div>
-        <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
       </div>
     </>
   );

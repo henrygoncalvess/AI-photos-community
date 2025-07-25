@@ -26,3 +26,25 @@
   color: white;
   text-shadow: 1px 2px 2px darkred;
 }
+
+.container {
+  display: grid;
+  grid-template: 10vh 1fr 15vh / 10vw 1fr 10vw;
+  place-items: center;
+}
+
+@media screen and (max-width: 1080px) {
+  .container {
+    grid-template: 10vh 1fr 15vh / 5vw 1fr 5vw;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .container {
+    grid-template: 10vh 1fr 15vh / 3vw 1fr 3vw;
+  }
+}
+
+.grid-content {
+  grid-area: 2 / 2 / -2 / -2;
+}

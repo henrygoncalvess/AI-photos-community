@@ -1,7 +1,7 @@
 .card {
   position: relative;
   background-color: white;
-  margin: 30px 0;
+  margin: 7vh auto;
   padding: 140px 25px 40px;
   width: 550px;
   border-radius: 16px;
@@ -51,7 +51,7 @@
 .form {
   margin: 0 0 30px;
   display: grid;
-  gap: 18px;
+  gap: 22px;
 }
 
 .footer-form {

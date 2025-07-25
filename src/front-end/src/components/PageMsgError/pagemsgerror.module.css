@@ -1,21 +1,21 @@
-.container {
-  height: 100vh;
+.content {
+  height: 80vh;
+  grid-area: 2 / 2 / -2 / -2;
+
   display: flex;
-  flex-flow: column wrap;
+  flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
 }
 
 h1.h1-container {
-  display: flex;
-  align-items: center;
-  height: 35px;
   font-size: 3em;
-  margin-bottom: 20px;
   letter-spacing: 5px;
+  text-align: center;
 }
 
 span.icon {
   font-size: 1.2em;
   margin-right: 5px;
+  translate: 0 10px;
 }
