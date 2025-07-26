@@ -21,7 +21,7 @@ function SignIn() {
             <Input type={"password"} placeholder={"Senha"} />
             <Button type={"submit"}>REGISTRAR</Button>
           </Card>
-          <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
+          <Footer />
         </div>
       </div>
     </>

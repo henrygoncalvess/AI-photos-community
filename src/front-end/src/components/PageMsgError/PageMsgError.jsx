@@ -16,7 +16,7 @@ function PageMsgError({ iconName, titleMsg, children }) {
             </h1>
             {children}
           </div>
-          <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
+          <Footer />
         </div>
       </div>
     </>

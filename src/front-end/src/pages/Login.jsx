@@ -20,7 +20,7 @@ function Login() {
             <Input type={"password"} placeholder={"Senha"} />
             <Button type={"submit"}>CONFIRMAR</Button>
           </Card>
-          <Footer mainColor={"white"} hoverColor={"#78c0ff"} />
+          <Footer />
         </div>
       </div>
     </>
