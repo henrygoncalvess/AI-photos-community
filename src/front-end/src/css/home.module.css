@@ -44,9 +44,9 @@ ul.nav-links {
 
 li.nav-link {
   display: inline-block;
-  margin-left: 30px;
   font-size: 17px;
   font-weight: normal;
+  text-decoration: underline;
 }
 
 .content {
@@ -73,9 +73,18 @@ li.nav-link {
   margin-bottom: 20px;
 }
 
+.button-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.button-container > a {
+  text-align: center;
+  flex: 1 1 0%;
+}
+
 button.button {
-  margin-top: 10px;
-  width: 100%;
+  width: 90%;
   height: 40px;
   font-size: 15px;
   font-weight: normal;
@@ -131,6 +140,10 @@ button.button:hover {
     font-size: 15px;
   }
 
+  .main {
+    padding: 0;
+  }
+
   .main h2.h2 {
     font-size: 28px;
   }
@@ -154,15 +167,18 @@ button.button:hover {
     width: 150px;
   }
 
-  li.nav-link {
-    margin-left: 15px;
-  }
-
   .main h2.h2 {
     font-size: 22px;
   }
 
   .main p.p {
     font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .logo {
+    font-size: 20px;
+    width: 70px;
   }
 }
