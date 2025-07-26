@@ -1,6 +1,6 @@
 footer.footer-main {
+  grid-area: -2 / 1 / -1 / -1;
   text-align: center;
-  padding-bottom: 30px;
   font-weight: bold;
   font-size: 13px;
 }
