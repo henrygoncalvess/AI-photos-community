@@ -1,6 +1,6 @@
 # AI-photos-community - não concluído (em processo de refatoração)
 
-> Resultado final (tamanho de imagens modificado para melhor visualização)
+> Resultado final
 
 ![photos-community](project-images/comunidade-de-fotos.png)
 
@@ -39,19 +39,19 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 ## 👀 Previews
 
 <details>
-<summary>📄 Documentação das rotas com Scalar API <ins>(Clique para expandir)</ins></summary>
+<summary>📷 Página inicial <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
-  ![routes-documentation-preview](project-images/documentation-routes.png)
+  ![home](project-images/home.png)
   
 </div>
 </details>
 
 <details>
-<summary>📷 Página inicial <ins>(Clique para expandir)</ins></summary>
+<summary>📷 Página da Galeria de Fotos (versão mobile) <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
-  ![home](project-images/home.png)
+  ![home](project-images/galeria-mobile.png)
   
 </div>
 </details>
@@ -112,7 +112,7 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 </details>
 
 <details>
-<summary>📷 Página do chat após fazer login com sucesso <ins>(Clique para expandir)</ins></summary>
+<summary>📷 Página de pedir para gerar uma imagem após fazer login com sucesso <ins>(Clique para expandir)</ins></summary>
 <div align="center">
   
   ![login com sucesso](project-images/pedindo-imagem.png)
@@ -125,6 +125,15 @@ Este projeto teve como objetivo principal reunir todos os meus conhecimentos adq
 <div align="center">
   
 https://github.com/user-attachments/assets/713c84a2-299f-4f22-a546-3aaf501ee947
+  
+</div>
+</details>
+
+<details>
+<summary>📄 Documentação das rotas com Scalar API <ins>(Clique para expandir)</ins></summary>
+<div align="center">
+  
+  ![routes-documentation-preview](project-images/documentation-routes.png)
   
 </div>
 </details>
