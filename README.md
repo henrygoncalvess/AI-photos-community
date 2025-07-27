@@ -1,6 +1,6 @@
 # AI-photos-community - não concluído (em processo de refatoração)
 
-> Resultado final
+> Resultado final (tamanho de imagens modificado para melhor visualização)
 
 ![photos-community](project-images/comunidade-de-fotos.png)
 
