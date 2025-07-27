@@ -1,5 +1,5 @@
 import "@/css/global.css";
-import styles from "@/components/PageMsgError/pagemsgerror.module.css";
+import styles from "@/components/PageMsgError/pageMsgError.module.css";
 import Footer from "@/components/Footer/Footer";
 
 function PageMsgError({ iconName, titleMsg, children }) {

@@ -10,6 +10,7 @@
     radial-gradient(at 22% 20%, hsla(180, 100%, 50%, 0.25) 10%, transparent 60%),
     radial-gradient(at 80% 85%, hsl(137, 100%, 50%, 0.25) 10%, transparent 60%);
   min-height: 100vh;
+  min-height: 100dvh;
   font-weight: 500;
 }
 
@@ -104,6 +105,7 @@ button.button:hover {
 .image-wrapper {
   display: flex;
   margin-top: 5vh;
+  margin-top: 5dvh;
   position: relative;
 }
 
@@ -114,6 +116,7 @@ button.button:hover {
 @media screen and (max-width: 1080px) {
   .container {
     grid-template: 10vh 1fr 15vh / 5vw 1fr 5vw;
+    grid-template: 10dvh 1fr 15dvh / 5vw 1fr 5vw;
   }
 
   .content {
@@ -123,6 +126,7 @@ button.button:hover {
 
   .main {
     margin-top: 3vh;
+    margin-top: 3dvh;
     flex: 1 1 100%;
   }
 }
@@ -130,6 +134,7 @@ button.button:hover {
 @media screen and (max-width: 775px) {
   .container {
     grid-template: 10vh 1fr 15vh / 3vw 1fr 3vw;
+    grid-template: 10dvh 1fr 15dvh / 3vw 1fr 3vw;
   }
 
   .logo {

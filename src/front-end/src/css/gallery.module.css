@@ -1,18 +1,21 @@
 .container {
   display: grid;
   grid-template: 10vh 1fr 15vh / 10vw 1fr 10vw 10vw 10vw;
+  grid-template: 10dvh 1fr 15dvh / 10vw 1fr 10vw 10vw 10vw;
   place-items: center;
 }
 
 @media screen and (max-width: 1080px) {
   .container {
     grid-template: 10vh 1fr 15vh / 5vw 1fr 5vw 10vw 10vw;
+    grid-template: 10dvh 1fr 15dvh / 5vw 1fr 5vw 10vw 10vw;
   }
 }
 
 @media screen and (max-width: 820px) {
   .container {
     grid-template: 10vh 1fr 15vh / 0 1fr 0 10vw 10vw;
+    grid-template: 10dvh 1fr 15dvh / 0 1fr 0 10vw 10vw;
   }
 }
 
