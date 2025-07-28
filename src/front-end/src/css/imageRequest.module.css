@@ -1,3 +1,7 @@
+.grid-button {
+  grid-area: 1 / 2 / 2 / -2;
+}
+
 .main-container {
   width: 100%;
   height: 80vh;
@@ -7,6 +11,8 @@
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
+
+  margin: 50px 0 0;
 }
 
 .title {
@@ -14,4 +20,19 @@
   color: rgb(247, 248, 255);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
   margin-bottom: 30px;
+}
+
+@media screen and (max-width: 470px) {
+  .grid-button {
+    grid-area: 1 / 1 / 2 / -1;
+  }
+
+  .main-container {
+    grid-area: 2/1/-2/-1;
+    padding: 0 5px;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
 }
