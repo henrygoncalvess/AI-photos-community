@@ -5,6 +5,7 @@ import SignIn from "@/pages/SignIn";
 import Login from "@/pages/Login";
 import Gallery from "@/pages/Gallery";
 import NotFound from "@/pages/NotFound";
+import ImageRequest from "@/pages/ImageRequest";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path={"status"} element={<Status />} />
         <Route path={"signin"} element={<SignIn />} />
         <Route path={"login"} element={<Login />} />
+        <Route path={"image-request"} element={<ImageRequest />} />
         <Route path={"community/gallery"} element={<Gallery />} />
         <Route path={"*"} element={<NotFound />} />
       </Routes>
