@@ -16,8 +16,8 @@
   background-color: #6e8adc;
   top: -880px;
   left: 50%;
-  width: 1000px;
-  height: 1000px;
+  width: max(150%, 1000px);
+  height: max(108%, 1000px);
   border-radius: 50%;
   translate: -50% 0;
 }
@@ -68,16 +68,17 @@
   color: #3a63de;
 }
 
-@media screen and (max-width: 615px) {
+@media screen and (max-width: 590px) {
   .card {
-    max-width: 500px;
+    width: 100%;
   }
 }
 
-@media screen and (width <= 520px) {
+@media screen and (max-width: 500px) {
   .card {
-    max-width: 300px;
-    padding: 130px 25px 40px;
+    grid-area: 2 / 1 / -2 / -1;
+    padding: 130px 8px 40px;
+    width: 95%;
   }
 
   .card::before {
