@@ -16,8 +16,8 @@
   background-color: #6e8adc;
   top: -880px;
   left: 50%;
-  width: max(150%, 1000px);
-  height: max(108%, 1000px);
+  width: 1000px;
+  height: 1000px;
   border-radius: 50%;
   translate: -50% 0;
 }

@@ -1,0 +1,22 @@
+.inputAlert {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.3rem;
+}
+
+.instructions {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.invalid {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.2);
+}
+
+.valid {
+  color: rgb(0, 37, 160);
+  background-color: rgba(70, 128, 255, 0.2);
+}

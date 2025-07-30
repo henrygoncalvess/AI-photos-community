@@ -16,8 +16,8 @@ function Login() {
             footerMsgLink={"Criar Conta"}
             linkURL={"/signin"}
           >
-            <Input type={"email"} placeholder={"Email"} />
-            <Input type={"password"} placeholder={"Senha"} />
+            <Input type={"email"} id={"email"} placeholder={"Email"} />
+            <Input type={"password"} id={"password"} placeholder={"Senha"} />
             <Button type={"submit"}>CONFIRMAR</Button>
           </Card>
           <Footer />

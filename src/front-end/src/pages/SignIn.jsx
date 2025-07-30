@@ -17,47 +17,49 @@ function SignIn() {
             footerMsgLink={"Entrar"}
             linkURL={"/login"}
           >
-            <Input type={"text"} placeholder={"Apelido"} />
-            <Input type={"email"} placeholder={"Email"} />
-            <Input type={"password"} placeholder={"Senha"} />
+            <Input type={"text"} id={"username"} placeholder={"Apelido"} />
+            <Input type={"email"} id={"email"} placeholder={"Email"} />
+            <Input type={"password"} id={"password"} placeholder={"Senha"} />
             <p className={styles["select-hint"]}>Selecione um Avatar</p>
             <table>
-              <tr>
-                <td>
-                  <img src="/avatars/chicken.png" alt="avatar icon chicken" />
-                </td>
-                <td>
-                  <img src="/avatars/cat.png" alt="avatar icon cat" />
-                </td>
-                <td>
-                  <img src="/avatars/dog.png" alt="avatar icon dog" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/avatars/mouse.png" alt="avatar icon mouse" />
-                </td>
-                <td>
-                  <img src="/avatars/owl.png" alt="avatar icon owl" />
-                </td>
-                <td>
-                  <img
-                    src="/avatars/panda-bear.png"
-                    alt="avatar icon panda-bear"
-                  />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <img src="/avatars/panda.png" alt="avatar icon panda" />
-                </td>
-                <td>
-                  <img src="/avatars/rabbit.png" alt="avatar icon rabbit" />
-                </td>
-                <td>
-                  <img src="/avatars/shark.png" alt="avatar icon shark" />
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="/avatars/chicken.png" alt="avatar icon chicken" />
+                  </td>
+                  <td>
+                    <img src="/avatars/cat.png" alt="avatar icon cat" />
+                  </td>
+                  <td>
+                    <img src="/avatars/dog.png" alt="avatar icon dog" />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="/avatars/mouse.png" alt="avatar icon mouse" />
+                  </td>
+                  <td>
+                    <img src="/avatars/owl.png" alt="avatar icon owl" />
+                  </td>
+                  <td>
+                    <img
+                      src="/avatars/panda-bear.png"
+                      alt="avatar icon panda-bear"
+                    />
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <img src="/avatars/panda.png" alt="avatar icon panda" />
+                  </td>
+                  <td>
+                    <img src="/avatars/rabbit.png" alt="avatar icon rabbit" />
+                  </td>
+                  <td>
+                    <img src="/avatars/shark.png" alt="avatar icon shark" />
+                  </td>
+                </tr>
+              </tbody>
             </table>
             <a
               className={styles["freepik-link"]}
