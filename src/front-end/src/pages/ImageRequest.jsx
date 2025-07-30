@@ -33,6 +33,7 @@ function ImageRequest() {
               placeholder={"Cachorro viajando pelo Universo"}
               textAlign={"center"}
               borderColor={"rgba(71, 100, 218, 0.6)"}
+              id={"request"}
             />
             <Button
               type={"submit"}

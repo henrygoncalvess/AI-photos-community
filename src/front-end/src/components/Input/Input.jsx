@@ -7,17 +7,33 @@ function Input({ type, placeholder, textAlign, borderColor, id }) {
 
   return (
     <>
-      <input
-        className={styles["input"]}
-        type={type}
-        placeholder={placeholder}
-        style={{
-          textAlign: textAlign,
-          borderColor: borderColor ? borderColor : "#e0e0e0",
-        }}
-        onChange={(event) => setinputValue(event.target.value)}
-        value={inputValue}
-      />
+      {id == "request" ? (
+        <input
+          className={styles["input"]}
+          type={type}
+          style={{
+            textAlign: textAlign,
+            borderColor: borderColor ? borderColor : "#e0e0e0",
+          }}
+          placeholder={placeholder}
+          onChange={(event) => setinputValue(event.target.value)}
+          value={inputValue}
+        />
+      ) : (
+        <div className={styles["input-section"]}>
+          <p className={styles["legend"]}>{placeholder}</p>
+          <input
+            className={styles["input"]}
+            type={type}
+            style={{
+              textAlign: textAlign,
+              borderColor: borderColor ? borderColor : "#e0e0e0",
+            }}
+            onChange={(event) => setinputValue(event.target.value)}
+            value={inputValue}
+          />
+        </div>
+      )}
 
       {id == "username" &&
         typeof inputValue === "string" &&
