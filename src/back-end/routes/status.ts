@@ -1,31 +1,12 @@
 import { FastifyTypedInstance } from "../types/fastify";
 import database from "../infra/database";
-import { InternalServerError, MethodNotAllowedError } from "../infra/error";
+import errorHandler from "../controllers/errorHandler";
 
 const opts = {
-  errorHandler: errorHandlerController,
+  errorHandler: errorHandler.onError,
 };
 
-function errorHandlerController(error, request, reply) {
-  const publicErrorObject = new InternalServerError({
-    statusCode: error.statusCode,
-    cause: error,
-  });
-
-  console.log("\nErro Dentro do catch do errorHandlerController:");
-  console.error(publicErrorObject);
-
-  reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
-}
-
-function notFoundHandler(request, reply) {
-  const publicErrorObject = new MethodNotAllowedError();
-  reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
-}
-
 export async function statusRoutes(app: FastifyTypedInstance) {
-  app.setNotFoundHandler(notFoundHandler);
-
   app.get("/status", opts, async (request, reply) => {
     const updatedAt = new Date().toISOString();
 

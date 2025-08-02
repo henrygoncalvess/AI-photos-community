@@ -5,6 +5,7 @@ import { authRoutes, authRoutesMiddle } from "./routes/login";
 import { usersRoutes } from "./routes/users";
 import { chatRoutes } from "./routes/chat";
 import { env } from "./env";
+import errorHandler from "./controllers/errorHandler";
 // import { fastifySwagger } from '@fastify/swagger';
 // import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 // import path from 'node:path';
@@ -55,6 +56,8 @@ class App {
     //     root: path.join(__dirname, "../uploads"),
     //     prefix: "/images"
     // })
+
+    this.fastify.setNotFoundHandler(errorHandler.onNoMatchRoute);
 
     this.fastify.register(statusRoutes, { prefix: "/api/v1" });
     this.fastify.register(authRoutes);
