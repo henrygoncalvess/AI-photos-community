@@ -1,28 +1,21 @@
 import { FastifyTypedInstance } from "../types/fastify";
 import database from "../infra/database";
-import errorHandler from "../controllers/errorHandler";
-
-const opts = {
-  errorHandler: errorHandler.onError,
-};
 
 export async function statusRoutes(app: FastifyTypedInstance) {
-  app.get("/status", opts, async (request, reply) => {
+  app.get("/status", async (request, reply) => {
     const updatedAt = new Date().toISOString();
 
-    const databaseServerStatusResult = await database.query({
-      serverStatus: 1,
-    });
+    const databaseBuildInfoResult = await database.buildInfo();
 
-    const databaseVersionValue = databaseServerStatusResult.version;
+    const databaseVersionValue = databaseBuildInfoResult.version;
 
-    const databaseMaxConnectionsValue =
-      databaseServerStatusResult.connections.available;
+    const databaseConnectionsResult = await database.serverStatusConnections();
 
-    const databaseOpenedConnectionsValue = databaseServerStatusResult
-      .connections.active
-      ? databaseServerStatusResult.connections.active
-      : databaseServerStatusResult.connections.current;
+    const databaseMaxConnectionsValue = databaseConnectionsResult.available;
+
+    const databaseOpenedConnectionsValue = databaseConnectionsResult.active
+      ? databaseConnectionsResult.active
+      : databaseConnectionsResult.current;
 
     reply.status(200).send({
       updated_at: updatedAt,
