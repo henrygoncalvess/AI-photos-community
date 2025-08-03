@@ -1,6 +1,6 @@
 import { InternalServerError, MethodNotAllowedError } from "../infra/error";
 
-function onError(error, request, reply) {
+function errorHandler(error, request, reply) {
   const publicErrorObject = new InternalServerError({
     statusCode: error.statusCode,
     cause: error,
@@ -12,14 +12,14 @@ function onError(error, request, reply) {
   reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
 }
 
-function onNoMatchRoute(request, reply) {
+function notFoundHandler(request, reply) {
   const publicErrorObject = new MethodNotAllowedError();
   reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
 }
 
-const errorHandler = {
-  onError,
-  onNoMatchRoute,
+const handler = {
+  errorHandler,
+  notFoundHandler,
 };
 
-export default errorHandler;
+export default handler;

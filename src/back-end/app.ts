@@ -1,11 +1,8 @@
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
 import { statusRoutes } from "./routes/status";
-import { authRoutes, authRoutesMiddle } from "./routes/login";
-import { usersRoutes } from "./routes/users";
-import { chatRoutes } from "./routes/chat";
 import { env } from "./env";
-import errorHandler from "./controllers/errorHandler";
+import handler from "./controllers/errorHandler";
 // import { fastifySwagger } from '@fastify/swagger';
 // import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 // import path from 'node:path';
@@ -57,13 +54,10 @@ class App {
     //     prefix: "/images"
     // })
 
-    this.fastify.setNotFoundHandler(errorHandler.onNoMatchRoute);
+    this.fastify.setNotFoundHandler(handler.notFoundHandler);
+    this.fastify.setErrorHandler(handler.errorHandler);
 
     this.fastify.register(statusRoutes, { prefix: "/api/v1" });
-    this.fastify.register(authRoutes);
-    this.fastify.register(authRoutesMiddle);
-    this.fastify.register(usersRoutes);
-    this.fastify.register(chatRoutes);
   }
 }
 
