@@ -1,4 +1,6 @@
 import retry from "async-retry";
+import database from "../infra/database";
+import { env } from "../env";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -18,6 +20,11 @@ async function waitForAllServices() {
   }
 }
 
+async function clearDatabase() {
+  await database.db.collection(env.COLLECTION).deleteMany({});
+}
+
 export default {
   waitForAllServices,
+  clearDatabase,
 };

@@ -1,47 +1,21 @@
 import { FastifyTypedInstance } from "../types/fastify";
 import database from "../infra/database";
-import { InternalServerError, MethodNotAllowedError } from "../infra/error";
-
-const opts = {
-  errorHandler: errorHandlerController,
-};
-
-function errorHandlerController(error, request, reply) {
-  const publicErrorObject = new InternalServerError({
-    statusCode: error.statusCode,
-    cause: error,
-  });
-
-  console.log("\nErro Dentro do catch do errorHandlerController:");
-  console.error(publicErrorObject);
-
-  reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
-}
-
-function notFoundHandler(request, reply) {
-  const publicErrorObject = new MethodNotAllowedError();
-  reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
-}
 
 export async function statusRoutes(app: FastifyTypedInstance) {
-  app.setNotFoundHandler(notFoundHandler);
-
-  app.get("/status", opts, async (request, reply) => {
+  app.get("/status", async (request, reply) => {
     const updatedAt = new Date().toISOString();
 
-    const databaseServerStatusResult = await database.query({
-      serverStatus: 1,
-    });
+    const databaseBuildInfoResult = await database.buildInfo();
 
-    const databaseVersionValue = databaseServerStatusResult.version;
+    const databaseVersionValue = databaseBuildInfoResult.version;
 
-    const databaseMaxConnectionsValue =
-      databaseServerStatusResult.connections.available;
+    const databaseConnectionsResult = await database.serverStatusConnections();
 
-    const databaseOpenedConnectionsValue = databaseServerStatusResult
-      .connections.active
-      ? databaseServerStatusResult.connections.active
-      : databaseServerStatusResult.connections.current;
+    const databaseMaxConnectionsValue = databaseConnectionsResult.available;
+
+    const databaseOpenedConnectionsValue = databaseConnectionsResult.active
+      ? databaseConnectionsResult.active
+      : databaseConnectionsResult.current;
 
     reply.status(200).send({
       updated_at: updatedAt,
