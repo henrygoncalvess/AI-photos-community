@@ -2,6 +2,7 @@ interface CustomErrorParams {
   message?: string;
   cause?: unknown;
   statusCode?: number;
+  action?: string;
 }
 
 export class InternalServerError extends Error {
@@ -41,6 +42,33 @@ export class ServiceError extends Error {
 
     // Corrige a cadeia de protótipos para que o instanceof funcione corretamente
     Object.setPrototypeOf(this, ServiceError.prototype);
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
+
+export class ValidationError extends Error {
+  public readonly name: string = "ValidationError";
+  public readonly action: string =
+    "Ajuste os dados enviados e tente novamente.";
+  public readonly statusCode: number = 400;
+
+  constructor({ cause, message, action }: CustomErrorParams) {
+    super(message || "Um erro de validação ocorreu.", {
+      cause,
+    });
+
+    this.action = action || this.action;
+
+    // Corrige a cadeia de protótipos para que o instanceof funcione corretamente
+    Object.setPrototypeOf(this, ValidationError.prototype);
   }
 
   toJSON() {

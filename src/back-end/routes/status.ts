@@ -1,4 +1,4 @@
-import { FastifyTypedInstance } from "../types/fastify";
+import { FastifyTypedInstance } from "../interfaces/fastify";
 import database from "../infra/database";
 
 export async function statusRoutes(app: FastifyTypedInstance) {

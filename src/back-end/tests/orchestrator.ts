@@ -1,6 +1,7 @@
 import retry from "async-retry";
 import database from "../infra/database";
 import { env } from "../env";
+import userCollectionSchema from "../infra/schemas/userSchema";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -24,7 +25,20 @@ async function clearDatabase() {
   await database.db.collection(env.COLLECTION).deleteMany({});
 }
 
+async function createUserCollection() {
+  await database.db.collection(env.COLLECTION).drop();
+
+  await database.db.createCollection(env.COLLECTION, userCollectionSchema);
+  await database.db
+    .collection(env.COLLECTION)
+    .createIndex({ username: 1 }, { unique: true });
+  await database.db
+    .collection(env.COLLECTION)
+    .createIndex({ email: 1 }, { unique: true });
+}
+
 export default {
   waitForAllServices,
   clearDatabase,
+  createUserCollection,
 };

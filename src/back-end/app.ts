@@ -1,6 +1,7 @@
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
 import { statusRoutes } from "./routes/status";
+import { userRoute } from "./routes/users";
 import { env } from "./env";
 import handler from "./controllers/errorHandler";
 // import { fastifySwagger } from '@fastify/swagger';
@@ -58,6 +59,7 @@ class App {
     this.fastify.setErrorHandler(handler.errorHandler);
 
     this.fastify.register(statusRoutes, { prefix: "/api/v1" });
+    this.fastify.register(userRoute, { prefix: "/api/v1" });
   }
 }
 
