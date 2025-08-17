@@ -1,6 +1,6 @@
 import { MongoClient, Db, Document } from "mongodb";
-import { ServiceError } from "../infra/error";
-import { env } from "../env";
+import { ServiceError } from "infra/error";
+import { env } from "env";
 
 const client = new MongoClient(env.URI_MONGODB, {
   maxPoolSize: 20, // Up to 20 simultaneous connections

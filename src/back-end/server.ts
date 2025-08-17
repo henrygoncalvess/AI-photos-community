@@ -4,7 +4,7 @@ dotenv.config({
   path: ".env.development",
 });
 
-import app from "./app";
+import app from "app";
 
 const port = process.env.PORT || 3000;
 
