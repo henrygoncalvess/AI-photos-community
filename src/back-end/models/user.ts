@@ -1,8 +1,8 @@
 import { Document } from "mongodb";
-import { env } from "../env";
-import database from "../infra/database";
+import { env } from "env";
+import database from "infra/database";
 import { ObjectId } from "mongodb";
-import { ValidationError, NotFoundError } from "../infra/error";
+import { ValidationError, NotFoundError } from "infra/error";
 
 interface UserInput {
   username: string;

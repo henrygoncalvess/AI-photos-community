@@ -1,7 +1,6 @@
-import orchestrator from "../../../../../orchestrator";
-import { User } from "../../../../../../interfaces/user";
+import orchestrator from "tests/orchestrator";
 import { ObjectId } from "mongodb";
-import { ValidationError } from "../../../../../../infra/error";
+import { User, ValidationError } from "interfaces/user";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();

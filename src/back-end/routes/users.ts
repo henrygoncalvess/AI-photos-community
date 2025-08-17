@@ -1,6 +1,6 @@
-import { FastifyTypedInstance } from "../interfaces/fastify";
-// import { loginToken } from "../middlewares/auth";
-import user from "../models/user";
+import { FastifyTypedInstance } from "interfaces/fastify";
+// import { loginToken } from "middlewares/auth";
+import user from "models/user";
 
 export async function userRoute(app: FastifyTypedInstance) {
   app.post("/users", postHandler);

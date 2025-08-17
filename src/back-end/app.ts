@@ -1,9 +1,9 @@
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
-import { statusRoutes } from "./routes/status";
-import { userRoute } from "./routes/users";
-import { env } from "./env";
-import handler from "./controllers/errorHandler";
+import { statusRoutes } from "routes/status";
+import { userRoute } from "routes/users";
+import { env } from "env";
+import handler from "controllers/errorHandler";
 // import { fastifySwagger } from '@fastify/swagger';
 // import { validatorCompiler, serializerCompiler, ZodTypeProvider, jsonSchemaTransform } from 'fastify-type-provider-zod';
 // import path from 'node:path';

@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { env } from "../env";
+import { env } from "env";
 
 export function loginToken(request, reply, done) {
   const authHeader = request.headers.authorization;

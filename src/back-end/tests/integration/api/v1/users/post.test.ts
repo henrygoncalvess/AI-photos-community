@@ -1,6 +1,6 @@
+import orchestrator from "tests/orchestrator";
 import { ObjectId } from "mongodb";
-import orchestrator from "../../../../orchestrator";
-import { User, ValidationError } from "../../../../../interfaces/user";
+import { User, ValidationError } from "interfaces/user";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();

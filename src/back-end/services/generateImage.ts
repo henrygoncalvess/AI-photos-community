@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import axios from "axios";
 import FormData from "form-data";
-import { env } from "../env";
+import { env } from "env";
 
 export async function generate(prompt: string, id: string) {
   const payload = {

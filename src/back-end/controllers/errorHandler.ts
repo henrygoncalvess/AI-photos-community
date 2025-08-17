@@ -3,7 +3,7 @@ import {
   MethodNotAllowedError,
   NotFoundError,
   ValidationError,
-} from "../infra/error";
+} from "infra/error";
 
 function errorHandler(error, request, reply) {
   if (error instanceof ValidationError || error instanceof NotFoundError) {

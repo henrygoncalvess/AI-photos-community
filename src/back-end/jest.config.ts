@@ -9,6 +9,7 @@ const config: Config = {
   transform: {
     ...tsJestTransformCfg,
   },
+  moduleDirectories: ["node_modules", "<rootDir>"],
 };
 
 export default config;

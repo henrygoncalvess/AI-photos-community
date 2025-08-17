@@ -1,7 +1,7 @@
 import retry from "async-retry";
-import database from "../infra/database";
-import { env } from "../env";
-import userCollectionSchema from "../infra/schemas/userSchema";
+import database from "infra/database";
+import { env } from "env";
+import userCollectionSchema from "infra/schemas/userSchema";
 
 async function waitForAllServices() {
   await waitForWebServer();
