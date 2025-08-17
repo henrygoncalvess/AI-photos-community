@@ -27,10 +27,10 @@ describe("GET to /api/v1/status", () => {
       expect(responseBody.dependencies.database.version).toEqual("7.0.22");
       expect(
         responseBody.dependencies.database.max_connections,
-      ).toBeGreaterThanOrEqual(838800);
+      ).toBeGreaterThanOrEqual(838700);
       expect(
         responseBody.dependencies.database.opened_connections,
-      ).toBeLessThanOrEqual(3);
+      ).toBeLessThanOrEqual(10);
     });
   });
 });

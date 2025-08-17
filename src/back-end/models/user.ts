@@ -2,12 +2,35 @@ import { Document } from "mongodb";
 import { env } from "../env";
 import database from "../infra/database";
 import { ObjectId } from "mongodb";
-import { ValidationError } from "../infra/error";
+import { ValidationError, NotFoundError } from "../infra/error";
 
 interface UserInput {
   username: string;
   email: string;
   password: string;
+}
+
+async function findOneByUsername(username: string) {
+  const userFound = await runFindQuery(username);
+
+  return userFound;
+
+  async function runFindQuery(username: string) {
+    const results = await database.db.collection(env.COLLECTION).findOne({
+      $expr: {
+        $eq: [{ $toLower: `$username` }, { $toLower: `${username}` }],
+      },
+    });
+
+    if (results === null) {
+      throw new NotFoundError({
+        message: "O apelido informado não foi encontrado no sistema.",
+        action: "Verifique se o apelido está digitado corretamente.",
+      });
+    }
+
+    return results;
+  }
 }
 
 async function create(userInputValues: UserInput): Promise<Document> {
@@ -66,6 +89,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
 
 const user = {
   create,
+  findOneByUsername,
 };
 
 export default user;
