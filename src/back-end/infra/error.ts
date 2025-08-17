@@ -81,6 +81,33 @@ export class ValidationError extends Error {
   }
 }
 
+export class NotFoundError extends Error {
+  public readonly name: string = "NotFoundError";
+  public readonly action: string =
+    "Verifique se os parâmetros enviados na consulta estão certos.";
+  public readonly statusCode: number = 404;
+
+  constructor({ cause, message, action }: CustomErrorParams) {
+    super(message || "Não foi possível encontrar este recurso no sistema.", {
+      cause,
+    });
+
+    this.action = action || this.action;
+
+    // Corrige a cadeia de protótipos para que o instanceof funcione corretamente
+    Object.setPrototypeOf(this, NotFoundError.prototype);
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
+
 export class MethodNotAllowedError extends Error {
   public readonly name: string = "MethodNotAllowedError";
   public readonly action: string =
