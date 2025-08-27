@@ -1,5 +1,4 @@
 import { MongoClient, Db, Document } from "mongodb";
-import { ServiceError } from "infra/error";
 import { env } from "env";
 
 const client = new MongoClient(env.URI_MONGODB, {
@@ -12,37 +11,21 @@ const client = new MongoClient(env.URI_MONGODB, {
 
 const db: Db = client.db(env.DATABASE);
 
-async function connectToDatabase(): Promise<void> {
-  try {
-    await client.connect();
-    console.log("✅ Conectado ao MongoDB");
-  } catch (error) {
-    const serviceErrorObject = new ServiceError({
-      message: "Erro na conexão com o Banco",
-      cause: error,
-    });
-    throw serviceErrorObject;
-  } finally {
-    await client.close();
-  }
-}
-
-const buildInfo = async (): Promise<Document> => {
+async function buildInfo(): Promise<Document> {
   return await client.db("admin").command({
     buildInfo: 1,
   });
-};
+}
 
-const serverStatusConnections = async (): Promise<Document> => {
+async function serverStatusConnections(): Promise<Document> {
   const serverStatus = await client.db("admin").command({
     serverStatus: 1,
   });
 
   return serverStatus.connections;
-};
+}
 
 const database = {
-  connectToDatabase,
   buildInfo,
   serverStatusConnections,
   db,
