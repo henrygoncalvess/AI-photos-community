@@ -1,6 +1,8 @@
 import orchestrator from "tests/orchestrator";
 import { ObjectId } from "mongodb";
 import { User, ValidationError } from "interfaces/user";
+import user from "models/user";
+import password from "models/password";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -31,7 +33,7 @@ describe("POST to /api/v1/users", () => {
         _id: responseBody._id,
         username: "teste de username",
         email: "teste@teste.com",
-        password: "abc123",
+        password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
       });
@@ -39,6 +41,20 @@ describe("POST to /api/v1/users", () => {
       expect(ObjectId.isValid(responseBody._id)).toBeTruthy();
       expect(Date.parse(responseBody.created_at)).not.toBeNaN();
       expect(Date.parse(responseBody.updated_at)).not.toBeNaN();
+
+      const userInDatabase = await user.findOneByUsername("teste de username");
+      const correctPassowordMatch = await password.compare(
+        "abc123",
+        userInDatabase.password,
+      );
+
+      const incorrectPassowordMatch = await password.compare(
+        "SenhaErrada",
+        userInDatabase.password,
+      );
+
+      expect(correctPassowordMatch).toBe(true);
+      expect(incorrectPassowordMatch).toBe(false);
     });
 
     test("With duplicated 'email'", async () => {

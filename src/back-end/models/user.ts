@@ -3,6 +3,7 @@ import { env } from "env";
 import database from "infra/database";
 import { ObjectId } from "mongodb";
 import { ValidationError, NotFoundError } from "infra/error";
+import password from "models/password";
 
 interface UserInput {
   username: string;
@@ -36,6 +37,7 @@ async function findOneByUsername(username: string) {
 async function create(userInputValues: UserInput): Promise<Document> {
   await validateUniqueEmail(userInputValues.email);
   await validateUniqueUsername(userInputValues.username);
+  await hashPasswordInObject(userInputValues);
 
   const newUser = await runInsertQuery();
   return newUser;
@@ -68,6 +70,12 @@ async function create(userInputValues: UserInput): Promise<Document> {
         action: "Utilize outro apelido para realizar o cadastro.",
       });
     }
+  }
+
+  async function hashPasswordInObject(userInputValues: UserInput) {
+    const hashedPassword = await password.hash(userInputValues.password);
+
+    userInputValues.password = hashedPassword;
   }
 
   async function runInsertQuery() {
