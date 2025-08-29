@@ -1,7 +1,7 @@
 import retry from "async-retry";
 import database from "infra/database";
-import { env } from "env";
 import userCollectionSchema from "infra/schemas/userSchema";
+import user from "models/user";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -22,23 +22,35 @@ async function waitForAllServices() {
 }
 
 async function clearDatabase() {
-  await database.db.collection(env.COLLECTION).deleteMany({});
+  await database.db.collection("users").deleteMany({});
 }
 
 async function createUserCollection() {
-  await database.db.collection(env.COLLECTION).drop();
+  await database.db.collection("users").drop();
 
-  await database.db.createCollection(env.COLLECTION, userCollectionSchema);
+  await database.db.createCollection("users", userCollectionSchema);
   await database.db
-    .collection(env.COLLECTION)
+    .collection("users")
     .createIndex({ username: 1 }, { unique: true });
   await database.db
-    .collection(env.COLLECTION)
+    .collection("users")
     .createIndex({ email: 1 }, { unique: true });
+}
+
+async function createUser(userObject) {
+  const { faker } = await import("@faker-js/faker");
+
+  return await user.create({
+    username:
+      userObject?.username || faker.internet.username().replace(/[_.-]/g, ""),
+    email: userObject?.email || faker.internet.email(),
+    password: userObject?.password || "validpassword",
+  });
 }
 
 export default {
   waitForAllServices,
   clearDatabase,
   createUserCollection,
+  createUser,
 };

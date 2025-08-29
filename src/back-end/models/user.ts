@@ -1,5 +1,4 @@
 import { Document } from "mongodb";
-import { env } from "env";
 import database from "infra/database";
 import { ObjectId } from "mongodb";
 import { ValidationError, NotFoundError } from "infra/error";
@@ -17,7 +16,7 @@ async function findOneByUsername(username: string) {
   return userFound;
 
   async function runFindQuery(username: string) {
-    const results = await database.db.collection(env.COLLECTION).findOne({
+    const results = await database.db.collection("users").findOne({
       $expr: {
         $eq: [{ $toLower: `$username` }, { $toLower: `${username}` }],
       },
@@ -43,7 +42,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
   return newUser;
 
   async function validateUniqueEmail(email: string) {
-    const results = await database.db.collection(env.COLLECTION).findOne({
+    const results = await database.db.collection("users").findOne({
       $expr: {
         $eq: [{ $toLower: `$email` }, { $toLower: `${email}` }],
       },
@@ -58,7 +57,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
   }
 
   async function validateUniqueUsername(username: string) {
-    const results = await database.db.collection(env.COLLECTION).findOne({
+    const results = await database.db.collection("users").findOne({
       $expr: {
         $eq: [{ $toLower: `$username` }, { $toLower: `${username}` }],
       },
@@ -79,7 +78,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
   }
 
   async function runInsertQuery() {
-    const results = await database.db.collection(env.COLLECTION).insertOne({
+    const results = await database.db.collection("users").insertOne({
       username: userInputValues.username,
       email: userInputValues.email,
       password: userInputValues.password,
@@ -87,7 +86,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
       updated_at: new Date(),
     });
 
-    const insertedUser = (await database.db.collection(env.COLLECTION).findOne({
+    const insertedUser = (await database.db.collection("users").findOne({
       _id: new ObjectId(results.insertedId),
     })) as Document;
 

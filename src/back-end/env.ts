@@ -11,7 +11,6 @@ const envSchema = z.object({
   APP_PASSWORD: z.string(),
   URI_MONGODB: z.string().url(),
   DATABASE: z.string(),
-  COLLECTION: z.string(),
   JWT_SECRET: z.string(),
   STABILITY_API_KEY: z.string(),
   STATIC_PAGE_URL: z.string(),
