@@ -10,22 +10,22 @@ interface UserInput {
   password: string;
 }
 
-async function findOneByEmail(email: string) {
-  const userFound = await runFindQuery(email);
+async function findOneById(id: ObjectId): Promise<Document | never> {
+  const userFound = await runFindQuery(id);
 
   return userFound;
 
-  async function runFindQuery(email: string) {
+  async function runFindQuery(id: ObjectId) {
     const results = await database.db.collection("users").findOne({
       $expr: {
-        $eq: [{ $toLower: `$email` }, { $toLower: `${email}` }],
+        _id: id,
       },
     });
 
     if (results === null) {
       throw new NotFoundError({
-        message: "O email informado não foi encontrado no sistema.",
-        action: "Verifique se o email está digitado corretamente.",
+        message: "O id informado não foi encontrado no sistema.",
+        action: "Verifique se o id está digitado corretamente.",
       });
     }
 
@@ -49,6 +49,29 @@ async function findOneByUsername(username: string) {
       throw new NotFoundError({
         message: "O apelido informado não foi encontrado no sistema.",
         action: "Verifique se o apelido está digitado corretamente.",
+      });
+    }
+
+    return results;
+  }
+}
+
+async function findOneByEmail(email: string) {
+  const userFound = await runFindQuery(email);
+
+  return userFound;
+
+  async function runFindQuery(email: string) {
+    const results = await database.db.collection("users").findOne({
+      $expr: {
+        $eq: [{ $toLower: `$email` }, { $toLower: `${email}` }],
+      },
+    });
+
+    if (results === null) {
+      throw new NotFoundError({
+        message: "O email informado não foi encontrado no sistema.",
+        action: "Verifique se o email está digitado corretamente.",
       });
     }
 
@@ -119,6 +142,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
 
 const user = {
   create,
+  findOneById,
   findOneByUsername,
   findOneByEmail,
 };

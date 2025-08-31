@@ -28,7 +28,6 @@ const userCollectionSchema = {
           maxLength: 72,
         },
 
-        // Why timestamp with timezone? https://justatheory.com/2012/04/postgres-use-timestamptz/
         created_at: {
           bsonType: "date",
           description: "Data de criação do usuário",
