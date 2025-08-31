@@ -54,6 +54,32 @@ export class ServiceError extends Error {
   }
 }
 
+export class UnauthorizedError extends Error {
+  public readonly name: string = "UnauthorizedError";
+  public readonly action: string = "Faça novamente o login para continuar.";
+  public readonly statusCode: number = 401;
+
+  constructor({ cause, message, action }: CustomErrorParams) {
+    super(message || "Usuário não autenticado.", {
+      cause,
+    });
+
+    this.action = action || this.action;
+
+    // Corrige a cadeia de protótipos para que o instanceof funcione corretamente
+    Object.setPrototypeOf(this, UnauthorizedError.prototype);
+  }
+
+  toJSON() {
+    return {
+      name: this.name,
+      message: this.message,
+      action: this.action,
+      status_code: this.statusCode,
+    };
+  }
+}
+
 export class ValidationError extends Error {
   public readonly name: string = "ValidationError";
   public readonly action: string =
