@@ -10,6 +10,29 @@ interface UserInput {
   password: string;
 }
 
+async function findOneByEmail(email: string) {
+  const userFound = await runFindQuery(email);
+
+  return userFound;
+
+  async function runFindQuery(email: string) {
+    const results = await database.db.collection("users").findOne({
+      $expr: {
+        $eq: [{ $toLower: `$email` }, { $toLower: `${email}` }],
+      },
+    });
+
+    if (results === null) {
+      throw new NotFoundError({
+        message: "O email informado não foi encontrado no sistema.",
+        action: "Verifique se o email está digitado corretamente.",
+      });
+    }
+
+    return results;
+  }
+}
+
 async function findOneByUsername(username: string) {
   const userFound = await runFindQuery(username);
 
@@ -97,6 +120,7 @@ async function create(userInputValues: UserInput): Promise<Document> {
 const user = {
   create,
   findOneByUsername,
+  findOneByEmail,
 };
 
 export default user;

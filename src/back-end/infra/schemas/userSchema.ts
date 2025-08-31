@@ -2,7 +2,7 @@ const userCollectionSchema = {
   validator: {
     $jsonSchema: {
       bsonType: "object",
-      required: ["username", "email", "password"],
+      required: ["username", "email", "password", "created_at", "updated_at"],
       uniqueItems: true,
       properties: {
         // For reference, GitHub limits usernames to 39 characters.

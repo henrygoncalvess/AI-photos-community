@@ -2,6 +2,7 @@ import retry from "async-retry";
 import database from "infra/database";
 import userCollectionSchema from "infra/schemas/userSchema";
 import user from "models/user";
+import sessionCollectionSchema from "infra/schemas/sessionSchema";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -37,6 +38,15 @@ async function createUserCollection() {
     .createIndex({ email: 1 }, { unique: true });
 }
 
+async function createSessionCollection() {
+  await database.db.collection("sessions").drop();
+
+  await database.db.createCollection("sessions", sessionCollectionSchema);
+  await database.db
+    .collection("sessions")
+    .createIndex({ token: 1 }, { unique: true });
+}
+
 async function createUser(userObject) {
   const { faker } = await import("@faker-js/faker");
 
@@ -52,5 +62,6 @@ export default {
   waitForAllServices,
   clearDatabase,
   createUserCollection,
+  createSessionCollection,
   createUser,
 };
