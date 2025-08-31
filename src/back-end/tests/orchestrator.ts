@@ -3,6 +3,7 @@ import database from "infra/database";
 import userCollectionSchema from "infra/schemas/userSchema";
 import user from "models/user";
 import sessionCollectionSchema from "infra/schemas/sessionSchema";
+import session from "models/session";
 
 async function waitForAllServices() {
   await waitForWebServer();
@@ -58,10 +59,15 @@ async function createUser(userObject) {
   });
 }
 
+async function createSession(userId) {
+  return await session.create(userId);
+}
+
 export default {
   waitForAllServices,
   clearDatabase,
   createUserCollection,
   createSessionCollection,
   createUser,
+  createSession,
 };

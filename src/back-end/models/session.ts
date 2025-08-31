@@ -1,8 +1,29 @@
 import crypto from "node:crypto";
 import { Document, ObjectId } from "mongodb";
 import database from "infra/database";
+import { UnauthorizedError } from "infra/error";
 
 const EXPIRATION_IN_MILLISECONDS = 60 * 60 * 24 * 30 * 1000; // 30 days
+
+async function findOneValidByToken(sessionToken: string) {
+  const userFound = await runFindQuery(sessionToken);
+  return userFound;
+
+  async function runFindQuery(sessionToken: string) {
+    const results = await database.db.collection("sessions").findOne({
+      $and: [{ token: sessionToken }, { expires_at: { $gt: new Date() } }],
+    });
+
+    if (results === null) {
+      throw new UnauthorizedError({
+        message: "Usuário não possui sessão ativa.",
+        action: "Verifique se este usuário está logado e tente novamente.",
+      });
+    }
+
+    return results;
+  }
+}
 
 async function create(userId: ObjectId) {
   const token = crypto.randomBytes(48).toString("hex");
@@ -33,8 +54,34 @@ async function create(userId: ObjectId) {
   }
 }
 
+async function renew(sessionId: ObjectId) {
+  const expiresAt = new Date(Date.now() + EXPIRATION_IN_MILLISECONDS);
+
+  const renewedSessionObject = await runUpdateQuery(sessionId, expiresAt);
+  return renewedSessionObject;
+
+  async function runUpdateQuery(sessionId: ObjectId, expiresAt: Date) {
+    const results = await database.db.collection("sessions").findOneAndUpdate(
+      {
+        _id: sessionId,
+      },
+      {
+        $set: {
+          expires_at: expiresAt,
+          updated_at: new Date(),
+        },
+      },
+      { returnDocument: "after" },
+    );
+
+    return results;
+  }
+}
+
 const session = {
   create,
+  findOneValidByToken,
+  renew,
   EXPIRATION_IN_MILLISECONDS,
 };
 

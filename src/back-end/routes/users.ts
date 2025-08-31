@@ -1,8 +1,7 @@
 import { FastifyTypedInstance } from "interfaces/fastify";
-// import { loginToken } from "middlewares/auth";
 import user from "models/user";
 
-export async function userRoute(app: FastifyTypedInstance) {
+export async function usersRoute(app: FastifyTypedInstance) {
   app.post("/users", postHandler);
 
   async function postHandler(request, reply) {
@@ -21,9 +20,3 @@ export async function userRoute(app: FastifyTypedInstance) {
     reply.status(200).send(userFound);
   }
 }
-
-// export async function authRoutesMiddle(app: FastifyTypedInstance) {
-//   app.addHook("onRequest", loginToken);
-
-//   app.post("/login", () => {});
-// }
