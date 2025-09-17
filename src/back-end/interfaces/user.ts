@@ -15,3 +15,12 @@ export interface ValidationError {
   action: string;
   status_code: number;
 }
+
+export interface SessionObject {
+  _id: string;
+  token: string;
+  user_id: ObjectId;
+  created_at: string;
+  expires_at: string;
+  updated_at: string;
+}

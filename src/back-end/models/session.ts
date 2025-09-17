@@ -78,10 +78,41 @@ async function renew(sessionId: ObjectId) {
   }
 }
 
+async function expireById(sessionId: ObjectId) {
+  const expiredSession = await runUpdateQuery(sessionId);
+  return expiredSession;
+
+  async function runUpdateQuery(sessionId) {
+    const results = await database.db.collection("sessions").findOneAndUpdate(
+      {
+        _id: sessionId,
+      },
+      [
+        {
+          $set: {
+            expires_at: {
+              $dateSubtract: {
+                startDate: "$expires_at",
+                unit: "year",
+                amount: 1,
+              },
+            },
+            updated_at: new Date(),
+          },
+        },
+      ],
+      { returnDocument: "after" },
+    );
+
+    return results;
+  }
+}
+
 const session = {
   create,
   findOneValidByToken,
   renew,
+  expireById,
   EXPIRATION_IN_MILLISECONDS,
 };
 

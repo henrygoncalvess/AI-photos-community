@@ -32,10 +32,20 @@ function notFoundHandler(request, reply) {
   reply.status(publicErrorObject.statusCode).send(publicErrorObject.toJSON());
 }
 
-async function setSessionCookie(sessionToken, reply) {
+function setSessionCookie(sessionToken, reply) {
   const setCookie = cookie.serialize("session_id", sessionToken, {
     path: "/",
     maxAge: session.EXPIRATION_IN_MILLISECONDS / 1000,
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true,
+  });
+  reply.header("Set-Cookie", setCookie);
+}
+
+function clearSessionCookie(reply) {
+  const setCookie = cookie.serialize("session_id", "invalid", {
+    path: "/",
+    maxAge: -1,
     secure: process.env.NODE_ENV === "production",
     httpOnly: true,
   });
@@ -46,6 +56,7 @@ const handler = {
   errorHandler,
   notFoundHandler,
   setSessionCookie,
+  clearSessionCookie,
 };
 
 export default handler;
