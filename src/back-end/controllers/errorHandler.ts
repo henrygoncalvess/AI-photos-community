@@ -9,11 +9,12 @@ import {
 import session from "models/session";
 
 function errorHandler(error, request, reply) {
-  if (
-    error instanceof ValidationError ||
-    error instanceof NotFoundError ||
-    error instanceof UnauthorizedError
-  ) {
+  if (error instanceof ValidationError || error instanceof NotFoundError) {
+    return reply.status(error.statusCode).send(error.toJSON());
+  }
+
+  if (error instanceof UnauthorizedError) {
+    clearSessionCookie(reply);
     return reply.status(error.statusCode).send(error.toJSON());
   }
 
