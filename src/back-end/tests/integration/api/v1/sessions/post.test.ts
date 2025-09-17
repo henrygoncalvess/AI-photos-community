@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 import orchestrator from "tests/orchestrator";
 import session from "models/session";
 import setCookieParser from "set-cookie-parser";
+import { SessionObject } from "interfaces/user";
 
 beforeAll(async () => {
   await orchestrator.waitForAllServices();
@@ -114,14 +115,7 @@ describe("POST to /api/v1/sessions", () => {
 
       expect(response.status).toBe(201);
 
-      const responseBody = (await response.json()) as {
-        _id: string;
-        token: string;
-        user_id: ObjectId;
-        created_at: string;
-        expires_at: string;
-        updated_at: string;
-      };
+      const responseBody = (await response.json()) as SessionObject;
 
       expect(responseBody).toEqual({
         _id: responseBody._id,

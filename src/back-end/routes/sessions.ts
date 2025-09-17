@@ -20,4 +20,18 @@ export async function sessionRoute(app: FastifyTypedInstance) {
 
     reply.status(201).send(newSession);
   }
+
+  app.delete("/sessions", deleteHandler);
+
+  async function deleteHandler(request, reply) {
+    const headersCookie = request.headers.cookie;
+    const sessionToken = headersCookie.split("session_id=")[1];
+
+    const sessionObject = await session.findOneValidByToken(sessionToken);
+    const expiredSession = await session.expireById(sessionObject._id);
+
+    handler.clearSessionCookie(reply);
+
+    reply.status(200).send(expiredSession);
+  }
 }
